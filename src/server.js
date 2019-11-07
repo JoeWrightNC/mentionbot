@@ -174,9 +174,11 @@ feedparser.on('readable', function () {
 });
 
 app.post('/', (req, res) => {
-    console.log(req.body);
+    //console.log(req.body);
     res.sendStatus(200);
-    var responseURI = req.body.payload["message"];
+    var digit = req.body.payload
+    console.log(digit)
+    var responseURI = digit["type"];
     console.log(responseURI);
     /* request.post(res.payload.message.response_url, {
         json: {
