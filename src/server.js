@@ -173,8 +173,9 @@ feedparser.on('readable', function () {
     }
 });
 
-/* app.post('/', (req, res) => {
-    switch(req.body.command) {
+ app.post('/', (req, res) => {
+     console.log(req.body);
+    /* switch(req.body.command) {
         case "/hippostart":
             hippostart(req.body)
             .then((result) => {
@@ -182,6 +183,6 @@ feedparser.on('readable', function () {
             })
             .catch(console.error)
             break;
-    }
-}) */
+    } */
+}) 
 
