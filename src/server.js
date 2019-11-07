@@ -176,7 +176,9 @@ feedparser.on('readable', function () {
 app.post('/', (req, res) => {
     console.log(req.body);
     res.sendStatus(200);
-    request.post(res.response_url, {
+    var responseURI = res.payload.message.response_url;
+    console.log(responseURI);
+    /* request.post(res.payload.message.response_url, {
         json: {
             "text": "thanks for selecting those!  Don't forget to click Save"
         }
@@ -187,7 +189,7 @@ app.post('/', (req, res) => {
         }
         console.log(`statusCode: ${res.statusCode}`)
         console.log(body)
-    })
+    }) */
     /* switch(req.body.command) {
         case "/hippostart":
             hippostart(req.body)

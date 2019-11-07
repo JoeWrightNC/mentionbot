@@ -1,95 +1,159 @@
-{
-    channel: 'mentionbot',
-	"blocks": [
-		{
-			"type": "section",
-			"text": {
-				"type": "mrkdwn",
-				"text": `*New Mention of ${outletCleaned}* \n*Title:* ${titleCleaned}\n*Published On:* ${pubdate}\n*Description:* ${descriptionCleaned}\n*Read More:* ${linkCleaned}`
-			}
-		},
-		{
-			"type": "divider"
-		},
-        {
-			"type": "section",
-			"text": {
-				"type": "mrkdwn",
-				"text": "*Select Mention Type* (Select all that apply)"
-			},
-			"accessory": {
-				"type": "multi_static_select",
-				"placeholder": {
-					"type": "plain_text",
-					"text": "Select items",
-					"emoji": true
-				},
-				"options": [
-					{
-						"text": {
-							"type": "plain_text",
-							"text": "Mention",
-							"emoji": true
-						},
-						"value": "mention"
-					},
-					{
-						"text": {
-							"type": "plain_text",
-							"text": "Reprint",
-							"emoji": true
-						},
-						"value": "reprint"
-					},
-					{
-						"text": {
-							"type": "plain_text",
-							"text": "Cringeworthy",
-							"emoji": true
-						},
-						"value": "cringe"
-					}
-				]
-			}
+ payload: `
+    {"type":"block_actions",
+    "team":{    "id":"TFPJMSXKQ",
+                "domain":"states-newsroom"
+            },
+    "user":{    "id":"UGGRFMLCV",
+                "username":"joewrightwebdev",
+                "name":"joewrightwebdev",
+                "team_id":"TFPJMSXKQ"
+            },
+    "api_app_id":"AQ0CPAL65",
+    "token":"EVBmL1M4TFCXZ9nCI3l6BnYS",
+    "container":{
+        "type":"message",
+        "message_ts":"1573142153.005600",
+        "channel_id":"GQ8UFL2Q6",
+        "is_ephemeral":false
+    },
+    "trigger_id":"825189103124.533633915670.2c08901820526bdb9376f430ff888c5f",
+    "channel":{
+        "id":"GQ8UFL2Q6",
+        "name":"privategroup"
+    },
+    "message":{
+        "type":"message",
+        "subtype":"bot_message",
+        "text":"This content can't be displayed.",
+        "ts":"1573142153.005600",
+        "username":"MentionBot",
+        "bot_id":"BQAGPM3L6",
+        "blocks":[
+            {
+                "type":"section",
+                "block_id":"KoFjE",
+                "text":{
+                    "type":"mrkdwn",
+                    "text":"*New Mention of Arizona Mirror* \\n*Title:* A Giant Leap for Mankind: The Construction of the Giant Magellan Telescope is on its Way to ...\\n*Published On:* Wed Nov 06 2019 13:04:38 GMT+0000 (Coordinated Universal Time)\\n*Description:* This will hold the seven mirrors that will allow the telescope to capture ... headquarters at the University of &lt;b&gt;Arizona&lt;\\/b&gt;, the third telescope is on its way to&amp;nbsp;...\\n*Read More:* <https:\\/\\/www.sciencetimes.com\\/articles\\/24188\\/20191106\\/giant-magellan-telescope.htm&amp;ct=ga&amp;cd=CAIyGmZlOWZjYWE4MTRkNjA5ZGM6Y29tOmVuOlVT&amp;usg=AFQjCNGflaGOJY2BYRmQ5VVijX9pHpR0Nw>","verbatim":false
+                }
+            },{
+                "type":"divider",
+                "block_id":"vfLfi"
+            },{
+                "type":"section",
+                "block_id":"QmVtX",
+                "text":{
+                    "type":"mrkdwn",
+                    "text":"*Select Mention Type* (Select all that apply)",
+                    "verbatim":false
+                },
+                "accessory":{
+                    "type":"multi_static_select",
+                    "placeholder":{
+                        "type":"plain_text",
+                        "text":"Select items",
+                        "emoji":true
+                    },
+                    "options":[
+                        {
+                            "text":{
+                                "type":"plain_text",
+                                "text":"Mention",
+                                "emoji":true
+                            },
+                            "value":"mention"
+                        },
+                        {
+                            "text":{
+                                "type":"plain_text",
+                                "text":"Reprint",
+                                "emoji":true
+                            },
+                            "value":"reprint"
+                        },{
+                            "text":{
+                                "type":"plain_text",
+                                "text":"Cringeworthy",
+                                "emoji":true
+                            },
+                            "value":"cringe"
+                        }
+                    ],
+                    "action_id":"5BZM="}
+                },
+                {
+                    "type":"divider",
+                    "block_id":"6DG"
+                },{
+                    "type":"section",
+                    "block_id":"50LsC",
+                    "text":{
+                        "type":"mrkdwn",
+                        "text":"*Save this Press Mention:*",
+                        "verbatim":false
+                    }
+                },{
+                    "type":"divider",
+                    "block_id":"nIKq7"
+                },{
+                    "type":"actions",
+                    "block_id":"QFU",
+                    "elements":[
+                        {
+                            "type":"button",
+                            "action_id":"5e+",
+                            "text":{
+                                "type":"plain_text",
+                                "text":"Save",
+                                "emoji":true
+                            },
+                            "value":"save"
+                            },{
+                                "type":"button",
+                                "action_id":"Q=PI",
+                                "text":{"type":"plain_text",
+                                "text":"Discard",
+                                "emoji":true
+                            },
+                            "value":"discard"
+                        }
+                    ]
+                },{
+                    "type":"divider",
+                    "block_id":"VNCxN"
+                }
+            ]
         },
-		{
-			"type": "divider"
-		}
-        {
-			"type": "section",
-			"text": {
-				"type": "mrkdwn",
-				"text": "*Save this Press Mention:*"
-			}
-		},
-		{
-			"type": "divider"
-		},
-		{
-			"type": "actions",
-			"elements": [
-				{
-					"type": "button",
-					"text": {
-						"type": "plain_text",
-						"text": "Save",
-						"emoji": true
-					},
-					"value": "save"
-				},
-				{
-					"type": "button",
-					"text": {
-						"type": "plain_text",
-						"text": "Discard",
-						"emoji": true
-					},
-					"value": "discard"
-				}
-			]
-		},
-		{
-			"type": "divider"
-		}
-	]
-}
+        "response_url":"https:\\/\\/hooks.slack.com\\/actions\\/TFPJMSXKQ\\/812865697330\\/b916v7ibqYQCIWL5csearX1T",
+        "actions":[
+            {
+                "type":"multi_static_select",
+                "action_id":"5BZM=",
+                "block_id":"QmVtX",
+                "selected_options":[
+                    {
+                        "text":{
+                            "type":"plain_text",
+                            "text":"Reprint",
+                            "emoji":true
+                        },
+                        "value":"reprint"
+                    },{
+                        "text":{
+                            "type":"plain_text",
+                            "text":"Mention",
+                            "emoji":true
+                        },
+                        "value":"mention"
+                    }
+                ],
+                "placeholder":{
+                    "type":"plain_text",
+                    "text":"Select items",
+                    "emoji":true
+                },
+                "action_ts":"1573142163.484395"
+            }
+        ]
+    }
+`
