@@ -22,7 +22,7 @@ if (!slackToken) {
   process.exit(1)
 }
 
-const port = /* PORT || */ 80
+const port = PORT ||  80
 
 //say hello world, but more useful
 app.listen(port, () => {
