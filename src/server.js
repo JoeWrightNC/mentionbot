@@ -178,7 +178,7 @@ app.post('/', (req, res) => {
     res.sendStatus(200);
     var digit = req.body.payload
     console.log(digit)
-    var responseURI = digit["type"];
+    var responseURI = JSON.stringify(digit)
     console.log(responseURI);
     /* request.post(res.payload.message.response_url, {
         json: {
