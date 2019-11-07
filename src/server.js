@@ -178,8 +178,9 @@ app.post('/', (req, res) => {
     res.sendStatus(200);
     var digit = req.body.payload
     console.log(digit)
-    var responseURI = JSON.stringify(digit)
-    console.log(responseURI);
+    var digittwo = JSON.parse(digit)
+    console.log(digittwo);
+    console.log(digittwo.message);
     /* request.post(res.payload.message.response_url, {
         json: {
             "text": "thanks for selecting those!  Don't forget to click Save"
