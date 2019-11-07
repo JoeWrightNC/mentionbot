@@ -15,12 +15,12 @@ const app = new Express()
 app.use(bodyParser.urlencoded({extended: true}))
 
 //configure environment once on Heroku, leave commented out for now
-/* const {SLACK_TOKEN: slackToken, PORT} = process.env
+const {SLACK_TOKEN: slackToken, PORT} = process.env
 
 if (!slackToken) {
   console.error('missing environment variables SLACK_TOKEN')
   process.exit(1)
-} */
+}
 
 const port = /* PORT || */ 80
 
