@@ -173,10 +173,21 @@ feedparser.on('readable', function () {
     }
 });
 
- app.post('/', (req, res) => {
-     console.log(req.body);
-     res.sendStatus(200);
-
+app.post('/', (req, res) => {
+    console.log(req.body);
+    res.sendStatus(200);
+    request.post(res.response_url, {
+        json: {
+            "text": "thanks for selecting those!  Don't forget to click Save"
+        }
+    }, (error, res, body) => {
+        if (error) {
+          console.error(error)
+          return
+        }
+        console.log(`statusCode: ${res.statusCode}`)
+        console.log(body)
+    })
     /* switch(req.body.command) {
         case "/hippostart":
             hippostart(req.body)
