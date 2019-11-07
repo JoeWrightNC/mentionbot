@@ -176,11 +176,8 @@ feedparser.on('readable', function () {
 app.post('/', (req, res) => {
     //console.log(req.body);
     res.sendStatus(200);
-    var digit = req.body.payload
-    console.log(digit)
-    var digittwo = JSON.parse(digit)
-    console.log(digittwo.response_url);
-    /* request.post(res.payload.message.response_url, {
+    var parsedPayload = JSON.parse(req.body.payload);
+    request.post(parsedPayload.response_url, {
         json: {
             "text": "thanks for selecting those!  Don't forget to click Save"
         }
@@ -191,7 +188,7 @@ app.post('/', (req, res) => {
         }
         console.log(`statusCode: ${res.statusCode}`)
         console.log(body)
-    }) */
+    }) 
     /* switch(req.body.command) {
         case "/hippostart":
             hippostart(req.body)
