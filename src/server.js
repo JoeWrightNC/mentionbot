@@ -177,11 +177,12 @@ feedparser.on('readable', function () {
 app.post('/', (req, res) => {
     res.sendStatus(200);
     var parsedPayload = JSON.parse(req.body.payload);
+    var parsedBlock = JSON.parse(parsedPayload.blocks)
     console.log("---------------------------------------------------------------------------------------------");
     console.log("---------------------------------------------------------------------------------------------");
     console.log(parsedPayload);
     console.log("---------------------------------------------------------------------------------------------");
-    console.log(parsedPayload.blocks)
+    console.log(parsedBlock);
     console.log("---------------------------------------------------------------------------------------------");
     console.log("---------------------------------------------------------------------------------------------");
 request.post(parsedPayload.response_url, {
