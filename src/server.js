@@ -175,9 +175,9 @@ feedparser.on('readable', function () {
 });
 
 app.post('/', (req, res) => {
-    //console.log(req.body);
     res.sendStatus(200);
     var parsedPayload = JSON.parse(req.body.payload);
+    console.log(parsedPayload);
     request.post(parsedPayload.response_url, {
         json: {
             "replace_original": "true",
