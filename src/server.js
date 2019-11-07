@@ -179,7 +179,8 @@ app.post('/', (req, res) => {
     var parsedPayload = JSON.parse(req.body.payload);
     request.post(parsedPayload.response_url, {
         json: {
-            "text": "thanks for selecting those!  Don't forget to click Save"
+            "replace_original": "true",
+            "text": "Thanks for selecting those!  Don't forget to click Save"
         }
     }, (error, res, body) => {
         if (error) {
