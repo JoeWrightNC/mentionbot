@@ -175,6 +175,8 @@ feedparser.on('readable', function () {
 
  app.post('/', (req, res) => {
      console.log(req.body);
+     res.sendStatus(200);
+
     /* switch(req.body.command) {
         case "/hippostart":
             hippostart(req.body)
