@@ -1,5 +1,5 @@
- payload: `
-    {"type":"block_actions",
+ payload: `{
+    "type":"block_actions",
     "team":{    "id":"TFPJMSXKQ",
                 "domain":"states-newsroom"
             },
