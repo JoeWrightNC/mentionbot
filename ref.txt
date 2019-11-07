@@ -1,0 +1,95 @@
+{
+    channel: 'mentionbot',
+	"blocks": [
+		{
+			"type": "section",
+			"text": {
+				"type": "mrkdwn",
+				"text": `*New Mention of ${outletCleaned}* \n*Title:* ${titleCleaned}\n*Published On:* ${pubdate}\n*Description:* ${descriptionCleaned}\n*Read More:* ${linkCleaned}`
+			}
+		},
+		{
+			"type": "divider"
+		},
+        {
+			"type": "section",
+			"text": {
+				"type": "mrkdwn",
+				"text": "*Select Mention Type* (Select all that apply)"
+			},
+			"accessory": {
+				"type": "multi_static_select",
+				"placeholder": {
+					"type": "plain_text",
+					"text": "Select items",
+					"emoji": true
+				},
+				"options": [
+					{
+						"text": {
+							"type": "plain_text",
+							"text": "Mention",
+							"emoji": true
+						},
+						"value": "mention"
+					},
+					{
+						"text": {
+							"type": "plain_text",
+							"text": "Reprint",
+							"emoji": true
+						},
+						"value": "reprint"
+					},
+					{
+						"text": {
+							"type": "plain_text",
+							"text": "Cringeworthy",
+							"emoji": true
+						},
+						"value": "cringe"
+					}
+				]
+			}
+        },
+		{
+			"type": "divider"
+		}
+        {
+			"type": "section",
+			"text": {
+				"type": "mrkdwn",
+				"text": "*Save this Press Mention:*"
+			}
+		},
+		{
+			"type": "divider"
+		},
+		{
+			"type": "actions",
+			"elements": [
+				{
+					"type": "button",
+					"text": {
+						"type": "plain_text",
+						"text": "Save",
+						"emoji": true
+					},
+					"value": "save"
+				},
+				{
+					"type": "button",
+					"text": {
+						"type": "plain_text",
+						"text": "Discard",
+						"emoji": true
+					},
+					"value": "discard"
+				}
+			]
+		},
+		{
+			"type": "divider"
+		}
+	]
+}
