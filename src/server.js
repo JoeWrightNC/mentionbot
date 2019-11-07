@@ -176,7 +176,7 @@ feedparser.on('readable', function () {
 app.post('/', (req, res) => {
     console.log(req.body);
     res.sendStatus(200);
-    var responseURI = req.body.payload;
+    var responseURI = req.body.payload.type;
     console.log(responseURI);
     /* request.post(res.payload.message.response_url, {
         json: {
