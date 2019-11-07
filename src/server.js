@@ -76,6 +76,7 @@ feedparser.on('readable', function () {
         if (dateCheckServer === dateCheckFeedItem) {
             web.chat.postMessage({
                 channel: 'mentionbot',
+                "response_type": "in_channel",
                 "blocks": [
                     {
                         "type": "section",
