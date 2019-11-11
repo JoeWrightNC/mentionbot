@@ -8,6 +8,7 @@ const request = require('request')
 const { WebClient } = require('@slack/web-api');
 const web = new WebClient(process.env.SLACK_TOKEN);
 const currentDate = new Date();
+const path = require('path');
 currentDate.setDate(currentDate.getDate() - 1);
 
 //crank that server
@@ -29,6 +30,9 @@ app.listen(port, () => {
     console.log(`Server started at localhost:${port}`)
 })
 
+app.use(express.static(path.join(__dirname)));
+app.use("/assets/styles", express.static(__dirname + '/assets/styles'));
+app.use("/assets/scripts", express.static(__dirname + '/assets/scripts'));
 
 //easily call our factories to work as we route
 var reqAZ = request('https://www.google.com/alerts/feeds/13227863141014072795/17929518766589856112')
@@ -196,3 +200,6 @@ app.post('/', (req, res) => {
     }
 }) 
 
+app.get('/', (req,res) => {
+    res.sendFile(path.join(__dirname + 'views/index.html'));
+})
