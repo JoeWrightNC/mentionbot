@@ -95,6 +95,7 @@ feedparser.on('readable', function () {
                             "text": "*Save this Press Mention* (Select all that apply)"
                         },
                         "accessory": {
+                            "action_id": "save",
                             "type": "multi_static_select",
                             "placeholder": {
                                 "type": "plain_text",
@@ -139,6 +140,7 @@ feedparser.on('readable', function () {
                             "text": "*Discard this Press Mention:*"
                         },
                         "accessory": {
+                                "action_id": "discard",
                                 "type": "button",
                                 "text": {
                                     "type": "plain_text",
