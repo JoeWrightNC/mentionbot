@@ -255,13 +255,13 @@ app.post('/', (req, res) => {
             var dbLink = message[3].accessory.url;
             var tagsArr = parsedPayload.actions[0].selected_options
             var tags = "";
-            for (i = 0; i < tagsArr.length; ++i) {
+           /*  for (i = 0; i < tagsArr.length; ++i) {
                 if  (i = 0) {
                     tags = tagsArr[i].value;
                 }else {
                     tags += ", " + tagsArr[i].value;
                 }
-            }
+            } */
             //var dbTags
             console.log("Outlet");
             console.log(dbOutlet);
