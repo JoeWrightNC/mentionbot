@@ -15,15 +15,7 @@ currentDate.setDate(currentDate.getDate() - 1);
 
 //connect to DB
 connection.connect();
-connection.query('CREATE TABLE mentions (' +
-    'id MEDIUMINT NOT NULL AUTO_INCREMENT,' +
-    'outlet VARCHAR(255) NOT NULL,' +
-    'title VARCHAR(255) NOT NULL,' +
-    'date VARCHAR(255) NOT NULL,' +
-    'desc VARCHAR(255) NOT NULL,' +
-    'link VARCHAR(255) NOT NULL,' +
-    'tags VARCHAR(255) NOT NULL,' +
-    'PRIMARY KEY (id))'); 
+connection.query('CREATE TABLE mentions (id MEDIUMINT NOT NULL AUTO_INCREMENT, outlet VARCHAR(255) NOT NULL, title VARCHAR(255) NOT NULL, date VARCHAR(255) NOT NULL, desc VARCHAR(255) NOT NULL, link VARCHAR(255) NOT NULL, tags VARCHAR(255) NOT NULL, PRIMARY KEY (id))'); 
 
 //crank that server
 const app = new Express()
