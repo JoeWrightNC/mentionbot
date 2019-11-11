@@ -95,7 +95,6 @@ feedparser.on('readable', function () {
                             "text": "*Save this Press Mention* (Select all that apply)"
                         },
                         "accessory": {
-                            "action_id": "save",
                             "type": "multi_static_select",
                             "placeholder": {
                                 "type": "plain_text",
@@ -140,7 +139,6 @@ feedparser.on('readable', function () {
                             "text": "*Discard this Press Mention:*"
                         },
                         "accessory": {
-                                "action_id": "discard",
                                 "type": "button",
                                 "text": {
                                     "type": "plain_text",
@@ -168,7 +166,9 @@ app.post('/', (req, res) => {
     console.log(parsedPayload.actions[0].type);
     console.log("---------------------------------------------------------------------------------------------");
     console.log("---------------------------------------------------------------------------------------------");
-
+    if (parsedPayload.actions[0].type == "button") {
+        
+    }
     request.post(parsedPayload.response_url, {
         json: {
             "replace_original": "true",
@@ -182,14 +182,37 @@ app.post('/', (req, res) => {
         console.log(`statusCode: ${res.statusCode}`)
         console.log(body)
     }) 
-    /* switch(req.body.command) {
-        case "/hippostart":
-            hippostart(req.body)
-            .then((result) => {
-            return res.json(result)
-            })
-            .catch(console.error)
-            break;
-    } */
+    switch(parsedPayload.actions[0].type) {
+        case "button":
+            request.post(parsedPayload.response_url, {
+                json: {
+                    "replace_original": "true",
+                    "text": "Deleted"
+                }
+            }, (error, res, body) => {
+                if (error) {
+                  console.error(error)
+                  return
+                }
+                console.log(`statusCode: ${res.statusCode}`)
+                console.log(body)
+            }) 
+        break;
+        case "multi_static_select":
+            request.post(parsedPayload.response_url, {
+                json: {
+                    "replace_original": true,
+                    "text": "Saved!"
+                }
+            }, (error, res, body) => {
+                if (error) {
+                    console.error(error)
+                    return
+                }
+                console.log(`statusCode: ${res.statusCode}`)
+                console.log(body)
+            }) 
+        break;
+    }
 }) 
 
