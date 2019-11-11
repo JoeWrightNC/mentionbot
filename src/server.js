@@ -92,7 +92,7 @@ feedparser.on('readable', function () {
                         "type": "section",
                         "text": {
                             "type": "mrkdwn",
-                            "text": "*Select Mention Type* (Select all that apply)"
+                            "text": "*Save this Press Mention* (Select all that apply)"
                         },
                         "accessory": {
                             "type": "multi_static_select",
@@ -147,32 +147,6 @@ feedparser.on('readable', function () {
                                 "style": "danger",
                                 "value": "discard"
                         }
-                    },
-                    {
-                        "type": "divider"
-                    },
-                    {
-                        "type": "actions",
-                        "elements": [
-                            {
-                                "type": "button",
-                                "text": {
-                                    "type": "plain_text",
-                                    "text": "Save",
-                                    "emoji": true
-                                },
-                                "value": "save"
-                            },
-                            {
-                                "type": "button",
-                                "text": {
-                                    "type": "plain_text",
-                                    "text": "Discard",
-                                    "emoji": true
-                                },
-                                "value": "discard"
-                            }
-                        ]
                     },
                     {
                         "type": "divider"
