@@ -253,6 +253,11 @@ app.post('/', (req, res) => {
             var dbPubdate = message[2].fields[3].text;
             var dbDesc = message[2].fields[2].text;
             var dbLink = message[3].accessory.url;
+            var tagsArr = parsedPayload.actions[0].selected_options
+            var tags = "";
+            tagsArr.forEach(element => {
+                console.log(element.value)
+            });
             //var dbTags
             console.log("Outlet");
             console.log(dbOutlet);
@@ -265,7 +270,7 @@ app.post('/', (req, res) => {
             console.log("Link");
             console.log(dbLink);
             console.log("tags")
-            console.log(parsedPayload.actions[0].selected_options)
+            //console.log()
 
             //connection.query(`INSERT INTO 'mentions' (outlet,title,date,desc,link,tags) VALUES (${dbOutlet},${dbTitle},${dbPubdate},${dbDesc},${dbLink}, ${dbTags})`)
             request.post(parsedPayload.response_url, {
