@@ -242,19 +242,21 @@ app.post('/', (req, res) => {
     
     switch(parsedPayload.actions[0].type) {
         case "button":
-            request.post(parsedPayload.response_url, {
-                json: {
-                    "replace_original": true,
-                    "text": "You Have Discarded This Press Mention."
-                }
-            }, (error, res, body) => {
-                if (error) {
-                  console.error(error)
-                  return
-                }
-                console.log(`statusCode: ${res.statusCode}`)
-                console.log(body)
-            }) 
+            if (parsedPayload.actions[0].style == "danger") {
+                request.post(parsedPayload.response_url, {
+                    json: {
+                        "replace_original": true,
+                        "text": "You Have Discarded This Press Mention."
+                    }
+                }, (error, res, body) => {
+                    if (error) {
+                      console.error(error)
+                      return
+                    }
+                    console.log(`statusCode: ${res.statusCode}`)
+                    console.log(body)
+                }) 
+            }
         break;
         case "multi_static_select":
             var message = parsedPayload.message.blocks;
