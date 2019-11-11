@@ -165,12 +165,11 @@ app.post('/', (req, res) => {
     // var parsedBlock = JSON.parse(parsedPayload);
     console.log("---------------------------------------------------------------------------------------------");
     console.log("---------------------------------------------------------------------------------------------");
-    console.log(parsedPayload);
-    console.log("---------------------------------------------------------------------------------------------");
-    console.log(parsedPayload.message.blocks); 
+    console.log(parsedPayload.actions);
     console.log("---------------------------------------------------------------------------------------------");
     console.log("---------------------------------------------------------------------------------------------");
-request.post(parsedPayload.response_url, {
+
+    request.post(parsedPayload.response_url, {
         json: {
             "replace_original": "true",
             "text": "> Thanks for selecting those!  Don't forget to click Save"
