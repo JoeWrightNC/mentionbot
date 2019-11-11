@@ -97,10 +97,20 @@ feedparser.on('readable', function () {
                 "blocks": [
                     {
                         "type": "section",
-                        "text": {
-                            "type": "mrkdwn",
-                            "text": `*New Mention of ${outletCleaned}*`
-                        }
+                        "fields": [
+                            {
+                                "type": "mrkdwn",
+                                "text": "*New Mention of*"
+                            },
+                            {
+                                "type": "mrkdwn",
+                                "text": " "
+                            },
+                            {
+                                "type": "plain_text",
+                                "text": `${outletCleaned}`
+                            }
+                        ]
                     },
                     {
                         "type": "section",
@@ -225,6 +235,7 @@ app.post('/', (req, res) => {
         case "multi_static_select":
             var message = parsedPayload.message.blocks;
             console.log(message)
+            var dbOutlet = message[0].text.text
             //connection.query('INSERT INTO `mentions`(outlet,title,date,desc,link,tags) VALUES ()')
             request.post(parsedPayload.response_url, {
                 json: {
