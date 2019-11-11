@@ -136,19 +136,17 @@ feedparser.on('readable', function () {
                         "type": "section",
                         "text": {
                             "type": "mrkdwn",
-                            "text": "*Save this Press Mention:*"
+                            "text": "*Discard this Press Mention:*"
                         },
-                        "accessory": [
-                            {
+                        "accessory": {
                                 "type": "button",
                                 "text": {
                                     "type": "plain_text",
                                     "text": "Discard",
-                                    "emoji": true
                                 },
+                                "style": "danger",
                                 "value": "discard"
-                            }
-                        ]
+                        }
                     },
                     {
                         "type": "divider"
