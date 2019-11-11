@@ -138,7 +138,7 @@ feedparser.on('readable', function () {
                             "type": "mrkdwn",
                             "text": "*Save this Press Mention:*"
                         },
-                        "elements": [
+                        "accessory": [
                             {
                                 "type": "button",
                                 "text": {
