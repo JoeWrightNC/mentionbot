@@ -30,9 +30,9 @@ app.listen(port, () => {
     console.log(`Server started at localhost:${port}`)
 })
 
-app.use(express.static(path.join(__dirname)));
-app.use("/assets/styles", express.static(__dirname + '/assets/styles'));
-app.use("/assets/scripts", express.static(__dirname + '/assets/scripts'));
+app.use(Express.static(path.join(__dirname)));
+app.use("/assets/styles", Express.static(__dirname + '/assets/styles'));
+app.use("/assets/scripts", Express.static(__dirname + '/assets/scripts'));
 
 //easily call our factories to work as we route
 var reqAZ = request('https://www.google.com/alerts/feeds/13227863141014072795/17929518766589856112')
