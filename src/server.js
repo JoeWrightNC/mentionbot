@@ -7,9 +7,14 @@ const FeedParser = require('feedparser')
 const request = require('request')
 const { WebClient } = require('@slack/web-api');
 const web = new WebClient(process.env.SLACK_TOKEN);
-const currentDate = new Date();
 const path = require('path');
+const mysql = require('mysql');
+var connection = mysql.createConnection(process.env.JAWSDB_MARIA_URL);
+const currentDate = new Date();
 currentDate.setDate(currentDate.getDate() - 1);
+
+//connect to DB
+connection.connect();
 
 //crank that server
 const app = new Express()
