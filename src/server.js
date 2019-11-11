@@ -140,6 +140,10 @@ feedparser.on('readable', function () {
                     },
                     {
                         "type": "section",
+                        "text": {
+                            "type": "plain_text",
+                            "text": "Read Full Story"
+                        },
                         "accessory": {
                             "type": "button",
                             "text": {
@@ -174,7 +178,7 @@ feedparser.on('readable', function () {
                                         "text": "Mention",
                                         "emoji": true
                                     },
-                                    "value": "mention"
+                                    "value": "Mention"
                                 },
                                 {
                                     "text": {
@@ -182,7 +186,7 @@ feedparser.on('readable', function () {
                                         "text": "Reprint",
                                         "emoji": true
                                     },
-                                    "value": "reprint"
+                                    "value": "Reprint"
                                 },
                                 {
                                     "text": {
@@ -190,7 +194,7 @@ feedparser.on('readable', function () {
                                         "text": "Cringeworthy",
                                         "emoji": true
                                     },
-                                    "value": "cringe"
+                                    "value": "Cringeworthy"
                                 }
                             ]
                         }
