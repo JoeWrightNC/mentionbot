@@ -241,19 +241,21 @@ app.post('/', (req, res) => {
         case "multi_static_select":
             var message = parsedPayload.message.blocks;
             var dbOutlet = message[1].fields[2].text;
-            var dbTitle = message[1].fields[3].text;
+            var dbcatchTitle = message[1].fields[3].text;
+            var dbTitle = dbcatchTitle.replace(",", " ")
             var dbPubdate = message[2].fields[3].text;
-            var dbDesc = message[2].fields[2].text;
+            var dbcatchDesc = message[2].fields[2].text;
+            var dbDesc = dbcatchDesc.replace(",", " ")
             var dbLink = message[3].accessory.url;
             var tagsArr = parsedPayload.actions[0].selected_options
             var tags = [];
             tagsArr.forEach(function(tag){
                 tags.push(tag.value)
             })
-            var dbTags = tags.join(", ")
+            var dbTags = tags.join("+ ")
  
-            var insertStatement =   `INSERT INTO mentions(outlet,title,pubdate,descrip,link,tags) 
-                                    VALUES(${dbOutlet}, ${dbTitle}, ${dbPubdate}, ${dbDesc}, ${dbLink}, ${dbTags})`;
+            var insertStatement =`INSERT INTO mentions(outlet,title,pubdate,descrip,link,tags) 
+VALUES(${dbOutlet}, ${dbTitle}, ${dbPubdate}, ${dbDesc}, ${dbLink}, ${dbTags})`;
 
             connection.query(insertStatement, function(err, rows, fields) {
                 if (err) throw err;
