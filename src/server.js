@@ -235,7 +235,8 @@ app.post('/', (req, res) => {
         case "multi_static_select":
             var message = parsedPayload.message.blocks;
             console.log(message)
-            var dbOutlet = message[0].text.text
+            var dbOutlet = message[0].fields[2].text;
+            console.log(dbOutlet);
             //connection.query('INSERT INTO `mentions`(outlet,title,date,desc,link,tags) VALUES ()')
             request.post(parsedPayload.response_url, {
                 json: {
