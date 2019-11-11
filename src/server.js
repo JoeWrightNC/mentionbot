@@ -99,7 +99,35 @@ feedparser.on('readable', function () {
                         "type": "section",
                         "text": {
                             "type": "mrkdwn",
-                            "text": `*New Mention of ${outletCleaned}* \n*Title:* ${titleCleaned}\n*Published On:* ${pubdate}\n*Description:* ${descriptionCleaned}\n*Read More:* ${linkCleaned}`
+                            "text": `*New Mention of ${outletCleaned}*`
+                        }
+                    },
+                    {
+                        "type": "section",
+                        "text": {
+                            "type": "mrkdwn",
+                            "text": `*Title:* ${titleCleaned}`
+                        }
+                    },
+                    {
+                        "type": "section",
+                        "text": {
+                            "type": "mrkdwn",
+                            "text": `*Published On:* ${pubdate}`
+                        }
+                    },
+                    {
+                        "type": "section",
+                        "text": {
+                            "type": "mrkdwn",
+                            "text": `*Description:* ${descriptionCleaned}`
+                        }
+                    },
+                    {
+                        "type": "section",
+                        "text": {
+                            "type": "mrkdwn",
+                            "text": `*Read More:* ${linkCleaned}`
                         }
                     },
                     {
@@ -177,8 +205,7 @@ feedparser.on('readable', function () {
 app.post('/', (req, res) => {
     res.sendStatus(200);
     var parsedPayload = JSON.parse(req.body.payload);
-    console.log(parsedPayload.message.blocks);
-
+    
     switch(parsedPayload.actions[0].type) {
         case "button":
             request.post(parsedPayload.response_url, {
@@ -196,6 +223,8 @@ app.post('/', (req, res) => {
             }) 
         break;
         case "multi_static_select":
+            var message = parsedPayload.message.blocks;
+            console.log(message)
             //connection.query('INSERT INTO `mentions`(outlet,title,date,desc,link,tags) VALUES ()')
             request.post(parsedPayload.response_url, {
                 json: {
