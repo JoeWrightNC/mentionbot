@@ -137,7 +137,18 @@ feedparser.on('readable', function () {
                         "text": {
                             "type": "mrkdwn",
                             "text": "*Save this Press Mention:*"
-                        }
+                        },
+                        "elements": [
+                            {
+                                "type": "button",
+                                "text": {
+                                    "type": "plain_text",
+                                    "text": "Discard",
+                                    "emoji": true
+                                },
+                                "value": "discard"
+                            }
+                        ]
                     },
                     {
                         "type": "divider"
