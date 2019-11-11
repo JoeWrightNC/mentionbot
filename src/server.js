@@ -267,7 +267,9 @@ app.post('/', (req, res) => {
             })
             var dbTags = tags.join(", ")
  
-            connection.query(`INSERT INTO 'mentions' (outlet,title,date,desc,link,tags) VALUES (${dbOutlet},${dbTitle},${dbPubdate},${dbDesc},${dbLink}, ${dbTags})`, function(err, rows, fields) {
+            var insertStatement =   `INSERT INTO mentions(outlet,title,date,desc,link,tags) 
+                                    VALUES (${dbOutlet},${dbTitle},${dbPubdate},${dbDesc},${dbLink}, ${dbTags})`
+            connection.query(insertStatement, function(err, rows, fields) {
                 if (err) throw err;
                 console.log("confirmation of DB Write")
                 console.log("Outlet");
