@@ -160,28 +160,7 @@ feedparser.on('readable', function () {
 app.post('/', (req, res) => {
     res.sendStatus(200);
     var parsedPayload = JSON.parse(req.body.payload);
-    // var parsedBlock = JSON.parse(parsedPayload);
-    console.log("---------------------------------------------------------------------------------------------");
-    console.log("---------------------------------------------------------------------------------------------");
-    console.log(parsedPayload.actions[0].type);
-    console.log("---------------------------------------------------------------------------------------------");
-    console.log("---------------------------------------------------------------------------------------------");
-    if (parsedPayload.actions[0].type == "button") {
-        
-    }
-    request.post(parsedPayload.response_url, {
-        json: {
-            "replace_original": "true",
-            "text": "> Thanks for selecting those!  Don't forget to click Save"
-        }
-    }, (error, res, body) => {
-        if (error) {
-          console.error(error)
-          return
-        }
-        console.log(`statusCode: ${res.statusCode}`)
-        console.log(body)
-    }) 
+   
     switch(parsedPayload.actions[0].type) {
         case "button":
             request.post(parsedPayload.response_url, {
