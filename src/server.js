@@ -104,24 +104,11 @@ feedparser.on('readable', function () {
                             },
                             {
                                 "type": "mrkdwn",
-                                "text": " "
+                                "text": "*Title*"
                             },
                             {
                                 "type": "plain_text",
                                 "text": `${outletCleaned}`
-                            }
-                        ]
-                    },
-                    {
-                        "type": "section",
-                        "fields": [
-                            {
-                                "type": "mrkdwn",
-                                "text": "*Title*"
-                            },
-                            {
-                                "type": "mrkdwn",
-                                "text": " "
                             },
                             {
                                 "type": "plain_text",
@@ -132,13 +119,18 @@ feedparser.on('readable', function () {
                     {
                         "type": "section",
                         "fields": [
+                            
+                            {
+                                "type": "mrkdwn",
+                                "text": "Description"
+                            },
                             {
                                 "type": "mrkdwn",
                                 "text": "*Published On:*"
                             },
                             {
-                                "type": "mrkdwn",
-                                "text": " "
+                                "type": "plain_text",
+                                "text": `${descriptionCleaned}`
                             },
                             {
                                 "type": "plain_text",
@@ -148,37 +140,16 @@ feedparser.on('readable', function () {
                     },
                     {
                         "type": "section",
-                        "fields": [
-                            {
-                                "type": "mrkdwn",
-                                "text": "*Description*"
-                            },
-                            {
-                                "type": "mrkdwn",
-                                "text": " "
-                            },
-                            {
+                        "accessory": {
+                            "type": "button",
+                            "text": {
                                 "type": "plain_text",
-                                "text": `${descriptionCleaned}`
-                            }
-                        ]
-                    },
-                    {
-                        "type": "section",
-                        "fields": [
-                            {
-                                "type": "mrkdwn",
-                                "text": "*Read Full Story:*"
+                                "text": "Read Full Story"
                             },
-                            {
-                                "type": "mrkdwn",
-                                "text": " "
-                            },
-                            {
-                                "type": "plain_text",
-                                "text": `${linkCleaned}`
-                            }
-                        ]
+                            "url":`${linkCleaned}`,
+                            "value": "linkButton",
+                            "action_id": "button"
+                        }
                     },
                     {
                         "type": "divider"
@@ -275,10 +246,11 @@ app.post('/', (req, res) => {
         case "multi_static_select":
             var message = parsedPayload.message.blocks;
             var dbOutlet = message[0].fields[2].text;
-            var dbTitle = message[1].fields[2].text;
-            var dbPubdate = message[2].fields[2].text;
-            var dbDesc = message[3].fields[2].text;
-            var dbLink = message[4].fields[2].text;
+            var dbTitle = message[0].fields[3].text;
+            var dbPubdate = message[1].fields[3].text;
+            var dbDesc = message[1].fields[2].text;
+            var dbLink = message[2].accessory.url;
+            //var dbTags
 
             console.log("Outlet");
             console.log(dbOutlet);
@@ -290,8 +262,8 @@ app.post('/', (req, res) => {
             console.log(dbDesc);
             console.log("Link");
             console.log(dbLink);
-            
-            //connection.query('INSERT INTO `mentions`(outlet,title,date,desc,link,tags) VALUES ()')
+
+            //connection.query(`INSERT INTO 'mentions' (outlet,title,date,desc,link,tags) VALUES (${dbOutlet},${dbTitle},${dbPubdate},${dbDesc},${dbLink}, ${dbTags})`)
             request.post(parsedPayload.response_url, {
                 json: {
                     "replace_original": true,
