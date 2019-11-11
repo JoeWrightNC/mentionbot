@@ -15,7 +15,7 @@ currentDate.setDate(currentDate.getDate() - 1);
 
 //connect to DB
 connection.connect();
-/* connection.query('CREATE TABLE mentions (' +
+connection.query('CREATE TABLE mentions (' +
     'id MEDIUMINT NOT NULL AUTO_INCREMENT,' +
     'outlet VARCHAR(255) NOT NULL,' +
     'title VARCHAR(255) NOT NULL,' +
@@ -23,7 +23,8 @@ connection.connect();
     'desc VARCHAR(255) NOT NULL,' +
     'link VARCHAR(255) NOT NULL,' +
     'tags VARCHAR(255) NOT NULL,' +
-    'PRIMARY KEY (id))'); */
+    'PRIMARY KEY (id))'); 
+
 //crank that server
 const app = new Express()
 app.use(bodyParser.urlencoded({extended: true}))
@@ -259,21 +260,23 @@ app.post('/', (req, res) => {
                 tags.push(tag.value)
             })
             var dbTags = tags.join(", ")
-            //var dbTags
-            console.log("Outlet");
-            console.log(dbOutlet);
-            console.log("Title");
-            console.log(dbTitle);
-            console.log("Pubdate");
-            console.log(dbPubdate);
-            console.log("Desc");
-            console.log(dbDesc);
-            console.log("Link");
-            console.log(dbLink);
-            console.log("tags");
-            console.log(tags);
-            console.log(dbTags);
-            //connection.query(`INSERT INTO 'mentions' (outlet,title,date,desc,link,tags) VALUES (${dbOutlet},${dbTitle},${dbPubdate},${dbDesc},${dbLink}, ${dbTags})`)
+ 
+            connection.query(`INSERT INTO 'mentions' (outlet,title,date,desc,link,tags) VALUES (${dbOutlet},${dbTitle},${dbPubdate},${dbDesc},${dbLink}, ${dbTags})`, function(err, rows, fields) {
+                if (err) throw err;
+                console.log("confirmation of DB Write")
+                console.log("Outlet");
+                console.log(rows[0].outlet);
+                console.log("Title");
+                console.log(rows[0].title);
+                console.log("Pubdate");
+                console.log(rows[0].date);
+                console.log("Desc");
+                console.log(rows[0].desc);
+                console.log("Link");
+                console.log(rows[0].link);
+                console.log("tags");
+                console.log(rows[0].tags);
+            })
             request.post(parsedPayload.response_url, {
                 json: {
                     "replace_original": true,
