@@ -114,31 +114,71 @@ feedparser.on('readable', function () {
                     },
                     {
                         "type": "section",
-                        "text": {
-                            "type": "mrkdwn",
-                            "text": `*Title:* ${titleCleaned}`
-                        }
+                        "fields": [
+                            {
+                                "type": "mrkdwn",
+                                "text": "*Title*"
+                            },
+                            {
+                                "type": "mrkdwn",
+                                "text": " "
+                            },
+                            {
+                                "type": "plain_text",
+                                "text": `${titleCleaned}`
+                            }
+                        ]
                     },
                     {
                         "type": "section",
-                        "text": {
-                            "type": "mrkdwn",
-                            "text": `*Published On:* ${pubdate}`
-                        }
+                        "fields": [
+                            {
+                                "type": "mrkdwn",
+                                "text": "*Published On:*"
+                            },
+                            {
+                                "type": "mrkdwn",
+                                "text": " "
+                            },
+                            {
+                                "type": "plain_text",
+                                "text": `${pubdate}`
+                            }
+                        ]
                     },
                     {
                         "type": "section",
-                        "text": {
-                            "type": "mrkdwn",
-                            "text": `*Description:* ${descriptionCleaned}`
-                        }
+                        "fields": [
+                            {
+                                "type": "mrkdwn",
+                                "text": "*Description*"
+                            },
+                            {
+                                "type": "mrkdwn",
+                                "text": " "
+                            },
+                            {
+                                "type": "plain_text",
+                                "text": `${descriptionCleaned}`
+                            }
+                        ]
                     },
                     {
                         "type": "section",
-                        "text": {
-                            "type": "mrkdwn",
-                            "text": `*Read More:* ${linkCleaned}`
-                        }
+                        "fields": [
+                            {
+                                "type": "mrkdwn",
+                                "text": "*Read Full Story:*"
+                            },
+                            {
+                                "type": "mrkdwn",
+                                "text": " "
+                            },
+                            {
+                                "type": "plain_text",
+                                "text": `${linkCleaned}`
+                            }
+                        ]
                     },
                     {
                         "type": "divider"
@@ -234,9 +274,23 @@ app.post('/', (req, res) => {
         break;
         case "multi_static_select":
             var message = parsedPayload.message.blocks;
-            console.log(message)
             var dbOutlet = message[0].fields[2].text;
+            var dbTitle = message[1].fields[2].text;
+            var dbPubdate = message[2].fields[2].text;
+            var dbDesc = message[3].fields[2].text;
+            var dbLink = message[4].fields[2].text;
+
+            console.log("Outlet");
             console.log(dbOutlet);
+            console.log("Title");
+            console.log(dbTitle);
+            console.log("Pubdate");
+            console.log(dbPubdate);
+            console.log("Desc");
+            console.log(dbDesc);
+            console.log("Link");
+            console.log(dbLink);
+            
             //connection.query('INSERT INTO `mentions`(outlet,title,date,desc,link,tags) VALUES ()')
             request.post(parsedPayload.response_url, {
                 json: {
