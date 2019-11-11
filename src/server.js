@@ -96,6 +96,12 @@ feedparser.on('readable', function () {
                 "response_type": "in_channel",
                 "blocks": [
                     {
+                        "type": "divider"
+                    },
+                    {
+                        "type": "divider"
+                    },
+                    {
                         "type": "section",
                         "fields": [
                             {
@@ -122,7 +128,7 @@ feedparser.on('readable', function () {
                             
                             {
                                 "type": "mrkdwn",
-                                "text": "Description"
+                                "text": "*Description*"
                             },
                             {
                                 "type": "mrkdwn",
@@ -142,7 +148,7 @@ feedparser.on('readable', function () {
                         "type": "section",
                         "text": {
                             "type": "plain_text",
-                            "text": "Read Full Story"
+                            "text": " "
                         },
                         "accessory": {
                             "type": "button",
@@ -220,6 +226,9 @@ feedparser.on('readable', function () {
                     },
                     {
                         "type": "divider"
+                    },
+                    {
+                        "type": "divider"
                     }
                 ]
             }) 
@@ -249,11 +258,11 @@ app.post('/', (req, res) => {
         break;
         case "multi_static_select":
             var message = parsedPayload.message.blocks;
-            var dbOutlet = message[0].fields[2].text;
-            var dbTitle = message[0].fields[3].text;
-            var dbPubdate = message[1].fields[3].text;
-            var dbDesc = message[1].fields[2].text;
-            var dbLink = message[2].accessory.url;
+            var dbOutlet = message[2].fields[2].text;
+            var dbTitle = message[2].fields[3].text;
+            var dbPubdate = message[3].fields[3].text;
+            var dbDesc = message[3].fields[2].text;
+            var dbLink = message[4].accessory.url;
             //var dbTags
 
             console.log("Outlet");
