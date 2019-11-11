@@ -254,14 +254,11 @@ app.post('/', (req, res) => {
             var dbDesc = message[2].fields[2].text;
             var dbLink = message[3].accessory.url;
             var tagsArr = parsedPayload.actions[0].selected_options
-            var tags = "";
-           /*  for (i = 0; i < tagsArr.length; ++i) {
-                if  (i = 0) {
-                    tags = tagsArr[i].value;
-                }else {
-                    tags += ", " + tagsArr[i].value;
-                }
-            } */
+            var tags = [];
+            tagsArr.forEach(function(tag){
+                tags.push(tag.value)
+            })
+            var dbTags = tags.join(", ")
             //var dbTags
             console.log("Outlet");
             console.log(dbOutlet);
@@ -273,9 +270,9 @@ app.post('/', (req, res) => {
             console.log(dbDesc);
             console.log("Link");
             console.log(dbLink);
-            console.log("tags")
-            console.log(tags)
-
+            console.log("tags");
+            console.log(tags);
+            console.log(dbTags);
             //connection.query(`INSERT INTO 'mentions' (outlet,title,date,desc,link,tags) VALUES (${dbOutlet},${dbTitle},${dbPubdate},${dbDesc},${dbLink}, ${dbTags})`)
             request.post(parsedPayload.response_url, {
                 json: {
