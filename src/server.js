@@ -163,10 +163,11 @@ app.post('/', (req, res) => {
    
     switch(parsedPayload.actions[0].type) {
         case "button":
+            console.log("button case triggered");
             request.post(parsedPayload.response_url, {
                 json: {
-                    "replace_original": "true",
-                    "text": "Deleted"
+                    "replace_original": true,
+                    "text": "You Have Discarded This Press Mention."
                 }
             }, (error, res, body) => {
                 if (error) {
@@ -181,7 +182,7 @@ app.post('/', (req, res) => {
             request.post(parsedPayload.response_url, {
                 json: {
                     "replace_original": true,
-                    "text": "Saved!"
+                    "text": "Press Mention Successfully Saved!"
                 }
             }, (error, res, body) => {
                 if (error) {
