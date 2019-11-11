@@ -99,9 +99,6 @@ feedparser.on('readable', function () {
                         "type": "divider"
                     },
                     {
-                        "type": "divider"
-                    },
-                    {
                         "type": "section",
                         "fields": [
                             {
@@ -162,9 +159,6 @@ feedparser.on('readable', function () {
                         }
                     },
                     {
-                        "type": "divider"
-                    },
-                    {
                         "type": "section",
                         "text": {
                             "type": "mrkdwn",
@@ -206,9 +200,6 @@ feedparser.on('readable', function () {
                         }
                     },
                     {
-                        "type": "divider"
-                    },
-                    {
                         "type": "section",
                         "text": {
                             "type": "mrkdwn",
@@ -223,9 +214,6 @@ feedparser.on('readable', function () {
                                 "style": "danger",
                                 "value": "discard"
                         }
-                    },
-                    {
-                        "type": "divider"
                     },
                     {
                         "type": "divider"
@@ -260,14 +248,24 @@ app.post('/', (req, res) => {
         break;
         case "multi_static_select":
             var message = parsedPayload.message.blocks;
-            var dbOutlet = message[2].fields[2].text;
-            var dbTitle = message[2].fields[3].text;
-            var dbPubdate = message[3].fields[3].text;
-            var dbDesc = message[3].fields[2].text;
-            var dbLink = message[4].accessory.url;
+            var dbOutlet = message[1].fields[2].text;
+            var dbTitle = message[1].fields[3].text;
+            var dbPubdate = message[2].fields[3].text;
+            var dbDesc = message[2].fields[2].text;
+            var dbLink = message[3].accessory.url;
             //var dbTags
-
-            console.log(parsedPayload)
+            console.log("Outlet");
+            console.log(dbOutlet);
+            console.log("Title");
+            console.log(dbTitle);
+            console.log("Pubdate");
+            console.log(dbPubdate);
+            console.log("Desc");
+            console.log(dbDesc);
+            console.log("Link");
+            console.log(dbLink);
+            console.log("tags")
+            console.log(parsedPayload.actions[0].selected_options)
 
             //connection.query(`INSERT INTO 'mentions' (outlet,title,date,desc,link,tags) VALUES (${dbOutlet},${dbTitle},${dbPubdate},${dbDesc},${dbLink}, ${dbTags})`)
             request.post(parsedPayload.response_url, {
