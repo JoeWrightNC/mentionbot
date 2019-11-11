@@ -267,16 +267,7 @@ app.post('/', (req, res) => {
             var dbLink = message[4].accessory.url;
             //var dbTags
 
-            console.log("Outlet");
-            console.log(dbOutlet);
-            console.log("Title");
-            console.log(dbTitle);
-            console.log("Pubdate");
-            console.log(dbPubdate);
-            console.log("Desc");
-            console.log(dbDesc);
-            console.log("Link");
-            console.log(dbLink);
+            console.log(parsedPayload)
 
             //connection.query(`INSERT INTO 'mentions' (outlet,title,date,desc,link,tags) VALUES (${dbOutlet},${dbTitle},${dbPubdate},${dbDesc},${dbLink}, ${dbTags})`)
             request.post(parsedPayload.response_url, {
