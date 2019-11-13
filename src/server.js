@@ -260,18 +260,7 @@ VALUES("${dbOutlet}","${dbTitle}","${dbPubdate}","${dbDesc}","${dbLink}","${dbTa
             connection.query(insertStatement, function(err, rows, fields) {
                 if (err) throw err;
                 console.log("confirmation of DB Write")
-                console.log("Outlet");
-                console.log(rows[0].outlet);
-                console.log("Title");
-                console.log(rows[0].title);
-                console.log("Pubdate");
-                console.log(rows[0].date);
-                console.log("Desc");
-                console.log(rows[0].desc);
-                console.log("Link");
-                console.log(rows[0].link);
-                console.log("tags");
-                console.log(rows[0].tags);
+                console.log(rows[0]);
             })
             request.post(parsedPayload.response_url, {
                 json: {
