@@ -255,7 +255,7 @@ app.post('/', (req, res) => {
             var dbTags = tags.join("+ ")
  
             var insertStatement =`INSERT INTO mentions(outlet,title,pubdate,descrip,link,tags) 
-VALUES(${dbOutlet}, ${dbTitle}, ${dbPubdate}, ${dbDesc}, ${dbLink}, ${dbTags})`;
+VALUES("${dbOutlet}","${dbTitle}","${dbPubdate}","${dbDesc}","${dbLink}","${dbTags}")`;
 
             connection.query(insertStatement, function(err, rows, fields) {
                 if (err) throw err;
