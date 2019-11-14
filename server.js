@@ -20,7 +20,7 @@ const app = new Express()
 app.use(Express.static("public"));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-app.engine("handlebars", exphbs({ defaultLayout: "main",helpers: require('/config/helpers') }));
+app.engine("handlebars", exphbs({ defaultLayout: "main",helpers: require('./config/helpers') }));
 app.set("view engine", "handlebars");
 
 //configure environment on Heroku
