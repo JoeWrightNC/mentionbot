@@ -17,7 +17,7 @@ connection.connect();
 
 //crank that server
 const app = new Express()
-app.use(express.static("public"));
+app.use(Express.static("public"));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
