@@ -52,7 +52,7 @@ router.post('/', (req, res) => {
             tagsArr.forEach(function(tag){
                 tags.push(tag.value)
             })
-            var dbTags = tags.join(" ")
+            var dbTags = tags.join(" | ")
  
             var insertStatement =`INSERT INTO mentions(outlet,title,pubdate,descrip,link,tags) 
 VALUES("${dbOutlet}","${dbTitle}","${dbPubdate}","${dbDesc}","${dbLink}","${dbTags}");`

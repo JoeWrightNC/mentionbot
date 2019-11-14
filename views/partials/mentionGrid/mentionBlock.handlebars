@@ -1,8 +1,8 @@
-<div class="col-12 col-md-4 col-lg-3 {{outlet}}" id="{{id}}">
+<div class="col-12 col-md-4 col-lg-3 {{outlet}} {{tags}}" id="{{id}}">
     <div class="card">
         <div class="card-body">
             <h6>{{outlet}}</h6>
-            <span class="tagsContainer {{tags}}">{{tags}}</span>
+            <span class="tagsContainer">{{tags}}</span>
             <hr>
             <h5 class="card-title">{{title}}</h5>
             <p class="card-text">{{descrip}}</p>
@@ -12,17 +12,3 @@
         </div>
     </div>
 </div>
-
-<script>
-    var tagsie1 = "'"
-    var tagsie2 = {{tags}} 
-    var tagsie3 = "'"
-    var tagsie = tagsie1.concat(tagsie2, tagsie3);
-    const tagArr = tagsie.split("+ ")
-    let tagStr = ""
-    let refID = {{id}}
-    tarArr.forEach(function(mention) {
-        tagStr += "<span>"+ mention +"</span>";
-    });
-    $(`#${refID}`).html(tagStr);
-</script>
