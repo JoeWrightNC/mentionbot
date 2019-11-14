@@ -12,8 +12,6 @@ const exphbs = require("express-handlebars");
 const currentDate = new Date();
 currentDate.setDate(currentDate.getDate() - 1);
 
-const port = PORT ||  80
-
 //connect to DB
 connection.connect();
 
@@ -24,6 +22,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
+
+const port = PORT ||  80
 
 //configure environment on Heroku
 const {SLACK_TOKEN: slackToken, PORT} = process.env
