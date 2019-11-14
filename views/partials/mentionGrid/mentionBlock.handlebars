@@ -13,12 +13,13 @@
     </div>
 </div>
 
-<scr{{!}}ipt>
-    const tagArr = {{tags}}.split("+ ")
+<script>
+    const tagsie = {{tags}}
+    const tagArr = tagsie.split("+ ")
     let tagStr = ""
     let refID = {{id}}
     tarArr.forEach(function(mention) {
         tagStr += "<span>"+ mention +"</span>";
     });
     $(`#${refID}`).html(tagStr);
-</scr{{!}}ipt>
+</script>
