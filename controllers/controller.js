@@ -8,7 +8,7 @@ const mentions = require("../models/mentions.js");
 router.get("/", function(req,res) {
     var selectStatement =`SELECT * FROM mentions;`
 
-    connection.query(insertStatement, function(err, rows, fields) {
+    connection.query(selectStatement, function(err, rows, fields) {
         var hbsObject = {
             mentions: rows
         };
