@@ -1,17 +1,12 @@
-<div class="col-12 col-md-4 col-lg-3">
+<div class="col-12 col-md-4 col-lg-3 {{outlet}}">
     <div class="card">
-    <div class="card-body">
-        <h5 class="card-title">{{outlet}}</h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    </div>
-    <ul class="list-group list-group-flush">
-        <li class="list-group-item">Cras justo odio</li>
-        <li class="list-group-item">Dapibus ac facilisis in</li>
-        <li class="list-group-item">Vestibulum at eros</li>
-    </ul>
-    <div class="card-body">
-        <a href="#" class="btn btn-primary">Go somewhere</a>
-        <a href="#" class="card-link">Another link</a>
-    </div>
+        <div class="card-body">
+            <h6>{{outlet}}</h6>
+            <span>{{tags}}</span>
+            <h5 class="card-title">{{title}}</h5>
+            <p class="card-text">{{descrip}}</p>
+            <p class="card-text">Published on {{pubdate}}</p>
+            <a href="{{link}}" class="btn btn-primary">Read Mention</a>
+        </div>
     </div>
 </div>
