@@ -16,8 +16,9 @@
 <script>
     const tagArr = {{tags}}.split("+ ")
     let tagStr = ""
+    let refID = {{id}}
     tarArr.forEach(function(mention) {
         tagStr += "<span>"+ mention +"</span>";
     });
-    document.getElementById({{id}}).html(tagStr);
+    $(`#${refID}`).html(tagStr);
 </script>
