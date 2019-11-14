@@ -14,7 +14,10 @@
 </div>
 
 <script>
-    const tagsie = {{tags}}
+    var tagsie1 = "'"
+    var tagsie2 = {{tags}} 
+    var tagsie3 = "'"
+    var tagsie = tagsie1.concat(tagsie2, tagsie3);
     const tagArr = tagsie.split("+ ")
     let tagStr = ""
     let refID = {{id}}
