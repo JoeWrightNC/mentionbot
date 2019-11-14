@@ -1,0 +1,12 @@
+<div class="row">
+    <div class="col-1"></div>
+    <div class ="col-10">
+        <h1 style="text-align: center;">States Newsroom Mention Bot</h1>
+    </div>
+    <div class="col-1"></div>
+</div>
+<div class="row">
+    {{#each mentions}}
+        {{> mentionGrid/mentionBlock}}
+    {{/each}}
+</div>
