@@ -10,7 +10,7 @@ router.get("/", function(req,res) {
 
     connection.query(selectStatement, function(err, rows, fields) {
         var hbsObject = {
-            mentions: rows
+            mentions: rows.reverse()
         };
         res.render("index", hbsObject)
     })
