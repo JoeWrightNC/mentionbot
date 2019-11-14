@@ -23,10 +23,10 @@ app.use(bodyParser.json());
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
-const port = PORT ||  80
-
 //configure environment on Heroku
 const {SLACK_TOKEN: slackToken, PORT} = process.env
+
+const port = PORT ||  80
 
 if (!slackToken) {
   console.error('missing environment variables SLACK_TOKEN')
