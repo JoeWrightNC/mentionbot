@@ -74,3 +74,5 @@ VALUES("${dbOutlet}","${dbTitle}","${dbPubdate}","${dbDesc}","${dbLink}","${dbTa
         break;
     }
 }) 
+
+module.exports = router;
