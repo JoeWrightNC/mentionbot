@@ -2,12 +2,22 @@
     <div class="card">
         <div class="card-body">
             <h6>{{outlet}}</h6>
-            <span >{{tags}}</span>
+            <span class="tagsContainer" id={{id}}></span>
             <hr>
             <h5 class="card-title">{{title}}</h5>
             <p class="card-text">{{descrip}}</p>
             <p class="card-text" style="font-size:.8rem">Published on {{pubdate}}</p>
+            <hr>
             <a href="{{link}}" class="btn btn-primary">Read Mention</a>
         </div>
     </div>
 </div>
+
+<script>
+    const tagArr = {{tags}}.split("+ ")
+    let tagStr = ""
+    tarArr.forEach(function(mention) {
+        tagStr += "<span>"+ mention +"</span>";
+    });
+    document.getElementById({{id}}).innerHTML = tagStr;
+</script>
