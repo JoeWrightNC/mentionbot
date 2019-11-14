@@ -1,7 +1,9 @@
-var express = require("express");
-var router = express.Router();
-
-var mentions = require("../models/mentions.js");
+const express = require("express");
+const router = express.Router();
+const request = require('request')
+const mysql = require('mysql');
+const connection = mysql.createConnection(process.env.JAWSDB_MARIA_URL);
+const mentions = require("../models/mentions.js");
 
 router.get("/", function(req,res) {
     mentions.selectAll(function(data) {
