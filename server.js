@@ -12,9 +12,6 @@ const exphbs = require("express-handlebars");
 const currentDate = new Date();
 currentDate.setDate(currentDate.getDate() - 1);
 
-exphbs.registerHelper('ifEquals', function(arg1, arg2, options) {
-    return (arg1 == arg2) ? options.fn(this) : options.inverse(this);
-});
 //connect to DB
 connection.connect();
 
@@ -23,7 +20,7 @@ const app = new Express()
 app.use(Express.static("public"));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-app.engine("handlebars", exphbs({ defaultLayout: "main" }));
+app.engine("handlebars", exphbs({ defaultLayout: "main",helpers: require('/config/helpers') }));
 app.set("view engine", "handlebars");
 
 //configure environment on Heroku
