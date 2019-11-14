@@ -6,9 +6,11 @@ const connection = mysql.createConnection(process.env.JAWSDB_MARIA_URL);
 const mentions = require("../models/mentions.js");
 
 router.get("/", function(req,res) {
-    mentions.selectAll(function(data) {
+    var selectStatement =`SELECT * FROM mentions;`
+
+    connection.query(insertStatement, function(err, rows, fields) {
         var hbsObject = {
-            mentions: data
+            mentions: rows
         };
         res.render("index", hbsObject)
     })
@@ -57,8 +59,6 @@ VALUES("${dbOutlet}","${dbTitle}","${dbPubdate}","${dbDesc}","${dbLink}","${dbTa
 
             connection.query(insertStatement, function(err, rows, fields) {
                 if (err) throw err;
-                console.log("confirmation of DB Write")
-                console.log(rows[0]);
             })
             request.post(parsedPayload.response_url, {
                 json: {
