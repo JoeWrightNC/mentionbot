@@ -12,6 +12,9 @@ const exphbs = require("express-handlebars");
 const currentDate = new Date();
 currentDate.setDate(currentDate.getDate() - 1);
 
+exphbs.registerHelper('ifEquals', function(arg1, arg2, options) {
+    return (arg1 == arg2) ? options.fn(this) : options.inverse(this);
+});
 //connect to DB
 connection.connect();
 
