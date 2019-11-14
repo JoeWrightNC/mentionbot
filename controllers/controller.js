@@ -6,13 +6,17 @@ const connection = mysql.createConnection(process.env.JAWSDB_MARIA_URL);
 const mentions = require("../models/mentions.js");
 
 router.get("/", function(req,res) {
+    res.render("index", hbsObject)
+})
+
+router.get("/arizona", function(req,res) {
     var selectStatement =`SELECT * FROM mentions;`
 
     connection.query(selectStatement, function(err, rows, fields) {
         var hbsObject = {
             mentions: rows
         };
-        res.render("index", hbsObject)
+        res.render("arizona", hbsObject)
     })
 })
 
