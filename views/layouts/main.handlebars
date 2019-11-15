@@ -11,19 +11,28 @@
     <script src="/assets/js/mentionbot.js"></script>
   </head>
   <body style="background-color:#18134F;padding-left:15px;padding-right:15px;">
-    <nav class="nav">
-        <a class="nav-link" href="/Arizona">Arizona</a>
-        <a class="nav-link" href="/Colorado">Colorado</a>
-        <a class="nav-link" href="/Florida">Florida</a>
-        <a class="nav-link" href="/Georgia">Georgia</a>
-        <a class="nav-link" href="/Maine">Maine</a>
-        <a class="nav-link" href="/Maryland">Maryland</a>
-        <a class="nav-link" href="/Michigan">Michigan</a>
-        <a class="nav-link" href="/Nevada">Nevada</a>
-        <a class="nav-link" href="/NorthCarolina">North Carolina</a>
-        <a class="nav-link" href="/Pennsylvania">Pennsylvania</a>
-        <a class="nav-link" href="/Virginia">Virginia</a>
-        <a class="nav-link" href="/Wisconsin">Wisconsin</a>
+    <nav class="nav justify-content-end">
+        <a class="nav-item" href="/newmention">Add New Mention</a>
+        <div class="btn-group">
+            <button type="button" class="btn btn-secondary">Affiliates</button>
+            <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" id="dropdownMenuReference" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-reference="parent">
+            <span class="sr-only">Toggle Dropdown</span>
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuReference">
+                <a class="dropdown-item" href="/Arizona">Arizona Mirror</a>
+                <a class="dropdown-item" href="/Colorado">Colorado Independent</a>
+                <a class="dropdown-item" href="/Florida">Florida Phoenix</a>
+                <a class="dropdown-item" href="/Georgia">Georgia Recorder</a>
+                <a class="dropdown-item" href="/Maine">Maine Beacon</a>
+                <a class="dropdown-item" href="/Maryland">Maryland Matters</a>
+                <a class="dropdown-item" href="/Michigan">Michigan Advance</a>
+                <a class="dropdown-item" href="/Nevada">Nevada Current</a>
+                <a class="dropdown-item" href="/NorthCarolina">NC Policy Watch</a>
+                <a class="dropdown-item" href="/Pennsylvania">Pennsylvania Capital-Star</a>
+                <a class="dropdown-item" href="/Virginia">Virginia Mercury</a>
+                <a class="dropdown-item" href="/Wisconsin">Wisconsin Examiner</a>
+            </div>
+        </div>
     </nav>
     {{{ body }}}
   </body>

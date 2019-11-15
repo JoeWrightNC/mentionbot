@@ -2,7 +2,12 @@
     margin-top:20px;
     margin-bottom:20px;
 }
-
 .btn-primary {
     background-color: #8BBEB2 !important;
+}
+.nav-item {
+    color: white !important;
+}
+.nav-item:hover {
+    color: #e6f9af !important;
 }
