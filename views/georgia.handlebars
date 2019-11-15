@@ -1,14 +1,20 @@
-<div class="row">
-    <div class="col-1"></div>
-    <div class ="col-10">
-        <h1 style="text-align: center;color:white;">States Newsroom Mention Bot</h1>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-1"></div>
+        <div class ="col-10">
+            <h1 style="text-align: center;color:white;">States Newsroom Mention Bot</h1>
+            <h2 style="text-align: center;color:white;">Mentions of Georgia Recorder</h2>
+        </div>
+        <div class="col-1"></div>
     </div>
-    <div class="col-1"></div>
 </div>
-<div class="row">
-    {{#each mentions}}
-        {{#ifEquals outlet "Georgia Recorder"}}
-            {{> mentionGrid/mentionBlock}}
-        {{/ifEquals}}
-    {{/each}}
+{{> mentionGrid/filterGrid}}
+<div class="container-fluid">
+    <div class="row">
+        {{#each mentions}}
+            {{#ifEquals outlet "Georgia Recorder"}}
+                {{> mentionGrid/mentionBlock}}
+            {{/ifEquals}}
+        {{/each}}
+    </div>
 </div>
