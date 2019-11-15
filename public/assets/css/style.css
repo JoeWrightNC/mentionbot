@@ -4,6 +4,7 @@
 }
 .btn-primary {
     background-color: #8BBEB2 !important;
+    border-color: #8BBEB2 !important;
 }
 .nav-item {
     color: white !important;
@@ -12,4 +13,8 @@
 }
 .nav-item:hover {
     color: #8BBEB2 !important;
+}
+.buttMargin {
+    margin-right:15px;
+    margin-left:15px;
 }
