@@ -154,7 +154,7 @@ router.get("/newmention", function(req,res) {
 
 router.post('/postmention', (req, res) => {
     res.sendStatus(200)
-    console.log(req);
+    console.log(req.body);
 })
 
 router.post('/', (req, res) => {
