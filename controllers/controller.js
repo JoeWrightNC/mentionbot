@@ -148,6 +148,15 @@ router.get("/wisconsin", function(req,res) {
     })
 })
 
+router.get("/newmention", function(req,res) {
+        res.render("addmention")
+})
+
+router.post('/postmention', (req, res) => {
+    res.sendStatus(200)
+    console.log(req);
+})
+
 router.post('/', (req, res) => {
     res.sendStatus(200);
     var parsedPayload = JSON.parse(req.body.payload);

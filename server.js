@@ -187,6 +187,14 @@ feedparser.on('readable', function () {
                                 {
                                     "text": {
                                         "type": "plain_text",
+                                        "text": "Bigtime",
+                                        "emoji": true
+                                    },
+                                    "value": "Bigtime"
+                                },
+                                {
+                                    "text": {
+                                        "type": "plain_text",
                                         "text": "Cringeworthy",
                                         "emoji": true
                                     },
