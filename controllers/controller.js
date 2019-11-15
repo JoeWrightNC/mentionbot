@@ -153,8 +153,24 @@ router.get("/newmention", function(req,res) {
 })
 
 router.post('/postmention', (req, res) => {
-    res.sendStatus(200)
+    res.send({redirect: '/postconfirmation'});
     console.log(req.body);
+    var dbPostOutlet = req.body.outlet;
+    var dbPostcatchTitle = req.body.title;
+    var dbPostTitle = dbPostcatchTitle.replace(",", " ")
+    var dbPostPubdate = req.body.dbPostPubdate;
+    var dbPostcatchDesc = req.body.descrip;
+    var dbPostDesc = dbPostcatchDesc.replace(",", " ")
+    var dbPostLink = req.body.link;
+    var tags = req.body.tags;
+    var dbPostTags = tags.join(" | ")
+
+    var insertStatement =`INSERT INTO mentions(outlet,title,pubdate,descrip,link,tags) 
+VALUES("${dbPostOutlet}","${dbPostTitle}","${dbPostPubdate}","${dbPostDesc}","${dbPostLink}","${dbPostTags}");`
+
+    connection.query(insertStatement, function(err, rows, fields) {
+        if (err) throw err;
+    })
 })
 
 router.post('/', (req, res) => {
