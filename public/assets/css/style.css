@@ -7,7 +7,8 @@
 }
 .nav-item {
     color: white !important;
+    margin-right: 15px !important;
 }
 .nav-item:hover {
-    color: #e6f9af !important;
+    color: #8BBEB2 !important;
 }
