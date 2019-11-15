@@ -12,3 +12,61 @@
     </select>
 <input type="submit" value="Submit">
 </form>
+
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h1 style="color:white;text-align:center;">Add a New Press Mention</h1>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <form style="color:white;" action="/postmention" method="post">
+            <div class="form-group">
+                <label for="exampleFormControlSelect1">Select Outlet:</label>
+                <select class="form-control" id="exampleFormControlSelect1">
+                    <option value="Arizona Mirror">Arizona Mirror</option>
+                    <option value="Colorado Independent">Colorado Independent</option>
+                    <option value="Florida Phoenix">Florida Phoenix</option>
+                    <option value="Georgia Recorder">Georgia Recorder</option>
+                    <option value="Maine Beacon">Maine Beacon</option>
+                    <option value="Maryland Matters">Maryland Matters</option>
+                    <option value="Michigan Advance">Michigan Advance</option>
+                    <option value="Nevada Current">Nevada Current</option>
+                    <option value="NC Policy Watch">NC Policy Watch</option>
+                    <option value="Pennsylvania Capital-Star">Pennsylvania Capital-Star</option>
+                    <option value="Virginia Mercury">Virginia Mercury</option>
+                    <option value="Wisconsin Examiner">Wisconsin Examiner</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="title">Title</label>
+                <input type="text" class="form-control" id="title" name="title" placeholder="Title Here..">
+            </div>
+            <div class="form-group">
+                <label for="descrip">Description</label>
+                <input type="text" class="form-control" id="descrip" name="descrip" placeholder="Description Here..">
+            </div>
+            <div class="form-group">
+                <label for="link">Link</label>
+                <input type="text" class="form-control" id="link" name="link" placeholder="Link to Article">
+            </div>
+            <div class="form-group">
+                <label for="pubdate">Publication Date</label>
+                <input type="text" class="form-control" id="pubdate" name="pubdate" placeholder="Date Published">
+            </div>
+            <div class="form-group">
+                <label for="tags">Tags</label>
+                <select multiple class="form-control" id="tags" name="tags">
+                    <option value="Mention">Mention</option>
+                    <option value="Reprint">Reprint</option>
+                    <option value="Bigtime">Bigtime</option>
+                    <option value="Cringeworthy">Cringeworthy</option>
+                </select>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
