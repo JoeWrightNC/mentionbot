@@ -16,6 +16,138 @@ router.get("/", function(req,res) {
     })
 })
 
+router.get("/arizona", function(req,res) {
+    var selectStatement =`SELECT * FROM mentions;`
+
+    connection.query(selectStatement, function(err, rows, fields) {
+        var hbsObject = {
+            mentions: rows.reverse()
+        };
+        res.render("arizona", hbsObject)
+    })
+})
+
+router.get("/colorado", function(req,res) {
+    var selectStatement =`SELECT * FROM mentions;`
+
+    connection.query(selectStatement, function(err, rows, fields) {
+        var hbsObject = {
+            mentions: rows.reverse()
+        };
+        res.render("colorado", hbsObject)
+    })
+})
+
+router.get("/florida", function(req,res) {
+    var selectStatement =`SELECT * FROM mentions;`
+
+    connection.query(selectStatement, function(err, rows, fields) {
+        var hbsObject = {
+            mentions: rows.reverse()
+        };
+        res.render("florida", hbsObject)
+    })
+})
+
+router.get("/georgia", function(req,res) {
+    var selectStatement =`SELECT * FROM mentions;`
+
+    connection.query(selectStatement, function(err, rows, fields) {
+        var hbsObject = {
+            mentions: rows.reverse()
+        };
+        res.render("georgia", hbsObject)
+    })
+})
+
+router.get("/maine", function(req,res) {
+    var selectStatement =`SELECT * FROM mentions;`
+
+    connection.query(selectStatement, function(err, rows, fields) {
+        var hbsObject = {
+            mentions: rows.reverse()
+        };
+        res.render("maine", hbsObject)
+    })
+})
+
+router.get("/maryland", function(req,res) {
+    var selectStatement =`SELECT * FROM mentions;`
+
+    connection.query(selectStatement, function(err, rows, fields) {
+        var hbsObject = {
+            mentions: rows.reverse()
+        };
+        res.render("maryland", hbsObject)
+    })
+})
+
+router.get("/michigan", function(req,res) {
+    var selectStatement =`SELECT * FROM mentions;`
+
+    connection.query(selectStatement, function(err, rows, fields) {
+        var hbsObject = {
+            mentions: rows.reverse()
+        };
+        res.render("michigan", hbsObject)
+    })
+})
+
+router.get("/nevada", function(req,res) {
+    var selectStatement =`SELECT * FROM mentions;`
+
+    connection.query(selectStatement, function(err, rows, fields) {
+        var hbsObject = {
+            mentions: rows.reverse()
+        };
+        res.render("nevada", hbsObject)
+    })
+})
+
+router.get("/northcarolina", function(req,res) {
+    var selectStatement =`SELECT * FROM mentions;`
+
+    connection.query(selectStatement, function(err, rows, fields) {
+        var hbsObject = {
+            mentions: rows.reverse()
+        };
+        res.render("ncarolina", hbsObject)
+    })
+})
+
+router.get("/pennsylvania", function(req,res) {
+    var selectStatement =`SELECT * FROM mentions;`
+
+    connection.query(selectStatement, function(err, rows, fields) {
+        var hbsObject = {
+            mentions: rows.reverse()
+        };
+        res.render("pennsylvania", hbsObject)
+    })
+})
+
+router.get("/virginia", function(req,res) {
+    var selectStatement =`SELECT * FROM mentions;`
+
+    connection.query(selectStatement, function(err, rows, fields) {
+        var hbsObject = {
+            mentions: rows.reverse()
+        };
+        res.render("virginia", hbsObject)
+    })
+})
+
+router.get("/wisconsin", function(req,res) {
+    var selectStatement =`SELECT * FROM mentions;`
+
+    connection.query(selectStatement, function(err, rows, fields) {
+        var hbsObject = {
+            mentions: rows.reverse()
+        };
+        res.render("wisconsin", hbsObject)
+    })
+})
+
 router.post('/', (req, res) => {
     res.sendStatus(200);
     var parsedPayload = JSON.parse(req.body.payload);

@@ -2,12 +2,14 @@
     <div class="col-1"></div>
     <div class ="col-10">
         <h1 style="text-align: center;color:white;">States Newsroom Mention Bot</h1>
-        <h2>Mentions of All Affiliates</h2>
+        <h2>Mentions of Pennsylvania Capital-Star</h2>
     </div>
     <div class="col-1"></div>
 </div>
 <div class="row">
     {{#each mentions}}
+        {{#ifEquals outlet "Pennsylvania Capital-Star"}}
             {{> mentionGrid/mentionBlock}}
+        {{/ifEquals}}
     {{/each}}
 </div>
