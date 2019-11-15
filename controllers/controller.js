@@ -157,7 +157,7 @@ router.get("/postconfirmation", function(req,res) {
 })
 
 router.post('/postmention', (req, res) => {
-    res.send({redirect: '/postconfirmation'});
+    res.redirect(301, '/postconfirmation');
     console.log(req.body);
     var dbPostOutlet = req.body.outlet;
     var dbPostcatchTitle = req.body.title;
