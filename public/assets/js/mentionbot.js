@@ -1,19 +1,25 @@
-$("#Mention").on("click", function() {
-    $(".mentionCard").hide();
-    $(".Mention").show()
-})
+$( document ).ready(function() {
+    $("#Mention").on("click", function() {
+        console.log("click")
+        $(".mentionCard").hide();
+        $(".Mention").show()
+    })
 
-$("#Reprint").on("click", function() {
-    $(".mentionCard").hide();
-    $(".Reprint").show()
-})
+    $("#Reprint").on("click", function() {
+        console.log("click")
+        $(".mentionCard").hide();
+        $(".Reprint").show()
+    })
 
-$("#Bigtime").on("click", function() {
-    $(".mentionCard").hide();
-    $(".Bigtime").show()
-})
+    $("#Bigtime").on("click", function() {
+        console.log("click")
+        $(".mentionCard").hide();
+        $(".Bigtime").show()
+    })
 
-$("#Cringeworthy").on("click", function() {
-    $(".mentionCard").hide();
-    $(".Cringeworthy").show()
-})
+    $("#Cringeworthy").on("click", function() {
+        console.log("click")
+        $(".mentionCard").hide();
+        $(".Cringeworthy").show()
+    })
+});
