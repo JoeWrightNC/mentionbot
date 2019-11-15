@@ -152,6 +152,10 @@ router.get("/newmention", function(req,res) {
         res.render("addmention")
 })
 
+router.get("/postconfirmation", function(req,res) {
+    res.render("postconfirmation")
+})
+
 router.post('/postmention', (req, res) => {
     res.send({redirect: '/postconfirmation'});
     console.log(req.body);
