@@ -8,6 +8,7 @@
 .nav-item {
     color: white !important;
     margin-right: 15px !important;
+    align-self: center !important;
 }
 .nav-item:hover {
     color: #8BBEB2 !important;
