@@ -39,7 +39,8 @@ $( document ).ready(function() {
         setTimeout(typeWriter, speed);
     }
     if (i == txt.length) {
-        $("#sassyBot").html("<div class='row'><div class='col-12'><div class='d-flex align-content-center justify-content-center'><a href='/' class='btn btn-primary buttMargin'>I'm Sorry</a></div></div></div>")
+        $("#mentionCard").hide();
+        $("#sassyBot").html("<div class='col-12'><div class='d-flex align-content-center justify-content-center'><a href='/' class='btn btn-primary buttMargin'>I'm Sorry</a></div></div>")
     }
     }
 });
