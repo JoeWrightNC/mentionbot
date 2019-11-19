@@ -10,6 +10,7 @@ const mysql = require('mysql');
 const connection = mysql.createConnection(process.env.JAWSDB_MARIA_URL);
 const exphbs = require("express-handlebars");
 const currentDate = new Date();
+const schedule = require('node-schedule');
 currentDate.setDate(currentDate.getDate() - 1);
 
 //connect to DB
@@ -42,189 +43,192 @@ app.listen(port, () => {
     console.log(`Server started at localhost:${port}`)
 })
 
-
-//Daily Serve of Content to Slack
-var reqAZ = request('https://www.google.com/alerts/feeds/13227863141014072795/17929518766589856112')
-var feedparser = new FeedParser([]);
-
-reqAZ.on('error', function (error) {
-    console.log("AZ Req Error")
-    console.log(error)
+var az = schedule.scheduleJob('35 16 * * *', function() {
+    AZDaily();
 })
+function AZDaily() {
+    //Daily Serve of Content to Slack
+    var reqAZ = request('https://www.google.com/alerts/feeds/13227863141014072795/17929518766589856112')
+    var feedparser = new FeedParser([]);
 
-reqAZ.on('response', function(res) {
-    var streamAZ = this;
+    reqAZ.on('error', function (error) {
+        console.log("AZ Req Error")
+        console.log(error)
+    })
 
-    if (res.statusCode !== 200) {
-        this.emit('error', new Error('Bad status code'))
-    } else {
-        streamAZ.pipe(feedparser);
-    }
-});
+    reqAZ.on('response', function(res) {
+        var streamAZ = this;
 
-feedparser.on('error', function (error) {
-    console.log(error)
-});
+        if (res.statusCode !== 200) {
+            this.emit('error', new Error('Bad status code'))
+        } else {
+            streamAZ.pipe(feedparser);
+        }
+    });
 
-feedparser.on('readable', function () {
-    // This is where the action is!
-    var stream = this; // `this` is `feedparser`, which is a stream
-    var item;
-   
-    while (item = stream.read()) {        
-        var outlet = item.meta.title
-        var title = item.title
-        var pubdate = item.pubdate
-        var description = item.description
-        var link = item.link
+    feedparser.on('error', function (error) {
+        console.log(error)
+    });
 
-        outletCleaned = outlet.replace('Google Alert - ','').toLowerCase().split(' ').map((s) => s.charAt(0).toUpperCase() + s.substring(1)).join(' ');
-        titleCleaned = title.replace('&#39;',"'").replace('<b>','').replace('</b>','');
-        descriptionCleaned = description.replace('&#39;',"'").replace('<b>','').replace('</b>','').replace('$nbsp;',' ');
-        linkCleaned = link.split('&url=')[1];
+    feedparser.on('readable', function () {
+        // This is where the action is!
+        var stream = this; // `this` is `feedparser`, which is a stream
+        var item;
+    
+        while (item = stream.read()) {        
+            var outlet = item.meta.title
+            var title = item.title
+            var pubdate = item.pubdate
+            var description = item.description
+            var link = item.link
 
-        var dateCheckServer = currentDate.toString().split("2019")[0];
-        var dateCheckFeedItem = pubdate.toString().split("2019")[0];
+            outletCleaned = outlet.replace('Google Alert - ','').toLowerCase().split(' ').map((s) => s.charAt(0).toUpperCase() + s.substring(1)).join(' ');
+            titleCleaned = title.replace('&#39;',"'").replace('<b>','').replace('</b>','');
+            descriptionCleaned = description.replace('&#39;',"'").replace('<b>','').replace('</b>','').replace('$nbsp;',' ');
+            linkCleaned = link.split('&url=')[1];
 
-        if (dateCheckServer === dateCheckFeedItem) {
-            web.chat.postMessage({
-                channel: 'mentionbot',
-                "response_type": "in_channel",
-                "blocks": [
-                    {
-                        "type": "divider"
-                    },
-                    {
-                        "type": "section",
-                        "fields": [
-                            {
-                                "type": "mrkdwn",
-                                "text": "*New Mention of*"
-                            },
-                            {
-                                "type": "mrkdwn",
-                                "text": "*Title*"
-                            },
-                            {
-                                "type": "plain_text",
-                                "text": `${outletCleaned}`
-                            },
-                            {
-                                "type": "plain_text",
-                                "text": `${titleCleaned}`
-                            }
-                        ]
-                    },
-                    {
-                        "type": "section",
-                        "fields": [
-                            
-                            {
-                                "type": "mrkdwn",
-                                "text": "*Description*"
-                            },
-                            {
-                                "type": "mrkdwn",
-                                "text": "*Published On:*"
-                            },
-                            {
-                                "type": "plain_text",
-                                "text": `${descriptionCleaned}`
-                            },
-                            {
-                                "type": "plain_text",
-                                "text": `${pubdate}`
-                            }
-                        ]
-                    },
-                    {
-                        "type": "section",
-                        "text": {
-                            "type": "plain_text",
-                            "text": " "
+            var dateCheckServer = currentDate.toString().split("2019")[0];
+            var dateCheckFeedItem = pubdate.toString().split("2019")[0];
+
+            if (dateCheckServer === dateCheckFeedItem) {
+                web.chat.postMessage({
+                    channel: 'mentionbot',
+                    "response_type": "in_channel",
+                    "blocks": [
+                        {
+                            "type": "divider"
                         },
-                        "accessory": {
-                            "type": "button",
-                            "text": {
-                                "type": "plain_text",
-                                "text": "Read Full Story"
-                            },
-                            "url":`${linkCleaned}`,
-                            "value": "linkButton",
-                            "action_id": "button"
-                        }
-                    },
-                    {
-                        "type": "section",
-                        "text": {
-                            "type": "mrkdwn",
-                            "text": "*Save this Press Mention* (Select all that apply)"
-                        },
-                        "accessory": {
-                            "type": "multi_static_select",
-                            "placeholder": {
-                                "type": "plain_text",
-                                "text": "Select items",
-                                "emoji": true
-                            },
-                            "options": [
+                        {
+                            "type": "section",
+                            "fields": [
                                 {
-                                    "text": {
-                                        "type": "plain_text",
-                                        "text": "Mention",
-                                        "emoji": true
-                                    },
-                                    "value": "Mention"
+                                    "type": "mrkdwn",
+                                    "text": "*New Mention of*"
                                 },
                                 {
-                                    "text": {
-                                        "type": "plain_text",
-                                        "text": "Reprint",
-                                        "emoji": true
-                                    },
-                                    "value": "Reprint"
+                                    "type": "mrkdwn",
+                                    "text": "*Title*"
                                 },
                                 {
-                                    "text": {
-                                        "type": "plain_text",
-                                        "text": "Bigtime",
-                                        "emoji": true
-                                    },
-                                    "value": "Bigtime"
+                                    "type": "plain_text",
+                                    "text": `${outletCleaned}`
                                 },
                                 {
-                                    "text": {
-                                        "type": "plain_text",
-                                        "text": "Cringeworthy",
-                                        "emoji": true
-                                    },
-                                    "value": "Cringeworthy"
+                                    "type": "plain_text",
+                                    "text": `${titleCleaned}`
                                 }
                             ]
-                        }
-                    },
-                    {
-                        "type": "section",
-                        "text": {
-                            "type": "mrkdwn",
-                            "text": "*Discard this Press Mention:*"
                         },
-                        "accessory": {
+                        {
+                            "type": "section",
+                            "fields": [
+                                
+                                {
+                                    "type": "mrkdwn",
+                                    "text": "*Description*"
+                                },
+                                {
+                                    "type": "mrkdwn",
+                                    "text": "*Published On:*"
+                                },
+                                {
+                                    "type": "plain_text",
+                                    "text": `${descriptionCleaned}`
+                                },
+                                {
+                                    "type": "plain_text",
+                                    "text": `${pubdate}`
+                                }
+                            ]
+                        },
+                        {
+                            "type": "section",
+                            "text": {
+                                "type": "plain_text",
+                                "text": " "
+                            },
+                            "accessory": {
                                 "type": "button",
                                 "text": {
                                     "type": "plain_text",
-                                    "text": "Discard",
+                                    "text": "Read Full Story"
                                 },
-                                "style": "danger",
-                                "value": "discard"
+                                "url":`${linkCleaned}`,
+                                "value": "linkButton",
+                                "action_id": "button"
+                            }
+                        },
+                        {
+                            "type": "section",
+                            "text": {
+                                "type": "mrkdwn",
+                                "text": "*Save this Press Mention* (Select all that apply)"
+                            },
+                            "accessory": {
+                                "type": "multi_static_select",
+                                "placeholder": {
+                                    "type": "plain_text",
+                                    "text": "Select items",
+                                    "emoji": true
+                                },
+                                "options": [
+                                    {
+                                        "text": {
+                                            "type": "plain_text",
+                                            "text": "Mention",
+                                            "emoji": true
+                                        },
+                                        "value": "Mention"
+                                    },
+                                    {
+                                        "text": {
+                                            "type": "plain_text",
+                                            "text": "Reprint",
+                                            "emoji": true
+                                        },
+                                        "value": "Reprint"
+                                    },
+                                    {
+                                        "text": {
+                                            "type": "plain_text",
+                                            "text": "Bigtime",
+                                            "emoji": true
+                                        },
+                                        "value": "Bigtime"
+                                    },
+                                    {
+                                        "text": {
+                                            "type": "plain_text",
+                                            "text": "Cringeworthy",
+                                            "emoji": true
+                                        },
+                                        "value": "Cringeworthy"
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "type": "section",
+                            "text": {
+                                "type": "mrkdwn",
+                                "text": "*Discard this Press Mention:*"
+                            },
+                            "accessory": {
+                                    "type": "button",
+                                    "text": {
+                                        "type": "plain_text",
+                                        "text": "Discard",
+                                    },
+                                    "style": "danger",
+                                    "value": "discard"
+                            }
+                        },
+                        {
+                            "type": "divider"
                         }
-                    },
-                    {
-                        "type": "divider"
-                    }
-                ]
-            }) 
-        }  
-    }
-});
-
+                    ]
+                }) 
+            }  
+        }
+    });
+}
