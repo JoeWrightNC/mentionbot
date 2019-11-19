@@ -20,3 +20,7 @@
 .navbar {
     background-color: #18134F !important;
 }
+
+.navbar-brand img {
+    height: 40px !important;
+}
