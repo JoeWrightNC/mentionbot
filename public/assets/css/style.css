@@ -6,9 +6,8 @@
     background-color: #8BBEB2 !important;
     border-color: #8BBEB2 !important;
 }
-.nav-item {
+.nav-item a {
     color: white !important;
-    margin-right: 15px !important;
     align-self: center !important;
 }
 .nav-item:hover {
@@ -17,4 +16,7 @@
 .buttMargin {
     margin-right:15px;
     margin-left:15px;
+}
+.navbar {
+    background-color: #18134F !important;
 }
