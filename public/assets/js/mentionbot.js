@@ -27,7 +27,7 @@ $( document ).ready(function() {
 
     var i = 0;
     var txt = "Ommmmmm, Did you just poke me?  Just cause I'm a bot doesn't mean I don't have feelings.  Say you're sorry and you can have your mentions back."; /* The text */
-    var speed = 50; /* The speed/duration of the effect in milliseconds */
+    var speed = 70; /* The speed/duration of the effect in milliseconds */
 
     function typeWriter() {
     if (i == 0) {
