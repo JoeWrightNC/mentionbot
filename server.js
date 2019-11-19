@@ -43,7 +43,7 @@ app.listen(port, () => {
     console.log(`Server started at localhost:${port}`)
 })
 
-var az = schedule.scheduleJob('35 16 * * *', function() {
+var az = schedule.scheduleJob('37 21 * * *', function() {
     AZDaily();
 })
 function AZDaily() {
