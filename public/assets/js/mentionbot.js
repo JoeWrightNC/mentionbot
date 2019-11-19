@@ -26,15 +26,20 @@ $( document ).ready(function() {
     Mennie.addEventListener("click", typeWriter)
 
     var i = 0;
-    var txt = "Ommmmmm, Did you just poke me?"; /* The text */
-    var speed = 50; /* The speed/duration of the effect in milliseconds */
+    var txt = "Ommmmmm, Did you just poke me?  Say you're sorry and you can have your mentions back."; /* The text */
+    var speed = 150; /* The speed/duration of the effect in milliseconds */
 
     function typeWriter() {
-        console.log("hi")
+    if (i == 0) {
+        document.getElementById("pokeText").innerHTML = ""
+    }
     if (i < txt.length) {
         document.getElementById("pokeText").innerHTML += txt.charAt(i);
         i++;
         setTimeout(typeWriter, speed);
+    }
+    if (i == txt.length) {
+        $("#sassyBot").html("<div class='row'><div class='col-12'><div class='d-flex align-content-center justify-content-center'><a href='/' class='btn btn-primary buttMargin'>I'm Sorry</a></div></div></div>")
     }
     }
 });
