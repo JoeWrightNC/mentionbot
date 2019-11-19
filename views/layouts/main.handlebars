@@ -14,28 +14,45 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-12">
-                <nav class="nav justify-content-end align-content-center">
-                    <a class="nav-item" href="/">Home</a>
-                    <a class="nav-item" href="/newmention">Add New Mention</a>
-                    <div class="btn-group" style="margin-right:30px">
-                        <button type="button" class="btn btn-secondary">Affiliates</button>
-                        <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" id="dropdownMenuReference" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-reference="parent">
-                        <span class="sr-only">Toggle Dropdown</span>
-                        </button>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuReference">
-                            <a class="dropdown-item" href="/Arizona">Arizona Mirror</a>
-                            <a class="dropdown-item" href="/Colorado">Colorado Independent</a>
-                            <a class="dropdown-item" href="/Florida">Florida Phoenix</a>
-                            <a class="dropdown-item" href="/Georgia">Georgia Recorder</a>
-                            <a class="dropdown-item" href="/Maine">Maine Beacon</a>
-                            <a class="dropdown-item" href="/Maryland">Maryland Matters</a>
-                            <a class="dropdown-item" href="/Michigan">Michigan Advance</a>
-                            <a class="dropdown-item" href="/Nevada">Nevada Current</a>
-                            <a class="dropdown-item" href="/NorthCarolina">NC Policy Watch</a>
-                            <a class="dropdown-item" href="/Pennsylvania">Pennsylvania Capital-Star</a>
-                            <a class="dropdown-item" href="/Virginia">Virginia Mercury</a>
-                            <a class="dropdown-item" href="/Wisconsin">Wisconsin Examiner</a>
-                        </div>
+                <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                    <a class="navbar-brand" href="#">
+                        <img src="/assets/images/mentionbot.png">
+                    </a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav mr-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/newmention">Add New Mention</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Affiliates
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="/Arizona">Arizona Mirror</a>
+                                <a class="dropdown-item" href="/Colorado">Colorado Independent</a>
+                                <a class="dropdown-item" href="/Florida">Florida Phoenix</a>
+                                <a class="dropdown-item" href="/Georgia">Georgia Recorder</a>
+                                <a class="dropdown-item" href="/Maine">Maine Beacon</a>
+                                <a class="dropdown-item" href="/Maryland">Maryland Matters</a>
+                                <a class="dropdown-item" href="/Michigan">Michigan Advance</a>
+                                <a class="dropdown-item" href="/Nevada">Nevada Current</a>
+                                <a class="dropdown-item" href="/NorthCarolina">NC Policy Watch</a>
+                                <a class="dropdown-item" href="/Pennsylvania">Pennsylvania Capital-Star</a>
+                                <a class="dropdown-item" href="/Virginia">Virginia Mercury</a>
+                                <a class="dropdown-item" href="/Wisconsin">Wisconsin Examiner</a>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link disabled" href="#">Disabled</a>
+                        </li>
+                        </ul>
                     </div>
                 </nav>
             </div>
@@ -43,4 +60,5 @@
     </div>
     {{{ body }}}
   </body>
+  <!-- Facebook Pixel Code -->
 </html>
