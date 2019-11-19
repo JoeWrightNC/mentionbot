@@ -23,9 +23,8 @@ $( document ).ready(function() {
         $(".Cringeworthy").show()
     })
     $("#pokeBot").on("click", function() {
-        console.log("clickety Clack")
-        $(".pokeText").text("")
-        typeWriter();
+        
+        typeWriter()
     })
 
 var i = 0;
