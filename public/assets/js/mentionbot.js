@@ -32,7 +32,7 @@ $( document ).ready(function() {
     function typeWriter() {
         console.log("hi")
     if (i < txt.length) {
-        document.getElementsById("pokeText").innerHTML += txt.charAt(i);
+        document.getElementById("pokeText").innerHTML += txt.charAt(i);
         i++;
         setTimeout(typeWriter, speed);
     }
