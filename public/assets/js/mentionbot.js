@@ -27,7 +27,6 @@ $( document ).ready(function() {
         $(".pokeText").text("")
         typeWriter();
     })
-});
 
 var i = 0;
 var txt = "Ommmmmm, Did you just poke me?"; /* The text */
@@ -40,3 +39,4 @@ function typeWriter() {
     setTimeout(typeWriter, speed);
   }
 }
+});
