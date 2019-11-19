@@ -26,8 +26,8 @@ $( document ).ready(function() {
     Mennie.addEventListener("click", typeWriter)
 
     var i = 0;
-    var txt = "Ommmmmm, Did you just poke me?  Say you're sorry and you can have your mentions back."; /* The text */
-    var speed = 150; /* The speed/duration of the effect in milliseconds */
+    var txt = "Ommmmmm, Did you just poke me?  Just cause I'm a bot doesn't mean I don't have feelings.  Say you're sorry and you can have your mentions back."; /* The text */
+    var speed = 50; /* The speed/duration of the effect in milliseconds */
 
     function typeWriter() {
     if (i == 0) {
@@ -39,7 +39,7 @@ $( document ).ready(function() {
         setTimeout(typeWriter, speed);
     }
     if (i == txt.length) {
-        $("#mentionCard").hide();
+        $(".mentionCard").hide();
         $("#sassyBot").html("<div class='col-12'><div class='d-flex align-content-center justify-content-center'><a href='/' class='btn btn-primary buttMargin'>I'm Sorry</a></div></div>")
     }
     }
