@@ -43,7 +43,11 @@ module.exports = function PADaily() {
 
             outletCleaned = outlet.replace('Google Alert - ','').toLowerCase().split(' ').map((s) => s.charAt(0).toUpperCase() + s.substring(1)).join(' ');
             titleCleaned = title.replace('&#39;',"'").replace('&lt;b&gt;','').replace('&lt;/b&gt;','');
+            console.log("==========================")
+            console.log(description)
             descriptionCleaned = description.replace('&#39;',"'").replace('&lt;b&gt;','').replace('&lt;/b&gt;','').replace('&nbsp;',' ');
+            console.log(descriptionCleaned)
+            console.log("==========================")
             linkCleanedSub = link.split('&url=')[1];
             linkCleaned = linkCleanedSub.split('&ct=ga')[0];
 
