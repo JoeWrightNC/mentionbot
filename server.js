@@ -40,18 +40,18 @@ const {SLACK_TOKEN: slackToken, PORT} = process.env
 
 const port = PORT ||  80
 
-const Arizona = ArizonaFactory();
-const Colorado = ColoradoFactory();
-const Florida = FloridaFactory();
-const Georgia = GeorgiaFactory();
-const Maine = MaineFactory();
-const Maryland = MarylandFactory();
-const Michigan = MichiganFactory();
-const Nevada = NevadaFactory();
-const NorthCack = NorthCackFactory();
-const Pennsylvania = PennsylvaniaFactory();
-const Virginia = VirginiaFactory();
-const Wisconsin = WisconsinFactory();
+const Arizona = ArizonaFactory;
+const Colorado = ColoradoFactory;
+const Florida = FloridaFactory;
+const Georgia = GeorgiaFactory;
+const Maine = MaineFactory;
+const Maryland = MarylandFactory;
+const Michigan = MichiganFactory;
+const Nevada = NevadaFactory;
+const NorthCack = NorthCackFactory;
+const Pennsylvania = PennsylvaniaFactory;
+const Virginia = VirginiaFactory;
+const Wisconsin = WisconsinFactory;
 
 if (!slackToken) {
   console.error('missing environment variables SLACK_TOKEN')
@@ -67,7 +67,7 @@ app.listen(port, () => {
     console.log(`Server started at localhost:${port}`)
 })
 
-var cron = schedule.scheduleJob('25 19 * * *', function() {
+var cron = schedule.scheduleJob('35 19 * * *', function() {
     Arizona();
     setTimeout(() => {
         Colorado();
