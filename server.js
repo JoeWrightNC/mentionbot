@@ -23,7 +23,7 @@ const NorthCackFactory = require('./factories/NorthCackFactory');
 const PennsylvaniaFactory = require('./factories/PennsylvaniaFactory');
 const VirginiaFactory = require('./factories/VirginiaFactory');
 const WisconsinFactory = require('./factories/WisconsinFactory'); */
-
+console.log(ArizonaFactory);
 currentDate.setDate(currentDate.getDate() - 1);
 
 //connect to DB
@@ -58,9 +58,9 @@ app.listen(port, () => {
     console.log(`Server started at localhost:${port}`)
 })
 
- var az = schedule.scheduleJob('50 16 * * *', function() {
+ /* var az = schedule.scheduleJob('50 16 * * *', function() {
     Arizona();
-}) 
+})  */
 
 /* function AZDaily() {
     //Daily Serve of Content to Slack
