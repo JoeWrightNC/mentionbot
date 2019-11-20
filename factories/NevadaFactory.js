@@ -39,7 +39,8 @@ module.exports = function NVDaily() {
             var title = item.title
             var pubdate = item.pubdate
             var description = item.description
-            var link = item.link
+            linkCleanedSub = link.split('&url=')[1];
+            linkCleaned = linkCleanedSub.split('&ct=ga')[0];
 
             outletCleaned = outlet.replace('Google Alert - ','').toLowerCase().split(' ').map((s) => s.charAt(0).toUpperCase() + s.substring(1)).join(' ');
             titleCleaned = title.replace('&#39;',"'").replace('<b>','').replace('</b>','');

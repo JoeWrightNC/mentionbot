@@ -44,7 +44,8 @@ module.exports = function MIDaily() {
             outletCleaned = outlet.replace('Google Alert - ','').toLowerCase().split(' ').map((s) => s.charAt(0).toUpperCase() + s.substring(1)).join(' ');
             titleCleaned = title.replace('&#39;',"'").replace('<b>','').replace('</b>','');
             descriptionCleaned = description.replace('&#39;',"'").replace('<b>','').replace('</b>','').replace('$nbsp;',' ');
-            linkCleaned = link.split('&url=')[1];
+            linkCleanedSub = link.split('&url=')[1];
+            linkCleaned = linkCleanedSub.split('&ct=ga')[0];
 
             var dateCheckServer = currentDate.toString().split("2019")[0];
             var dateCheckFeedItem = pubdate.toString().split("2019")[0];
