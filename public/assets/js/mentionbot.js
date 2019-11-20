@@ -5,10 +5,22 @@ $( document ).ready(function() {
         $(".Mention").show()
     })
 
-    $("#Reprint").on("click", function() {
+    $("#External_Reprint").on("click", function() {
         console.log("click")
         $(".mentionCard").hide();
-        $(".Reprint").show()
+        $(".External_Reprint").show()
+    })
+
+    $("#Internal_Reprint").on("click", function() {
+        console.log("click")
+        $(".mentionCard").hide();
+        $(".Internal_Reprint").show()
+    })
+    
+    $("#Appearance").on("click", function() {
+        console.log("click")
+        $(".mentionCard").hide();
+        $(".Appearance").show()
     })
 
     $("#Bigtime").on("click", function() {

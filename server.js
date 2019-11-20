@@ -43,7 +43,7 @@ app.listen(port, () => {
     console.log(`Server started at localhost:${port}`)
 })
 
-var az = schedule.scheduleJob('40 21 * * *', function() {
+var az = schedule.scheduleJob('58 15 * * *', function() {
     AZDaily();
     FLDaily();
 })
@@ -185,10 +185,26 @@ function AZDaily() {
                                     {
                                         "text": {
                                             "type": "plain_text",
-                                            "text": "Reprint",
+                                            "text": "External Reprint",
                                             "emoji": true
                                         },
-                                        "value": "Reprint"
+                                        "value": "External_Reprint"
+                                    },
+                                    {
+                                        "text": {
+                                            "type": "plain_text",
+                                            "text": "Internal Reprint",
+                                            "emoji": true
+                                        },
+                                        "value": "Internal_Reprint"
+                                    },
+                                    {
+                                        "text": {
+                                            "type": "plain_text",
+                                            "text": "Appearance",
+                                            "emoji": true
+                                        },
+                                        "value": "Appearance"
                                     },
                                     {
                                         "text": {
@@ -372,10 +388,26 @@ function FLDaily() {
                                     {
                                         "text": {
                                             "type": "plain_text",
-                                            "text": "Reprint",
+                                            "text": "External Reprint",
                                             "emoji": true
                                         },
-                                        "value": "Reprint"
+                                        "value": "External_Reprint"
+                                    },
+                                    {
+                                        "text": {
+                                            "type": "plain_text",
+                                            "text": "Internal Reprint",
+                                            "emoji": true
+                                        },
+                                        "value": "Internal_Reprint"
+                                    },
+                                    {
+                                        "text": {
+                                            "type": "plain_text",
+                                            "text": "Appearance",
+                                            "emoji": true
+                                        },
+                                        "value": "Appearance"
                                     },
                                     {
                                         "text": {
