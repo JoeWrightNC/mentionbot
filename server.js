@@ -49,7 +49,7 @@ const Maryland = MarylandFactory();
 const Michigan = MichiganFactory();
 const Nevada = NevadaFactory();
 const NorthCack = NorthCackFactory();
-const Pennysylvania = PennsylvaniaFactory();
+const Pennsylvania = PennsylvaniaFactory();
 const Virginia = VirginiaFactory();
 const Wisconsin = WisconsinFactory();
 
@@ -67,39 +67,39 @@ app.listen(port, () => {
     console.log(`Server started at localhost:${port}`)
 })
 
-var az = schedule.scheduleJob('00 10 19 * * *', function() {
+var cron = schedule.scheduleJob('25 19 * * *', function() {
     Arizona();
-});
-var co = schedule.scheduleJob('20 10 19 * * *', function() {
-    Colorado();
-});
-var fl = schedule.scheduleJob('40 10 19 * * *', function() {
-    Florida();
-});
-var ga = schedule.scheduleJob('00 11 19 * * *', function() {
-    Georgia();
-});
-var me = schedule.scheduleJob('20 11 19 * * *', function() {
-    Maine();
-});
-var md = schedule.scheduleJob('40 11 19 * * *', function() {
-    Maryland();
-});
-var mi = schedule.scheduleJob('00 12 19 * * *', function() {
-    Michigan();
-});
-var nv = schedule.scheduleJob('20 12 19 * * *', function() {
-    Nevada();
-});
-var nc = schedule.scheduleJob('40 12 19 * * *', function() {
-    NorthCack();
-});
-var pa = schedule.scheduleJob('00 13 19 * * *', function() {
-    Pennsylvania();
-});
-var va = schedule.scheduleJob('20 13 19 * * *', function() {
-    Virginia();
-});
-var wi = schedule.scheduleJob('40 13 19 * * *', function() {
-    Wisconsin();
+    setTimeout(() => {
+        Colorado();
+    }, 5000);
+    setTimeout(() => {
+        Florida();
+    }, 10000);
+    setTimeout(() => {
+        Georgia();
+    }, 15000);
+    setTimeout(() => {
+        Maine();
+    }, 20000);
+    setTimeout(() => {
+        Maryland();
+    }, 25000);
+    setTimeout(() => {
+        Michigan();
+    }, 30000);
+    setTimeout(() => {
+        Nevada();
+    }, 35000);
+    setTimeout(() => {
+        NorthCack();
+    }, 40000);
+    setTimeout(() => {
+        Pennsylvania();
+    }, 45000);
+    setTimeout(() => {
+        Virginia();
+    }, 50000);
+    setTimeout(() => {
+        Wisconsin();
+    }, 55000);
 });
