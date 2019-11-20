@@ -12,7 +12,7 @@ const exphbs = require("express-handlebars");
 const currentDate = new Date();
 const schedule = require('node-schedule');
 const ArizonaFactory = require('./factories/ArizonaFactory');
-/* const ColoradoFactory = require('./factories/ColoradoFactory');
+const ColoradoFactory = require('./factories/ColoradoFactory');
 const FloridaFactory = require('./factories/FloridaFactory');
 const GeorgiaFactory = require('./factories/GeorgiaFactory');
 const MaineFactory = require('./factories/MaineFactory');
@@ -22,9 +22,7 @@ const NevadaFactory = require('./factories/NevadaFactory');
 const NorthCackFactory = require('./factories/NorthCackFactory');
 const PennsylvaniaFactory = require('./factories/PennsylvaniaFactory');
 const VirginiaFactory = require('./factories/VirginiaFactory');
-const WisconsinFactory = require('./factories/WisconsinFactory'); */
-console.log(ArizonaFactory);
-currentDate.setDate(currentDate.getDate() - 1);
+const WisconsinFactory = require('./factories/WisconsinFactory');
 
 //connect to DB
 connection.connect();
@@ -43,6 +41,17 @@ const {SLACK_TOKEN: slackToken, PORT} = process.env
 const port = PORT ||  80
 
 const Arizona = ArizonaFactory();
+const Colorado = ColoradoFactory();
+const Florida = FloridaFactory();
+const Georgia = GeorgiaFactory();
+const Maine = MaineFactory();
+const Maryland = MarylandFactory();
+const Michigan = MichiganFactory();
+const Nevada = NevadaFactory();
+const NorthCack = NorthCackFactory();
+const Pennysylvania = PennsylvaniaFactory();
+const Virginia = VirginiaFactory();
+const Wisconsin = WisconsinFactory();
 
 if (!slackToken) {
   console.error('missing environment variables SLACK_TOKEN')
@@ -58,412 +67,39 @@ app.listen(port, () => {
     console.log(`Server started at localhost:${port}`)
 })
 
- /* var az = schedule.scheduleJob('50 16 * * *', function() {
+var az = schedule.scheduleJob('00 10 19 * * *', function() {
     Arizona();
-})  */
-
-/* function AZDaily() {
-    //Daily Serve of Content to Slack
-    var reqAZ = request('https://www.google.com/alerts/feeds/13227863141014072795/17929518766589856112')
-    var feedparser = new FeedParser([]);
-
-    reqAZ.on('error', function (error) {
-        console.log("AZ Req Error")
-        console.log(error)
-    })
-
-    reqAZ.on('response', function(res) {
-        var streamAZ = this;
-
-        if (res.statusCode !== 200) {
-            this.emit('error', new Error('Bad status code'))
-        } else {
-            streamAZ.pipe(feedparser);
-        }
-    });
-
-    feedparser.on('error', function (error) {
-        console.log(error)
-    });
-
-    feedparser.on('readable', function () {
-        // This is where the action is!
-        var stream = this; // `this` is `feedparser`, which is a stream
-        var item;
-    
-        while (item = stream.read()) {        
-            var outlet = item.meta.title
-            var title = item.title
-            var pubdate = item.pubdate
-            var description = item.description
-            var link = item.link
-
-            outletCleaned = outlet.replace('Google Alert - ','').toLowerCase().split(' ').map((s) => s.charAt(0).toUpperCase() + s.substring(1)).join(' ');
-            titleCleaned = title.replace('&#39;',"'").replace('<b>','').replace('</b>','');
-            descriptionCleaned = description.replace('&#39;',"'").replace('<b>','').replace('</b>','').replace('$nbsp;',' ');
-            linkCleaned = link.split('&url=')[1];
-
-            var dateCheckServer = currentDate.toString().split("2019")[0];
-            var dateCheckFeedItem = pubdate.toString().split("2019")[0];
-
-            if (dateCheckServer === dateCheckFeedItem) {
-                web.chat.postMessage({
-                    channel: 'mentionbot',
-                    "response_type": "in_channel",
-                    "blocks": [
-                        {
-                            "type": "divider"
-                        },
-                        {
-                            "type": "section",
-                            "fields": [
-                                {
-                                    "type": "mrkdwn",
-                                    "text": "*New Mention of*"
-                                },
-                                {
-                                    "type": "mrkdwn",
-                                    "text": "*Title*"
-                                },
-                                {
-                                    "type": "plain_text",
-                                    "text": `${outletCleaned}`
-                                },
-                                {
-                                    "type": "plain_text",
-                                    "text": `${titleCleaned}`
-                                }
-                            ]
-                        },
-                        {
-                            "type": "section",
-                            "fields": [
-                                
-                                {
-                                    "type": "mrkdwn",
-                                    "text": "*Description*"
-                                },
-                                {
-                                    "type": "mrkdwn",
-                                    "text": "*Published On:*"
-                                },
-                                {
-                                    "type": "plain_text",
-                                    "text": `${descriptionCleaned}`
-                                },
-                                {
-                                    "type": "plain_text",
-                                    "text": `${pubdate}`
-                                }
-                            ]
-                        },
-                        {
-                            "type": "section",
-                            "text": {
-                                "type": "plain_text",
-                                "text": " "
-                            },
-                            "accessory": {
-                                "type": "button",
-                                "text": {
-                                    "type": "plain_text",
-                                    "text": "Read Full Story"
-                                },
-                                "url":`${linkCleaned}`,
-                                "value": "linkButton",
-                                "action_id": "button"
-                            }
-                        },
-                        {
-                            "type": "section",
-                            "text": {
-                                "type": "mrkdwn",
-                                "text": "*Save this Press Mention* (Select all that apply)"
-                            },
-                            "accessory": {
-                                "type": "multi_static_select",
-                                "placeholder": {
-                                    "type": "plain_text",
-                                    "text": "Select items",
-                                    "emoji": true
-                                },
-                                "options": [
-                                    {
-                                        "text": {
-                                            "type": "plain_text",
-                                            "text": "Mention",
-                                            "emoji": true
-                                        },
-                                        "value": "Mention"
-                                    },
-                                    {
-                                        "text": {
-                                            "type": "plain_text",
-                                            "text": "External Reprint",
-                                            "emoji": true
-                                        },
-                                        "value": "External_Reprint"
-                                    },
-                                    {
-                                        "text": {
-                                            "type": "plain_text",
-                                            "text": "Internal Reprint",
-                                            "emoji": true
-                                        },
-                                        "value": "Internal_Reprint"
-                                    },
-                                    {
-                                        "text": {
-                                            "type": "plain_text",
-                                            "text": "Appearance",
-                                            "emoji": true
-                                        },
-                                        "value": "Appearance"
-                                    },
-                                    {
-                                        "text": {
-                                            "type": "plain_text",
-                                            "text": "Bigtime",
-                                            "emoji": true
-                                        },
-                                        "value": "Bigtime"
-                                    },
-                                    {
-                                        "text": {
-                                            "type": "plain_text",
-                                            "text": "Cringeworthy",
-                                            "emoji": true
-                                        },
-                                        "value": "Cringeworthy"
-                                    }
-                                ]
-                            }
-                        },
-                        {
-                            "type": "section",
-                            "text": {
-                                "type": "mrkdwn",
-                                "text": "*Discard this Press Mention:*"
-                            },
-                            "accessory": {
-                                    "type": "button",
-                                    "text": {
-                                        "type": "plain_text",
-                                        "text": "Discard",
-                                    },
-                                    "style": "danger",
-                                    "value": "discard"
-                            }
-                        },
-                        {
-                            "type": "divider"
-                        }
-                    ]
-                }) 
-            }  
-        }
-    });
-} */
-
-function FLDaily() {
-    //Daily Serve of Content to Slack
-    var reqFL = request('https://www.google.com/alerts/feeds/13227863141014072795/5506034848397168433')
-    var feedparser = new FeedParser([]);
-
-    reqFL.on('error', function (error) {
-        console.log("AZ Req Error")
-        console.log(error)
-    })
-
-    reqFL.on('response', function(res) {
-        var streamAZ = this;
-
-        if (res.statusCode !== 200) {
-            this.emit('error', new Error('Bad status code'))
-        } else {
-            streamAZ.pipe(feedparser);
-        }
-    });
-
-    feedparser.on('error', function (error) {
-        console.log(error)
-    });
-
-    feedparser.on('readable', function () {
-        // This is where the action is!
-        var stream = this; // `this` is `feedparser`, which is a stream
-        var item;
-    
-        while (item = stream.read()) {        
-            var outlet = item.meta.title
-            var title = item.title
-            var pubdate = item.pubdate
-            var description = item.description
-            var link = item.link
-
-            outletCleaned = outlet.replace('Google Alert - ','').toLowerCase().split(' ').map((s) => s.charAt(0).toUpperCase() + s.substring(1)).join(' ');
-            titleCleaned = title.replace('&#39;',"'").replace('<b>','').replace('</b>','');
-            descriptionCleaned = description.replace('&#39;',"'").replace('<b>','').replace('</b>','').replace('$nbsp;',' ');
-            linkCleaned = link.split('&url=')[1];
-
-            var dateCheckServer = currentDate.toString().split("2019")[0];
-            var dateCheckFeedItem = pubdate.toString().split("2019")[0];
-
-            if (dateCheckServer === dateCheckFeedItem) {
-                web.chat.postMessage({
-                    channel: 'mentionbot',
-                    "response_type": "in_channel",
-                    "blocks": [
-                        {
-                            "type": "divider"
-                        },
-                        {
-                            "type": "section",
-                            "fields": [
-                                {
-                                    "type": "mrkdwn",
-                                    "text": "*New Mention of*"
-                                },
-                                {
-                                    "type": "mrkdwn",
-                                    "text": "*Title*"
-                                },
-                                {
-                                    "type": "plain_text",
-                                    "text": `${outletCleaned}`
-                                },
-                                {
-                                    "type": "plain_text",
-                                    "text": `${titleCleaned}`
-                                }
-                            ]
-                        },
-                        {
-                            "type": "section",
-                            "fields": [
-                                
-                                {
-                                    "type": "mrkdwn",
-                                    "text": "*Description*"
-                                },
-                                {
-                                    "type": "mrkdwn",
-                                    "text": "*Published On:*"
-                                },
-                                {
-                                    "type": "plain_text",
-                                    "text": `${descriptionCleaned}`
-                                },
-                                {
-                                    "type": "plain_text",
-                                    "text": `${pubdate}`
-                                }
-                            ]
-                        },
-                        {
-                            "type": "section",
-                            "text": {
-                                "type": "plain_text",
-                                "text": " "
-                            },
-                            "accessory": {
-                                "type": "button",
-                                "text": {
-                                    "type": "plain_text",
-                                    "text": "Read Full Story"
-                                },
-                                "url":`${linkCleaned}`,
-                                "value": "linkButton",
-                                "action_id": "button"
-                            }
-                        },
-                        {
-                            "type": "section",
-                            "text": {
-                                "type": "mrkdwn",
-                                "text": "*Save this Press Mention* (Select all that apply)"
-                            },
-                            "accessory": {
-                                "type": "multi_static_select",
-                                "placeholder": {
-                                    "type": "plain_text",
-                                    "text": "Select items",
-                                    "emoji": true
-                                },
-                                "options": [
-                                    {
-                                        "text": {
-                                            "type": "plain_text",
-                                            "text": "Mention",
-                                            "emoji": true
-                                        },
-                                        "value": "Mention"
-                                    },
-                                    {
-                                        "text": {
-                                            "type": "plain_text",
-                                            "text": "External Reprint",
-                                            "emoji": true
-                                        },
-                                        "value": "External_Reprint"
-                                    },
-                                    {
-                                        "text": {
-                                            "type": "plain_text",
-                                            "text": "Internal Reprint",
-                                            "emoji": true
-                                        },
-                                        "value": "Internal_Reprint"
-                                    },
-                                    {
-                                        "text": {
-                                            "type": "plain_text",
-                                            "text": "Appearance",
-                                            "emoji": true
-                                        },
-                                        "value": "Appearance"
-                                    },
-                                    {
-                                        "text": {
-                                            "type": "plain_text",
-                                            "text": "Bigtime",
-                                            "emoji": true
-                                        },
-                                        "value": "Bigtime"
-                                    },
-                                    {
-                                        "text": {
-                                            "type": "plain_text",
-                                            "text": "Cringeworthy",
-                                            "emoji": true
-                                        },
-                                        "value": "Cringeworthy"
-                                    }
-                                ]
-                            }
-                        },
-                        {
-                            "type": "section",
-                            "text": {
-                                "type": "mrkdwn",
-                                "text": "*Discard this Press Mention:*"
-                            },
-                            "accessory": {
-                                    "type": "button",
-                                    "text": {
-                                        "type": "plain_text",
-                                        "text": "Discard",
-                                    },
-                                    "style": "danger",
-                                    "value": "discard"
-                            }
-                        },
-                        {
-                            "type": "divider"
-                        }
-                    ]
-                }) 
-            }  
-        }
-    });
-}
+});
+var co = schedule.scheduleJob('20 10 19 * * *', function() {
+    Colorado();
+});
+var fl = schedule.scheduleJob('40 10 19 * * *', function() {
+    Florida();
+});
+var ga = schedule.scheduleJob('00 11 19 * * *', function() {
+    Georgia();
+});
+var me = schedule.scheduleJob('20 11 19 * * *', function() {
+    Maine();
+});
+var md = schedule.scheduleJob('40 11 19 * * *', function() {
+    Maryland();
+});
+var mi = schedule.scheduleJob('00 12 19 * * *', function() {
+    Michigan();
+});
+var nv = schedule.scheduleJob('20 12 19 * * *', function() {
+    Nevada();
+});
+var nc = schedule.scheduleJob('40 12 19 * * *', function() {
+    NorthCack();
+});
+var pa = schedule.scheduleJob('00 13 19 * * *', function() {
+    Pennsylvania();
+});
+var va = schedule.scheduleJob('20 13 19 * * *', function() {
+    Virginia();
+});
+var wi = schedule.scheduleJob('40 13 19 * * *', function() {
+    Wisconsin();
+});

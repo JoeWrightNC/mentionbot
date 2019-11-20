@@ -3,6 +3,7 @@ const request = require('request')
 const { WebClient } = require('@slack/web-api');
 const web = new WebClient(process.env.SLACK_TOKEN);
 const currentDate = new Date();
+currentDate.setDate(currentDate.getDate() - 1);
 
 module.exports = function AZDaily() {
     //Daily Serve of Content to Slack
