@@ -11,6 +11,19 @@ const connection = mysql.createConnection(process.env.JAWSDB_MARIA_URL);
 const exphbs = require("express-handlebars");
 const currentDate = new Date();
 const schedule = require('node-schedule');
+const ArizonaFactory = require('./factories/ArizonaFactory');
+/* const ColoradoFactory = require('./factories/ColoradoFactory');
+const FloridaFactory = require('./factories/FloridaFactory');
+const GeorgiaFactory = require('./factories/GeorgiaFactory');
+const MaineFactory = require('./factories/MaineFactory');
+const MarylandFactory = require('./factories/MarylandFactory');
+const MichiganFactory = require('./factories/MichiganFactory');
+const NevadaFactory = require('./factories/NevadaFactory');
+const NorthCackFactory = require('./factories/NorthCackFactory');
+const PennsylvaniaFactory = require('./factories/PennsylvaniaFactory');
+const VirginiaFactory = require('./factories/VirginiaFactory');
+const WisconsinFactory = require('./factories/WisconsinFactory'); */
+
 currentDate.setDate(currentDate.getDate() - 1);
 
 //connect to DB
@@ -29,6 +42,8 @@ const {SLACK_TOKEN: slackToken, PORT} = process.env
 
 const port = PORT ||  80
 
+const Arizona = ArizonaFactory();
+
 if (!slackToken) {
   console.error('missing environment variables SLACK_TOKEN')
   process.exit(1)
@@ -43,12 +58,11 @@ app.listen(port, () => {
     console.log(`Server started at localhost:${port}`)
 })
 
-/* var az = schedule.scheduleJob('58 15 * * *', function() {
-    AZDaily();
-    FLDaily();
-}) */
+ var az = schedule.scheduleJob('50 16 * * *', function() {
+    Arizona();
+}) 
 
-function AZDaily() {
+/* function AZDaily() {
     //Daily Serve of Content to Slack
     var reqAZ = request('https://www.google.com/alerts/feeds/13227863141014072795/17929518766589856112')
     var feedparser = new FeedParser([]);
@@ -249,7 +263,7 @@ function AZDaily() {
             }  
         }
     });
-}
+} */
 
 function FLDaily() {
     //Daily Serve of Content to Slack
