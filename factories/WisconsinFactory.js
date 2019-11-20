@@ -42,8 +42,8 @@ module.exports = function WIDaily() {
             var link = item.link
 
             outletCleaned = outlet.replace('Google Alert - ','').toLowerCase().split(' ').map((s) => s.charAt(0).toUpperCase() + s.substring(1)).join(' ');
-            titleCleaned = title.replace('&#39;',"'").replace('<b>','').replace('</b>','');
-            descriptionCleaned = description.replace('&#39;',"'").replace('<b>','').replace('</b>','').replace('$nbsp;',' ');
+            titleCleaned = title.replace('&#39;',"'").replace('&lt;b&gt;','').replace('&lt;/b&gt;','');
+            descriptionCleaned = description.replace('&#39;',"'").replace('&lt;b&gt;','').replace('&lt;/b&gt;','').replace('&nbsp;',' ');
             linkCleanedSub = link.split('&url=')[1];
             linkCleaned = linkCleanedSub.split('&ct=ga')[0];
 
