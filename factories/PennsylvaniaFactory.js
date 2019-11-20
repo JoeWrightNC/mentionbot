@@ -45,7 +45,7 @@ module.exports = function PADaily() {
             titleCleaned = title.replace('&#39;',"'").replace('&lt;b&gt;','').replace('&lt;/b&gt;','');
             console.log("==========================")
             console.log(description)
-            descriptionCleaned = description.replace('&#39;',"'").replace('&lt;b&gt;','').replace('&lt;/b&gt;','').replace('&nbsp;',' ');
+            descriptionCleaned = description.replace('&#39;'," ").replace('&lt;b&gt;','').replace('&lt;/b&gt;','').replace('&nbsp;',' ').replace('<b>','').replace('</b>','');
             console.log(descriptionCleaned)
             console.log("==========================")
             linkCleanedSub = link.split('&url=')[1];
