@@ -39,14 +39,14 @@ module.exports = function NVDaily() {
             var title = item.title
             var pubdate = item.pubdate
             var description = item.description
-            linkCleanedSub = link.split('&url=')[1];
-            linkCleaned = linkCleanedSub.split('&ct=ga')[0];
+            var link = item.link
 
             outletCleaned = outlet.replace('Google Alert - ','').toLowerCase().split(' ').map((s) => s.charAt(0).toUpperCase() + s.substring(1)).join(' ');
-            titleCleaned = title.replace('&#39;',"'").replace('<b>','').replace('</b>','');
-            descriptionCleaned = description.replace('&#39;',"'").replace('<b>','').replace('</b>','').replace('$nbsp;',' ');
-            linkCleaned = link.split('&url=')[1];
-
+            titleCleaned = title.replace('&#39;',"'").replace('&lt;b&gt;','').replace('&lt;/b&gt;','').replace('<b>','').replace('</b>','');
+            descriptionCleaned = description.replace('&#39;'," ").replace('&lt;b&gt;','').replace('&lt;/b&gt;','').replace('&nbsp;',' ').replace('<b>','').replace('</b>','');
+            linkCleanedSub = link.split('&url=')[1];
+            linkCleaned = linkCleanedSub.split('&ct=ga')[0];
+            
             var dateCheckServer = currentDate.toString().split("2019")[0];
             var dateCheckFeedItem = pubdate.toString().split("2019")[0];
 

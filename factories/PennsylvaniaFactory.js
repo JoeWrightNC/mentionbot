@@ -42,12 +42,8 @@ module.exports = function PADaily() {
             var link = item.link
 
             outletCleaned = outlet.replace('Google Alert - ','').toLowerCase().split(' ').map((s) => s.charAt(0).toUpperCase() + s.substring(1)).join(' ');
-            titleCleaned = title.replace('&#39;',"'").replace('&lt;b&gt;','').replace('&lt;/b&gt;','');
-            console.log("==========================")
-            console.log(description)
+            titleCleaned = title.replace('&#39;',"'").replace('&lt;b&gt;','').replace('&lt;/b&gt;','').replace('<b>','').replace('</b>','');
             descriptionCleaned = description.replace('&#39;'," ").replace('&lt;b&gt;','').replace('&lt;/b&gt;','').replace('&nbsp;',' ').replace('<b>','').replace('</b>','');
-            console.log(descriptionCleaned)
-            console.log("==========================")
             linkCleanedSub = link.split('&url=')[1];
             linkCleaned = linkCleanedSub.split('&ct=ga')[0];
 
@@ -56,7 +52,7 @@ module.exports = function PADaily() {
 
             if (dateCheckServer === dateCheckFeedItem) {
                 web.chat.postMessage({
-                    channel: 'devchannel',
+                    channel: 'mentionbot',
                     "response_type": "in_channel",
                     "blocks": [
                         {
