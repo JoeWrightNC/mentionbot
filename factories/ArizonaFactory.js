@@ -4,7 +4,7 @@ const { WebClient } = require('@slack/web-api');
 const web = new WebClient(process.env.SLACK_TOKEN);
 const currentDate = new Date();
 
-function AZDaily() {
+module.exports = function AZDaily() {
     //Daily Serve of Content to Slack
     var reqAZ = request('https://www.google.com/alerts/feeds/13227863141014072795/17929518766589856112')
     var feedparser = new FeedParser([]);
@@ -206,7 +206,3 @@ function AZDaily() {
         }
     });
 }
-
-const ArizonaFactory = AZDaily();
-
-module.exports = ArizonaFactory;
