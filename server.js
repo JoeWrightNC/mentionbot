@@ -43,10 +43,10 @@ app.listen(port, () => {
     console.log(`Server started at localhost:${port}`)
 })
 
-var az = schedule.scheduleJob('58 15 * * *', function() {
+/* var az = schedule.scheduleJob('58 15 * * *', function() {
     AZDaily();
     FLDaily();
-})
+}) */
 
 function AZDaily() {
     //Daily Serve of Content to Slack
