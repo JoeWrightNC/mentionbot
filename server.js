@@ -67,39 +67,39 @@ app.listen(port, () => {
     console.log(`Server started at localhost:${port}`)
 })
 
-var cron = schedule.scheduleJob('35 19 * * *', function() {
+var cron = schedule.scheduleJob('00 20 * * *', function() {
     Arizona();
     setTimeout(() => {
         Colorado();
-    }, 5000);
-    setTimeout(() => {
-        Florida();
     }, 10000);
     setTimeout(() => {
-        Georgia();
-    }, 15000);
-    setTimeout(() => {
-        Maine();
+        Florida();
     }, 20000);
     setTimeout(() => {
-        Maryland();
-    }, 25000);
-    setTimeout(() => {
-        Michigan();
+        Georgia();
     }, 30000);
     setTimeout(() => {
-        Nevada();
-    }, 35000);
-    setTimeout(() => {
-        NorthCack();
+        Maine();
     }, 40000);
     setTimeout(() => {
-        Pennsylvania();
-    }, 45000);
-    setTimeout(() => {
-        Virginia();
+        Maryland();
     }, 50000);
     setTimeout(() => {
+        Michigan();
+    }, 60000);
+    setTimeout(() => {
+        Nevada();
+    }, 70000);
+    setTimeout(() => {
+        NorthCack();
+    }, 80000);
+    setTimeout(() => {
+        Pennsylvania();
+    }, 90000);
+    setTimeout(() => {
+        Virginia();
+    }, 100000);
+    setTimeout(() => {
         Wisconsin();
-    }, 55000);
+    }, 110000);
 });
