@@ -167,8 +167,12 @@ router.post('/postmention', (req, res) => {
     var dbPostDesc = dbPostcatchDesc.replace(",", " ")
     var dbPostLink = req.body.link;
     var tags = req.body.tags;
-    console.log(tags)
-    var dbPostTags = tags.join(" | ")
+    var dbPostTags
+    if (tags.isArray() == true) {
+        dbPostTags = tags.join(" | ")
+    } else {
+        dbPostTags = tags
+    }
 
     var insertStatement =`INSERT INTO mentions(outlet,title,pubdate,descrip,link,tags) 
 VALUES("${dbPostOutlet}","${dbPostTitle}","${dbPostPubdate}","${dbPostDesc}","${dbPostLink}","${dbPostTags}");`
