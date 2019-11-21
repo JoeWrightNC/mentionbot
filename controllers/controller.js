@@ -168,7 +168,7 @@ router.post('/postmention', (req, res) => {
     var dbPostLink = req.body.link;
     var tags = req.body.tags;
     var dbPostTags
-    if (tags.isArray() == true) {
+    if (Array.isArray(tags) == true) {
         dbPostTags = tags.join(" | ")
     } else {
         dbPostTags = tags
