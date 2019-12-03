@@ -12,6 +12,7 @@ const exphbs = require("express-handlebars");
 const currentDate = new Date();
 const schedule = require('node-schedule');
 const ArizonaFactory = require('./factories/ArizonaFactory');
+const SmallFactory = require('./factories/SmallFactory');
 const ColoradoFactory = require('./factories/ColoradoFactory');
 const FloridaFactory = require('./factories/FloridaFactory');
 const GeorgiaFactory = require('./factories/GeorgiaFactory');
@@ -21,6 +22,7 @@ const MichiganFactory = require('./factories/MichiganFactory');
 const NevadaFactory = require('./factories/NevadaFactory');
 const NorthCackFactory = require('./factories/NorthCackFactory');
 const PennsylvaniaFactory = require('./factories/PennsylvaniaFactory');
+const MicekFactory = require('./factories/MicekFactory')
 const VirginiaFactory = require('./factories/VirginiaFactory');
 const WisconsinFactory = require('./factories/WisconsinFactory');
 
@@ -41,6 +43,7 @@ const {SLACK_TOKEN: slackToken, PORT} = process.env
 const port = PORT ||  80
 
 const Arizona = ArizonaFactory;
+const Small = SmallFactory;
 const Colorado = ColoradoFactory;
 const Florida = FloridaFactory;
 const Georgia = GeorgiaFactory;
@@ -50,6 +53,7 @@ const Michigan = MichiganFactory;
 const Nevada = NevadaFactory;
 const NorthCack = NorthCackFactory;
 const Pennsylvania = PennsylvaniaFactory;
+const Micek = MicekFactory;
 const Virginia = VirginiaFactory;
 const Wisconsin = WisconsinFactory;
 
@@ -67,9 +71,9 @@ app.listen(port, () => {
     console.log(`Server started at localhost:${port}`)
 })
 
-Arizona();
+Micek();
 
-/* var cron = schedule.scheduleJob('00 13 * * *', function() {
+var cron = schedule.scheduleJob('00 13 * * *', function() {
     Arizona();
     setTimeout(() => {
         Colorado();
@@ -104,4 +108,4 @@ Arizona();
     setTimeout(() => {
         Wisconsin();
     }, 110000);
-}); */
+});
