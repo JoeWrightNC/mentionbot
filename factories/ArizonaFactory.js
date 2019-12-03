@@ -48,8 +48,9 @@ module.exports = function AZDaily() {
             linkCleaned = linkCleanedSub.split('&ct=ga')[0];
             domainCleanedSub = link.split('&url=')[1];
             domainCleanedSubHTTP = domainCleanedSub.split('http')[1];
+            domainCleanedSubWWW = domainCleanedSubHTTP.split('www.')[1];
             //domainCleanedSubWWW = domainCleanedSubHTTP.split('www.')[1];
-            domainCleanedCom = domainCleanedSubHTTP.split('.com')[0];
+            domainCleanedCom = domainCleanedSubWWW.split('.com')[0];
             domainCleaned = domainCleanedCom.split('.org')[0];
 
             var dateCheckServer = currentDate.toString().split("2019")[0];
