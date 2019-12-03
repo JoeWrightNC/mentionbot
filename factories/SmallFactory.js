@@ -7,7 +7,7 @@ currentDate.setDate(currentDate.getDate() - 1);
 
 module.exports = function SmallDaily() {
     //Daily Serve of Content to Slack
-    var reqSmall = request('https://www.google.com/alerts/feeds/13227863141014072795/17929518766589856112')
+    var reqSmall = request('https://www.google.com/alerts/feeds/13227863141014072795/14574534643155923828')
     var feedparser = new FeedParser([]);
 
     reqSmall.on('error', function (error) {
