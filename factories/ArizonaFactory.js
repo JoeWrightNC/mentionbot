@@ -46,8 +46,9 @@ module.exports = function AZDaily() {
             descriptionCleaned = description.replace('&#39;'," ").replace('&lt;b&gt;','').replace('&lt;/b&gt;','').replace('&nbsp;',' ').replace('<b>','').replace('</b>','');
             linkCleanedSub = link.split('&url=')[1];
             linkCleaned = linkCleanedSub.split('&ct=ga')[0];
-            domainCleanedSub = link.split('://')[1];
-            domainCleanedSubWWW = link.split('www.')[1];
+            domainCleanedSub = link.split('&url=')[1];
+            domainCleanedSubHTTP = domainCleanedSub.split('://')[1];
+            domainCleanedSubWWW = domainCleanedSubHTTP.split('www.')[1];
             domainCleanedCom = domainCleanedSubWWW.split('.com')[0];
             domainCleaned = domainCleanedCom.split('.org')[0];
 
