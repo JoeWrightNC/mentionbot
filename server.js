@@ -70,7 +70,7 @@ app.use(routes);
 app.listen(port, () => {
     console.log(`Server started at localhost:${port}`)
 })
-
+Small();
 Micek();
 
 var cron = schedule.scheduleJob('00 13 * * *', function() {
