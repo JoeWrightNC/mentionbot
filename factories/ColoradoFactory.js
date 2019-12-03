@@ -46,6 +46,9 @@ module.exports = function CODaily() {
             descriptionCleaned = description.replace('&#39;'," ").replace('&lt;b&gt;','').replace('&lt;/b&gt;','').replace('&nbsp;',' ').replace('<b>','').replace('</b>','');
             linkCleanedSub = link.split('&url=')[1];
             linkCleaned = linkCleanedSub.split('&ct=ga')[0];
+            domainCleanedSub = link.split('&url=')[1];
+            domainCleanedCom = domainCleanedSub.split('.com')[0];
+            domainCleaned = domainCleanedCom.split('.org')[0];
 
             var dateCheckServer = currentDate.toString().split("2019")[0];
             var dateCheckFeedItem = pubdate.toString().split("2019")[0];
@@ -98,6 +101,28 @@ module.exports = function CODaily() {
                                 {
                                     "type": "plain_text",
                                     "text": `${pubdate}`
+                                }
+                            ]
+                        },
+                        {
+                            "type": "section",
+                            "fields": [
+                                
+                                {
+                                    "type": "mrkdwn",
+                                    "text": "*Domain*"
+                                },
+                                {
+                                    "type": "mrkdwn",
+                                    "text": " "
+                                },
+                                {
+                                    "type": "plain_text",
+                                    "text": `${domainCleaned}`
+                                },
+                                {
+                                    "type": "plain_text",
+                                    "text": " "
                                 }
                             ]
                         },
