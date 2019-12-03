@@ -179,6 +179,14 @@ module.exports = function CODaily() {
                                             "emoji": true
                                         },
                                         "value": "Cringeworthy"
+                                    },
+                                    {
+                                        "text": {
+                                            "type": "plain_text",
+                                            "text": "Letter to the Editor",
+                                            "emoji": true
+                                        },
+                                        "value": "Editor_Letter"
                                     }
                                 ]
                             }

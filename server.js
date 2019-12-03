@@ -67,7 +67,9 @@ app.listen(port, () => {
     console.log(`Server started at localhost:${port}`)
 })
 
-var cron = schedule.scheduleJob('00 13 * * *', function() {
+Arizona();
+
+/* var cron = schedule.scheduleJob('00 13 * * *', function() {
     Arizona();
     setTimeout(() => {
         Colorado();
@@ -102,4 +104,4 @@ var cron = schedule.scheduleJob('00 13 * * *', function() {
     setTimeout(() => {
         Wisconsin();
     }, 110000);
-});
+}); */

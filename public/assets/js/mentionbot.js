@@ -29,6 +29,11 @@ $( document ).ready(function() {
         $(".Cringeworthy").show()
     })
 
+    $("#Editor_Letter").on("click", function() {
+        $(".mentionCard").hide();
+        $(".Editor_Letter").show()
+    })
+
     $("#Showall").on("click", function() {
         $(".mentionCard").hide();
         $(".mentionCard").show();
