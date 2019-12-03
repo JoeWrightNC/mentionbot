@@ -7,6 +7,7 @@ currentDate.setDate(currentDate.getDate() - 1);
 
 module.exports = function MicekDaily() {
     //Daily Serve of Content to Slack
+    console.log("micek")
     var reqMicek = request('https://www.google.com/alerts/feeds/13227863141014072795/8978543045491784698')
     var feedparser = new FeedParser([]);
 
