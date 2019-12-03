@@ -14,17 +14,27 @@ const schedule = require('node-schedule');
 const ArizonaFactory = require('./factories/ArizonaFactory');
 const SmallFactory = require('./factories/SmallFactory');
 const ColoradoFactory = require('./factories/ColoradoFactory');
+const GreeneFactory = require('./factories/GreeneFactory');
+const GriegoFactory = require('./factories/GriegoFactory');
 const FloridaFactory = require('./factories/FloridaFactory');
+const RadoFactory = require('./factories/RadoFactory');
 const GeorgiaFactory = require('./factories/GeorgiaFactory');
+const McCoshFactory = require('./factories/McCoshFactory');
 const MaineFactory = require('./factories/MaineFactory');
 const MarylandFactory = require('./factories/MarylandFactory');
+const KurtzFactory = require('./factories/KurtzFactory');
 const MichiganFactory = require('./factories/MichiganFactory');
+const DemasFactory = require('./factories/DemasFactory');
 const NevadaFactory = require('./factories/NevadaFactory');
+const JacksonFactory = require('./factories/JacksonFactory');
 const NorthCackFactory = require('./factories/NorthCackFactory');
+const SchofieldFactory = require('./factories/SchofieldFactory');
 const PennsylvaniaFactory = require('./factories/PennsylvaniaFactory');
 const MicekFactory = require('./factories/MicekFactory')
 const VirginiaFactory = require('./factories/VirginiaFactory');
+const ZulloFactory = require('./factories/ZulloFactory');
 const WisconsinFactory = require('./factories/WisconsinFactory');
+const ConniffFactory = require('./factories/ConniffFactory');
 
 //connect to DB
 connection.connect();
@@ -45,17 +55,27 @@ const port = PORT ||  80
 const Arizona = ArizonaFactory;
 const Small = SmallFactory;
 const Colorado = ColoradoFactory;
+const Greene = GreeneFactory;
+const Griego = GriegoFactory;
 const Florida = FloridaFactory;
+const Rado = RadoFactory;
 const Georgia = GeorgiaFactory;
+const McCosh = McCoshFactory;
 const Maine = MaineFactory;
 const Maryland = MarylandFactory;
+const Kurtz = KurtzFactory;
 const Michigan = MichiganFactory;
+const Demas = DemasFactory;
 const Nevada = NevadaFactory;
+const Jackson = JacksonFactory;
 const NorthCack = NorthCackFactory;
+const Schofield = SchofieldFactory;
 const Pennsylvania = PennsylvaniaFactory;
 const Micek = MicekFactory;
 const Virginia = VirginiaFactory;
+const Zullo = ZulloFactory;
 const Wisconsin = WisconsinFactory;
+const Conniff = ConniffFactory;
 
 if (!slackToken) {
   console.error('missing environment variables SLACK_TOKEN')
@@ -70,42 +90,76 @@ app.use(routes);
 app.listen(port, () => {
     console.log(`Server started at localhost:${port}`)
 })
-Small();
-Micek();
 
 var cron = schedule.scheduleJob('00 13 * * *', function() {
     Arizona();
     setTimeout(() => {
-        Colorado();
+        Small();
     }, 10000);
     setTimeout(() => {
-        Florida();
+        Colorado();
     }, 20000);
     setTimeout(() => {
-        Georgia();
+        Greene();
     }, 30000);
     setTimeout(() => {
-        Maine();
+        Griego();
     }, 40000);
     setTimeout(() => {
-        Maryland();
+        Florida();
     }, 50000);
     setTimeout(() => {
-        Michigan();
+        Rado();
     }, 60000);
     setTimeout(() => {
-        Nevada();
+        Georgia();
     }, 70000);
     setTimeout(() => {
-        NorthCack();
+        McCosh();
     }, 80000);
     setTimeout(() => {
-        Pennsylvania();
+        Maine();
     }, 90000);
     setTimeout(() => {
-        Virginia();
+        Maryland();
     }, 100000);
     setTimeout(() => {
-        Wisconsin();
+        Kurtz();
     }, 110000);
+    setTimeout(() => {
+        Michigan();
+    }, 120000);
+    setTimeout(() => {
+        Demas();
+    }, 130000);
+    setTimeout(() => {
+        Nevada();
+    }, 140000);
+    setTimeout(() => {
+        Jackson();
+    }, 150000);
+    setTimeout(() => {
+        NorthCack();
+    }, 160000);
+    setTimeout(() => {
+        Schofield();
+    }, 170000);
+    setTimeout(() => {
+        Pennsylvania();
+    }, 180000);
+    setTimeout(() => {
+        Micek();
+    }, 190000);
+    setTimeout(() => {
+        Virginia();
+    }, 200000);
+    setTimeout(() => {
+        Zullo();
+    }, 210000);
+    setTimeout(() => {
+        Wisconsin();
+    }, 220000);
+    setTimeout(() => {
+        Conniff();
+    }, 230000);
 });
