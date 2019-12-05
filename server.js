@@ -91,7 +91,7 @@ app.listen(port, () => {
     console.log(`Server started at localhost:${port}`)
 })
 
-Kurtz();
+//Kurtz();
 
 var cron = schedule.scheduleJob('00 13 * * *', function() {
     Arizona();
