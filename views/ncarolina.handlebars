@@ -12,9 +12,7 @@
 <div class="container-fluid">
     <div class="row">
         {{#each mentions}}
-            {{#ifEquals outlet "Nc Policy Watch"}}
-                {{> mentionGrid/mentionBlock}}
-            {{/ifEquals}}
+            {{> mentionGrid/mentionBlock}}
         {{/each}}
     </div>
 </div>
