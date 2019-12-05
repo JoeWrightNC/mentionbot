@@ -61,7 +61,7 @@ router.get("/georgia", function(req,res) {
 })
 
 router.get("/maine", function(req,res) {
-    var selectStatement =`SELECT * FROM mentions;`
+    var selectStatement =`SELECT * FROM mentions WHERE outlet IN ('Maine Beacon');`
 
     connection.query(selectStatement, function(err, rows, fields) {
         var hbsObject = {
