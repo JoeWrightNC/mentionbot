@@ -8,7 +8,7 @@ module.exports = {
       console.log(b);
       console.log(c);
       console.log("================================================")
-        if (a == b || c) {
+        if (a === b || c) {
           console.log(this);
           return options.fn(this)
         };
