@@ -47,6 +47,7 @@ $( document ).ready(function() {
 
     function typeWriter() {
     if (i == 0) {
+        $(".mentionCard").hide();
         document.getElementById("pokeText").innerHTML = ""
     }
     if (i < txt.length) {
@@ -55,7 +56,6 @@ $( document ).ready(function() {
         setTimeout(typeWriter, speed);
     }
     if (i == txt.length) {
-        $(".mentionCard").hide();
         $("#sassyBot").html("<div class='col-12'><div class='d-flex align-content-center justify-content-center'><a href='/' class='btn btn-primary buttMargin'>I'm Sorry</a></div></div>")
     }
     }
