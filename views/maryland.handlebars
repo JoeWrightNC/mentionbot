@@ -12,9 +12,9 @@
 <div class="container-fluid">
     <div class="row">
         {{#each mentions}}
-            {{#ifEquals outlet "Maryland Matters" || "Josh Kurtz"}}
+            {{#ifEqualsTwo outlet "Maryland Matters" "Josh Kurtz"}}
                 {{> mentionGrid/mentionBlock}}
-            {{/ifEquals}}
+            {{/ifEqualsTwo}}
         {{/each}}
     </div>
 </div>
