@@ -4,9 +4,9 @@ module.exports = {
     },
     ifEqualsTwo: function(a, b, c, options) {
       console.log("================================================")
-      console.log(arg1);
-      console.log(arg2);
-      console.log(arg3);
+      console.log(a);
+      console.log(b);
+      console.log(c);
       console.log("================================================")
         if (a == b || c) {
           console.log(this);
