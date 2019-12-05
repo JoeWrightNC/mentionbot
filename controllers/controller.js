@@ -72,7 +72,7 @@ router.get("/maine", function(req,res) {
 })
 
 router.get("/maryland", function(req,res) {
-    var selectStatement =`SELECT * FROM mentions;`
+    var selectStatement =`SELECT * FROM mentions WHERE outlet = Maryland Matters OR Josh Kurtz;`
 
     connection.query(selectStatement, function(err, rows, fields) {
         var hbsObject = {
