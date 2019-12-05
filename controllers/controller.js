@@ -212,7 +212,7 @@ router.post('/', (req, res) => {
             var dbPubdate = message[2].fields[3].text;
             var dbcatchDesc = message[2].fields[2].text;
             var dbDesc = dbcatchDesc.replace(",", " ")
-            var dbLink = message[3].accessory.url;
+            var dbLink = message[4].accessory.url;
             var tagsArr = parsedPayload.actions[0].selected_options
             var tags = [];
             tagsArr.forEach(function(tag){
