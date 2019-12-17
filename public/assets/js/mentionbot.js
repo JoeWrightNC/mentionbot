@@ -34,6 +34,11 @@ $( document ).ready(function() {
         $(".Editor_Letter").show()
     })
 
+    $("#Aggregation").on("click", function() {
+        $(".mentionCard").hide();
+        $(".Aggregation").show()
+    })
+
     $("#Showall").on("click", function() {
         $(".mentionCard").hide();
         $(".mentionCard").show();

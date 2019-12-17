@@ -212,6 +212,14 @@ module.exports = function WIDaily() {
                                             "emoji": true
                                         },
                                         "value": "Editor_Letter"
+                                    },
+                                    {
+                                        "text": {
+                                            "type": "plain_text",
+                                            "text": "Aggregation",
+                                            "emoji": true
+                                        },
+                                        "value": "Aggregation"
                                     }
                                 ]
                             }
