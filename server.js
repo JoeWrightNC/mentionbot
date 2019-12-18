@@ -35,6 +35,8 @@ const VirginiaFactory = require('./factories/VirginiaFactory');
 const ZulloFactory = require('./factories/ZulloFactory');
 const WisconsinFactory = require('./factories/WisconsinFactory');
 const ConniffFactory = require('./factories/ConniffFactory');
+const DewittFactory = require('./factories/DewittFactory');
+const OhioFactory = require('./factories/OhioFactory');
 
 //connect to DB
 connection.connect();
@@ -76,6 +78,8 @@ const Virginia = VirginiaFactory;
 const Zullo = ZulloFactory;
 const Wisconsin = WisconsinFactory;
 const Conniff = ConniffFactory;
+const Dewitt = DewittFactory;
+const Ohio = OhioFactory;
 
 if (!slackToken) {
   console.error('missing environment variables SLACK_TOKEN')
@@ -91,10 +95,10 @@ app.listen(port, () => {
     console.log(`Server started at localhost:${port}`)
 })
 
-/* web.chat.postMessage({
+ web.chat.postMessage({
     channel: 'mentionbot',
     text: "HI!  It's me, Mennie, just letting you know Joe just pushed up code and I accepted it into my skill sets.  Have a great day and thanks for the fresh code!"
-}) */
+}) 
 
 var cron = schedule.scheduleJob('00 13 * * *', function() {
     Arizona();
@@ -167,4 +171,10 @@ var cron = schedule.scheduleJob('00 13 * * *', function() {
     setTimeout(() => {
         Conniff();
     }, 230000);
+    setTimeout(() => {
+        Ohio();
+    }, 240000);
+    setTimeout(() => {
+        Dewitt();
+    }, 250000);
 });
