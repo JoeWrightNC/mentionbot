@@ -5,23 +5,23 @@ const web = new WebClient(process.env.SLACK_TOKEN);
 const currentDate = new Date();
 currentDate.setDate(currentDate.getDate() - 1);
 
-module.exports = function NCDaily() {
+module.exports = function SnrsDaily() {
     //Daily Serve of Content to Slack
-    var reqNC = request('https://www.google.com/alerts/feeds/13227863141014072795/2158400149963346144')
+    var reqSnrs = request('https://www.google.com/alerts/feeds/13227863141014072795/14763437649972368781')
     var feedparser = new FeedParser([]);
 
-    reqNC.on('error', function (error) {
-        console.log("NC Req Error")
+    reqSnrs.on('error', function (error) {
+        console.log("AZ Req Error")
         console.log(error)
     })
 
-    reqNC.on('response', function(res) {
-        var streamNC = this;
+    reqSnrs.on('response', function(res) {
+        var streamSnrs = this;
 
         if (res.statusCode !== 200) {
             this.emit('error', new Error('Bad status code'))
         } else {
-            streamNC.pipe(feedparser);
+            streamSnrs.pipe(feedparser);
         }
     });
 
@@ -49,7 +49,7 @@ module.exports = function NCDaily() {
             domainCleanedSub = link.split('&url=')[1];
             domainCleanedCom = domainCleanedSub.split('.com')[0];
             domainCleaned = domainCleanedCom.split('.org')[0];
-            
+
             var dateCheckServer = currentDate.toString().split("2019")[0];
             var dateCheckFeedItem = pubdate.toString().split("2019")[0];
 

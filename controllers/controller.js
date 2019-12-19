@@ -60,8 +60,20 @@ router.get("/georgia", function(req,res) {
     })
 })
 
+router.get("/iowa", function(req,res) {
+    var selectStatement =`SELECT * FROM mentions WHERE outlet IN ('"Iowa Capital Dispatch"','"Kathie Obradovich"');`
+
+    connection.query(selectStatement, function(err, rows, fields) {
+        var hbsObject = {
+            mentions: rows.reverse()
+        };
+        res.render("iowa", hbsObject)
+    })
+})
+
+
 router.get("/maine", function(req,res) {
-    var selectStatement =`SELECT * FROM mentions WHERE outlet IN ('Maine Beacon','"Maine Beacon"');`
+    var selectStatement =`SELECT * FROM mentions WHERE outlet IN ('Maine Beacon','"Maine Beacon"','"Lauren Mccauley"','"Mike Tipping"');`
 
     connection.query(selectStatement, function(err, rows, fields) {
         var hbsObject = {
@@ -92,6 +104,18 @@ router.get("/michigan", function(req,res) {
         res.render("michigan", hbsObject)
     })
 })
+
+router.get("/minnesota", function(req,res) {
+    var selectStatement =`SELECT * FROM mentions WHERE outlet IN ('"Minnesota Reformer"','"Patrick Coolican"');`
+
+    connection.query(selectStatement, function(err, rows, fields) {
+        var hbsObject = {
+            mentions: rows.reverse()
+        };
+        res.render("minnesota", hbsObject)
+    })
+})
+
 
 router.get("/nevada", function(req,res) {
     var selectStatement =`SELECT * FROM mentions WHERE outlet IN ('Nevada Current','Hugh Jackson','"Nevada Current"','"Hugh Jackson"');`
@@ -127,13 +151,24 @@ router.get("/ohio", function(req,res) {
 })
 
 router.get("/pennsylvania", function(req,res) {
-    var selectStatement =`SELECT * FROM mentions WHERE outlet IN ('Pennsylvania Capital-star','John Micek','"Pennsylvania Capital-star"','"John Micek"');`
+    var selectStatement =`SELECT * FROM mentions WHERE outlet IN ('Pennsylvania Capital-star','John Micek','"Pennsylvania Capital-star"','"John Micek"','"Penn Capital-Star"');`
 
     connection.query(selectStatement, function(err, rows, fields) {
         var hbsObject = {
             mentions: rows.reverse()
         };
         res.render("pennsylvania", hbsObject)
+    })
+})
+
+router.get("/statesnewsroom", function(req,res) {
+    var selectStatement =`SELECT * FROM mentions WHERE outlet IN ('"States Newsroom"','"Chris Fitzsimon"');`
+
+    connection.query(selectStatement, function(err, rows, fields) {
+        var hbsObject = {
+            mentions: rows.reverse()
+        };
+        res.render("statesnewsroom", hbsObject)
     })
 })
 

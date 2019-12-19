@@ -37,7 +37,15 @@ const WisconsinFactory = require('./factories/WisconsinFactory');
 const ConniffFactory = require('./factories/ConniffFactory');
 const DewittFactory = require('./factories/DewittFactory');
 const OhioFactory = require('./factories/OhioFactory');
-
+const PennFactory = require('./factories/PennFactory');
+const MccauleyFactory = require('./factories/MccauleyFactory');
+const TippingFactory = require('./factories/TippingFactory');
+const FitzsimonFactory = require('./factories/FitzsimonFactory');
+const SnrsFactory = require('./factories/StatesnewsroomFactory');
+const IowaFactory = require('./factories/IowaFactory');
+const ObradovichFactory = require('./factories/ObradovichFactory');
+const MinnesotaFactory = require('./factories/MinnesotaFactory');
+const CoolicanFactory = require('./factories/CoolicanFactory');
 //connect to DB
 connection.connect();
 
@@ -80,6 +88,15 @@ const Wisconsin = WisconsinFactory;
 const Conniff = ConniffFactory;
 const Dewitt = DewittFactory;
 const Ohio = OhioFactory;
+const Penn = PennFactory;
+const Mccauley = MccauleyFactory;
+const Tipping = TippingFactory;
+const Fitzsimon = FitzsimonFactory;
+const Snrs = SnrsFactory;
+const Iowa = IowaFactory;
+const Obradovich = ObradovichFactory;
+const Minnesota = MinnesotaFactory;
+const Coolican = CoolicanFactory;
 
 if (!slackToken) {
   console.error('missing environment variables SLACK_TOKEN')
@@ -127,49 +144,49 @@ var cron = schedule.scheduleJob('00 13 * * *', function() {
         McCosh();
     }, 80000);
     setTimeout(() => {
-        Maine();
+        Iowa();
     }, 90000);
     setTimeout(() => {
-        Maryland();
+        Obradovich();
     }, 100000);
     setTimeout(() => {
-        Kurtz();
+        Maine();
     }, 110000);
     setTimeout(() => {
-        Michigan();
+        Mccauley();
     }, 120000);
     setTimeout(() => {
-        Demas();
+        Tipping();
     }, 130000);
     setTimeout(() => {
-        Nevada();
+        Maryland();
     }, 140000);
     setTimeout(() => {
-        Jackson();
+        Kurtz();
     }, 150000);
     setTimeout(() => {
-        NorthCack();
+        Michigan();
     }, 160000);
     setTimeout(() => {
-        Schofield();
+        Demas();
     }, 170000);
     setTimeout(() => {
-        Pennsylvania();
+        Minnesota();
     }, 180000);
     setTimeout(() => {
-        Micek();
+        Coolican();
     }, 190000);
     setTimeout(() => {
-        Virginia();
+        Nevada();
     }, 200000);
     setTimeout(() => {
-        Zullo();
+        Jackson();
     }, 210000);
     setTimeout(() => {
-        Wisconsin();
+        NorthCack();
     }, 220000);
     setTimeout(() => {
-        Conniff();
+        Schofield();
     }, 230000);
     setTimeout(() => {
         Ohio();
@@ -177,4 +194,31 @@ var cron = schedule.scheduleJob('00 13 * * *', function() {
     setTimeout(() => {
         Dewitt();
     }, 250000);
+    setTimeout(() => {
+        Pennsylvania();
+    }, 260000);
+    setTimeout(() => {
+        Penn();
+    }, 270000);
+    setTimeout(() => {
+        Micek();
+    }, 280000);
+    setTimeout(() => {
+        Virginia();
+    }, 290000);
+    setTimeout(() => {
+        Zullo();
+    }, 300000);
+    setTimeout(() => {
+        Wisconsin();
+    }, 310000);
+    setTimeout(() => {
+        Conniff();
+    }, 320000);
+    setTimeout(() => {
+        Snrs();
+    }, 330000);
+    setTimeout(() => {
+        Fitzsimon();
+    }, 340000);
 });

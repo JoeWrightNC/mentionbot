@@ -5,23 +5,23 @@ const web = new WebClient(process.env.SLACK_TOKEN);
 const currentDate = new Date();
 currentDate.setDate(currentDate.getDate() - 1);
 
-module.exports = function NCDaily() {
+module.exports = function PennDaily() {
     //Daily Serve of Content to Slack
-    var reqNC = request('https://www.google.com/alerts/feeds/13227863141014072795/2158400149963346144')
+    var reqPenn = request('https://www.google.com/alerts/feeds/13227863141014072795/3401069094945703')
     var feedparser = new FeedParser([]);
 
-    reqNC.on('error', function (error) {
-        console.log("NC Req Error")
+    reqPenn.on('error', function (error) {
+        console.log("AZ Req Error")
         console.log(error)
     })
 
-    reqNC.on('response', function(res) {
-        var streamNC = this;
+    reqPenn.on('response', function(res) {
+        var streamPenn = this;
 
         if (res.statusCode !== 200) {
             this.emit('error', new Error('Bad status code'))
         } else {
-            streamNC.pipe(feedparser);
+            streamPenn.pipe(feedparser);
         }
     });
 
@@ -41,7 +41,7 @@ module.exports = function NCDaily() {
             var description = item.description
             var link = item.link
 
-            outletCleaned = outlet.replace('Google Alert - ','');
+            outletCleaned = outlet.replace('Google Alert - ','').toLowerCase().split(' ').map((s) => s.charAt(0).toUpperCase() + s.substring(1)).join(' ');
             titleCleaned = title.replace('&#39;',"'").replace('&lt;b&gt;','').replace('&lt;/b&gt;','').replace('<b>','').replace('</b>','');
             descriptionCleaned = description.replace('&#39;'," ").replace('&lt;b&gt;','').replace('&lt;/b&gt;','').replace('&nbsp;',' ').replace('<b>','').replace('</b>','');
             linkCleanedSub = link.split('&url=')[1];
@@ -49,7 +49,7 @@ module.exports = function NCDaily() {
             domainCleanedSub = link.split('&url=')[1];
             domainCleanedCom = domainCleanedSub.split('.com')[0];
             domainCleaned = domainCleanedCom.split('.org')[0];
-            
+
             var dateCheckServer = currentDate.toString().split("2019")[0];
             var dateCheckFeedItem = pubdate.toString().split("2019")[0];
 
