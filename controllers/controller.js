@@ -231,7 +231,9 @@ VALUES("${dbPostOutlet}","${dbPostTitle}","${dbPostPubdate}","${dbPostDesc}","${
 router.post('/', (req, res) => {
     res.sendStatus(200);
     var parsedPayload = JSON.parse(req.body.payload);
-    
+    if (req.body.command == "/menniehelp") {
+        console.log("mennie help me please!")
+    }
     switch(parsedPayload.actions[0].type) {
         case "button":
             if (parsedPayload.actions[0].style == "danger") {
