@@ -259,9 +259,9 @@ router.post('/', (req, res) => {
         break;
         case "multi_static_select":
             var message = parsedPayload.message.blocks;
-            var dbOutlet = message[1].fields[2].text.replace('"','');
+            var dbOutlet = message[1].fields[2].text.replace('"','').replace('"','');
             var dbcatchTitle = message[1].fields[3].text;
-            var dbTitle = dbcatchTitle.replace(",", " ")
+            var dbTitle = dbcatchTitle.replace(",", " ").replace("'","")
             var dbPubdate = message[2].fields[3].text;
             var dbcatchDesc = message[2].fields[2].text;
             var dbDesc = dbcatchDesc.replace(",", " ")
