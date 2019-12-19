@@ -5,10 +5,12 @@ const mysql = require('mysql');
 const connection = mysql.createConnection(process.env.JAWSDB_MARIA_URL);
 const MenniehelpFactory = require('../factories/slashFactories/MenniehelpFactory');
 const MenniecountFactory = require('../factories/slashFactories/MenniecountFactory');
+const MenniejokeFactory = require('../factories/slashFactories/MenniejokeFactory');
 
 //Slash Command Factory Constants
 const Menniehelp = MenniehelpFactory();
 const Menniecount = MenniecountFactory();
+const Menniejoke = MenniejokeFactory();
 
 //Routes!
 router.get("/", function(req,res) {
@@ -310,13 +312,13 @@ router.post('/commandcontrol', (req, res) => {
             })
             .catch(console.error)
             break;
- /*        case "/menniejoke":
-            hippostop(req.body)
+        case "/menniejoke":
+            Menniejoke(req.body)
             .then((result) => {
             return res.json(result)
             })
             .catch(console.error)
-            break; */
+            break; 
     }
 })
 module.exports = router;
