@@ -46,6 +46,7 @@ const IowaFactory = require('./factories/IowaFactory');
 const ObradovichFactory = require('./factories/ObradovichFactory');
 const MinnesotaFactory = require('./factories/MinnesotaFactory');
 const CoolicanFactory = require('./factories/CoolicanFactory');
+
 //connect to DB
 connection.connect();
 

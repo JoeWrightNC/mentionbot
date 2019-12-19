@@ -3,7 +3,9 @@ const router = express.Router();
 const request = require('request')
 const mysql = require('mysql');
 const connection = mysql.createConnection(process.env.JAWSDB_MARIA_URL);
-const mentions = require("../models/mentions.js");
+const MenniehelpFactory = require('./factories/MenniehelpFactory');
+
+const Menniehelp = MenniehelpFactory;
 
 router.get("/", function(req,res) {
     var selectStatement =`SELECT * FROM mentions;`
@@ -291,7 +293,11 @@ VALUES("${dbOutlet}","${dbTitle}","${dbPubdate}","${dbDesc}","${dbLink}","${dbTa
 router.post('/commandcontrol', (req, res) => {
     switch(req.body.command) {
         case "/menniehelp":
-            console.log("Help me Mennie!")
+            Menniehelp(req.body)
+            .then((result) => {
+            return res.json(result)
+            })
+            .catch(console.error)
             break;
         case "/hippostop":
             hippostop(req.body)
