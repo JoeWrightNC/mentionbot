@@ -5,7 +5,7 @@ const mysql = require('mysql');
 const connection = mysql.createConnection(process.env.JAWSDB_MARIA_URL);
 const MenniehelpFactory = require('../factories/MenniehelpFactory');
 
-const Menniehelp = MenniehelpFactory;
+const Menniehelp = MenniehelpFactory();
 
 router.get("/", function(req,res) {
     var selectStatement =`SELECT * FROM mentions;`
