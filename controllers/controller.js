@@ -231,9 +231,6 @@ VALUES("${dbPostOutlet}","${dbPostTitle}","${dbPostPubdate}","${dbPostDesc}","${
 router.post('/', (req, res) => {
     res.sendStatus(200);
     var parsedPayload = JSON.parse(req.body.payload);
-    if (req.body.command == "/menniehelp") {
-        console.log("mennie help me please!")
-    }
     switch(parsedPayload.actions[0].type) {
         case "button":
             if (parsedPayload.actions[0].style == "danger") {
@@ -291,4 +288,18 @@ VALUES("${dbOutlet}","${dbTitle}","${dbPubdate}","${dbDesc}","${dbLink}","${dbTa
     }
 }) 
 
+router.post('/commandcontrol', (req, res) => {
+    switch(req.body.command) {
+        case "/menniehelp":
+            console.log("Help me Mennie!")
+            break;
+        case "/hippostop":
+            hippostop(req.body)
+            .then((result) => {
+            return res.json(result)
+            })
+            .catch(console.error)
+            break;
+    }
+})
 module.exports = router;
