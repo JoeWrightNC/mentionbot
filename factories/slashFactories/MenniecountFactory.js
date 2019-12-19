@@ -8,11 +8,11 @@ const MenniecountFactory = () => (body) => new Promise((resolve, reject) => {
     connection.query(selectStatement, function(err, rows, fields) {
         var currCount = rows;
         console.log(currCount);
+        return resolve({
+            text: `Hey There!  Since I started counting, you've saved ${currCount} press mentions!  Wow, that's a lot! `,
+          })
     })
 
-    return resolve({
-      text: `Hey There!  Since I started counting, you've saved ${currCount} press mentions!  Wow, that's a lot! `,
-    })
 })
 
 
