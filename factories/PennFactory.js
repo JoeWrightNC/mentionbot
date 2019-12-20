@@ -41,7 +41,7 @@ module.exports = function PennDaily() {
             var description = item.description
             var link = item.link
 
-            outletCleaned = outlet.replace('Google Alert - ','').toLowerCase().split(' ').map((s) => s.charAt(0).toUpperCase() + s.substring(1)).join(' ');
+            outletCleaned = outlet.replace('Google Alert - ','');
             titleCleaned = title.replace('&#39;',"'").replace('&lt;b&gt;','').replace('&lt;/b&gt;','').replace('<b>','').replace('</b>','');
             descriptionCleaned = description.replace('&#39;'," ").replace('&lt;b&gt;','').replace('&lt;/b&gt;','').replace('&nbsp;',' ').replace('<b>','').replace('</b>','');
             linkCleanedSub = link.split('&url=')[1];
