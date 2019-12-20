@@ -36,7 +36,7 @@ router.get("/arizona", function(req,res) {
 })
 
 router.get("/colorado", function(req,res) {
-    var selectStatement =`SELECT * FROM mentions WHERE outlet IN ('Colorado Independent','Susan Greene','Tina Greigo',);`
+    var selectStatement =`SELECT * FROM mentions WHERE outlet IN ('Colorado Independent','Susan Greene','Tina Greigo');`
 
     connection.query(selectStatement, function(err, rows, fields) {
         var hbsObject = {
