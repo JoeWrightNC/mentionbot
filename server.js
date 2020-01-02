@@ -118,8 +118,8 @@ app.listen(port, () => {
     text: "HI!  It's me, Mennie, just letting you know Joe just pushed up code and I accepted it into my skill sets.  Have a great day and thanks for the fresh code!"
 })    */
 
-var cron = schedule.scheduleJob('00 13 * * *', function() {
-    Arizona();
+/* var cron = schedule.scheduleJob('00 13 * * *', function() {
+ */    Arizona();
     setTimeout(() => {
         Small();
     }, 10000);
@@ -222,4 +222,4 @@ var cron = schedule.scheduleJob('00 13 * * *', function() {
     setTimeout(() => {
         Fitzsimon();
     }, 340000);
-});
+/* }); */
