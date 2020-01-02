@@ -7,6 +7,7 @@ const { WebClient } = require('@slack/web-api');
 const web = new WebClient(process.env.SLACK_TOKEN);
 const path = require('path');
 const mysql = require('mysql');
+const pool = mysql.createPool(process.env.JAWSDB_MARIA_URL);
 const exphbs = require("express-handlebars");
 const currentDate = new Date();
 const schedule = require('node-schedule');
@@ -45,14 +46,6 @@ const IowaFactory = require('./factories/IowaFactory');
 const ObradovichFactory = require('./factories/ObradovichFactory');
 const MinnesotaFactory = require('./factories/MinnesotaFactory');
 const CoolicanFactory = require('./factories/CoolicanFactory');
-
-//connect to DB
-var connection
-function connectDb() {
-    connection = mysql.createConnection(process.env.JAWSDB_MARIA_URL);
-    connection.on('error', connectDb());
-}
-connectDb();
 
 //crank that server
 const app = new Express()

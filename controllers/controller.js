@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const request = require('request')
 const mysql = require('mysql');
-const connection = mysql.createConnection(process.env.JAWSDB_MARIA_URL);
+const pool = mysql.createPool(process.env.JAWSDB_MARIA_URL);
 const MenniehelpFactory = require('../factories/slashFactories/MenniehelpFactory');
 const MenniecountFactory = require('../factories/slashFactories/MenniecountFactory');
 const MenniejokeFactory = require('../factories/slashFactories/MenniejokeFactory');
@@ -16,7 +16,7 @@ const Menniejoke = MenniejokeFactory();
 router.get("/", function(req,res) {
     var selectStatement =`SELECT * FROM mentions;`
 
-    connection.query(selectStatement, function(err, rows, fields) {
+    pool.query(selectStatement, function(err, rows, fields) {
         var hbsObject = {
             mentions: rows.reverse()
         };
@@ -27,7 +27,7 @@ router.get("/", function(req,res) {
 router.get("/arizona", function(req,res) {
     var selectStatement =`SELECT * FROM mentions WHERE outlet IN ('Arizona Mirror','Az Mirror','Jim Small');`
 
-    connection.query(selectStatement, function(err, rows, fields) {
+    pool.query(selectStatement, function(err, rows, fields) {
         var hbsObject = {
             mentions: rows.reverse()
         };
@@ -38,7 +38,7 @@ router.get("/arizona", function(req,res) {
 router.get("/colorado", function(req,res) {
     var selectStatement =`SELECT * FROM mentions WHERE outlet IN ('Colorado Independent','Susan Greene','Tina Greigo');`
 
-    connection.query(selectStatement, function(err, rows, fields) {
+    pool.query(selectStatement, function(err, rows, fields) {
         var hbsObject = {
             mentions: rows.reverse()
         };
@@ -49,7 +49,7 @@ router.get("/colorado", function(req,res) {
 router.get("/florida", function(req,res) {
     var selectStatement =`SELECT * FROM mentions WHERE outlet IN ('Florida Phoenix','Diane Rado');`
 
-    connection.query(selectStatement, function(err, rows, fields) {
+    pool.query(selectStatement, function(err, rows, fields) {
         var hbsObject = {
             mentions: rows.reverse()
         };
@@ -60,7 +60,7 @@ router.get("/florida", function(req,res) {
 router.get("/georgia", function(req,res) {
     var selectStatement =`SELECT * FROM mentions WHERE outlet IN ('Georgia Recorder','John Mccosh');`
 
-    connection.query(selectStatement, function(err, rows, fields) {
+    pool.query(selectStatement, function(err, rows, fields) {
         var hbsObject = {
             mentions: rows.reverse()
         };
@@ -71,7 +71,7 @@ router.get("/georgia", function(req,res) {
 router.get("/iowa", function(req,res) {
     var selectStatement =`SELECT * FROM mentions WHERE outlet IN ('Iowa Capital Dispatch','Kathie Obradovich');`
 
-    connection.query(selectStatement, function(err, rows, fields) {
+    pool.query(selectStatement, function(err, rows, fields) {
         var hbsObject = {
             mentions: rows.reverse()
         };
@@ -83,7 +83,7 @@ router.get("/iowa", function(req,res) {
 router.get("/maine", function(req,res) {
     var selectStatement =`SELECT * FROM mentions WHERE outlet IN ('Maine Beacon','Lauren Mccauley','Mike Tipping');`
 
-    connection.query(selectStatement, function(err, rows, fields) {
+    pool.query(selectStatement, function(err, rows, fields) {
         var hbsObject = {
             mentions: rows.reverse()
         };
@@ -94,7 +94,7 @@ router.get("/maine", function(req,res) {
 router.get("/maryland", function(req,res) {
     var selectStatement =`SELECT * FROM mentions WHERE outlet IN ('Maryland Matters','Josh Kurtz');`
 
-    connection.query(selectStatement, function(err, rows, fields) {
+    pool.query(selectStatement, function(err, rows, fields) {
         var hbsObject = {
             mentions: rows.reverse()
         };
@@ -105,7 +105,7 @@ router.get("/maryland", function(req,res) {
 router.get("/michigan", function(req,res) {
     var selectStatement =`SELECT * FROM mentions WHERE outlet IN ('Michigan Advance','Susan Demas');`
 
-    connection.query(selectStatement, function(err, rows, fields) {
+    pool.query(selectStatement, function(err, rows, fields) {
         var hbsObject = {
             mentions: rows.reverse()
         };
@@ -116,7 +116,7 @@ router.get("/michigan", function(req,res) {
 router.get("/minnesota", function(req,res) {
     var selectStatement =`SELECT * FROM mentions WHERE outlet IN ('Minnesota Reformer','Patrick Coolican');`
 
-    connection.query(selectStatement, function(err, rows, fields) {
+    pool.query(selectStatement, function(err, rows, fields) {
         var hbsObject = {
             mentions: rows.reverse()
         };
@@ -128,7 +128,7 @@ router.get("/minnesota", function(req,res) {
 router.get("/nevada", function(req,res) {
     var selectStatement =`SELECT * FROM mentions WHERE outlet IN ('Nevada Current','Hugh Jackson');`
 
-    connection.query(selectStatement, function(err, rows, fields) {
+    pool.query(selectStatement, function(err, rows, fields) {
         var hbsObject = {
             mentions: rows.reverse()
         };
@@ -139,7 +139,7 @@ router.get("/nevada", function(req,res) {
 router.get("/northcarolina", function(req,res) {
     var selectStatement =`SELECT * FROM mentions WHERE outlet IN ('Nc Policy Watch','Rob Schofield');`
 
-    connection.query(selectStatement, function(err, rows, fields) {
+    pool.query(selectStatement, function(err, rows, fields) {
         var hbsObject = {
             mentions: rows.reverse()
         };
@@ -150,7 +150,7 @@ router.get("/northcarolina", function(req,res) {
 router.get("/ohio", function(req,res) {
     var selectStatement =`SELECT * FROM mentions WHERE outlet IN ('Ohio Capital Star','David Dewitt');`
 
-    connection.query(selectStatement, function(err, rows, fields) {
+    pool.query(selectStatement, function(err, rows, fields) {
         var hbsObject = {
             mentions: rows.reverse()
         };
@@ -161,7 +161,7 @@ router.get("/ohio", function(req,res) {
 router.get("/pennsylvania", function(req,res) {
     var selectStatement =`SELECT * FROM mentions WHERE outlet IN ('Pennsylvania Capital-star','John Micek','Penn Capital-Star');`
 
-    connection.query(selectStatement, function(err, rows, fields) {
+    pool.query(selectStatement, function(err, rows, fields) {
         var hbsObject = {
             mentions: rows.reverse()
         };
@@ -172,7 +172,7 @@ router.get("/pennsylvania", function(req,res) {
 router.get("/statesnewsroom", function(req,res) {
     var selectStatement =`SELECT * FROM mentions WHERE outlet IN ('States Newsroom','Chris Fitzsimon');`
 
-    connection.query(selectStatement, function(err, rows, fields) {
+    pool.query(selectStatement, function(err, rows, fields) {
         var hbsObject = {
             mentions: rows.reverse()
         };
@@ -183,7 +183,7 @@ router.get("/statesnewsroom", function(req,res) {
 router.get("/virginia", function(req,res) {
     var selectStatement =`SELECT * FROM mentions WHERE outlet IN ('Virginia Mercury','Robert Zullo');`
 
-    connection.query(selectStatement, function(err, rows, fields) {
+    pool.query(selectStatement, function(err, rows, fields) {
         var hbsObject = {
             mentions: rows.reverse()
         };
@@ -194,7 +194,7 @@ router.get("/virginia", function(req,res) {
 router.get("/wisconsin", function(req,res) {
     var selectStatement =`SELECT * FROM mentions WHERE outlet IN ('Wisconsin Examiner','Ruth Conniff');`
 
-    connection.query(selectStatement, function(err, rows, fields) {
+    pool.query(selectStatement, function(err, rows, fields) {
         var hbsObject = {
             mentions: rows.reverse()
         };
@@ -231,7 +231,7 @@ router.post('/postmention', (req, res) => {
     var insertStatement =`INSERT INTO mentions(outlet,title,pubdate,descrip,link,tags) 
 VALUES("${dbPostOutlet}","${dbPostTitle}","${dbPostPubdate}","${dbPostDesc}","${dbPostLink}","${dbPostTags}");`
 
-    connection.query(insertStatement, function(err, rows, fields) {
+    pool.query(insertStatement, function(err, rows, fields) {
         if (err) throw err;
     })
 })
@@ -276,7 +276,7 @@ router.post('/', (req, res) => {
             var insertStatement =`INSERT INTO mentions(outlet,title,pubdate,descrip,link,tags) 
 VALUES('${dbOutlet}','${dbTitle}','${dbPubdate}','${dbDesc}','${dbLink}','${dbTags}');`
 
-            connection.query(insertStatement, function(err, rows, fields) {
+            pool.query(insertStatement, function(err, rows, fields) {
                 if (err) throw err;
             })
             request.post(parsedPayload.response_url, {
