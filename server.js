@@ -113,7 +113,7 @@ app.listen(port, () => {
     console.log(`Server started at localhost:${port}`)
 })
 
-/* web.chat.postMessage({
+/*  web.chat.postMessage({
     channel: 'mentionbot',
     text: "HI!  It's me, Mennie, just letting you know Joe just pushed up code and I accepted it into my skill sets.  Have a great day and thanks for the fresh code!"
 })    */
