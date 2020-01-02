@@ -49,7 +49,11 @@ const CoolicanFactory = require('./factories/CoolicanFactory');
 
 //connect to DB
 connection.connect();
+connection.on('error', reconnect());
 
+function reconnect() {
+    connection.connect();
+}
 //crank that server
 const app = new Express()
 app.use(Express.static("public"));
