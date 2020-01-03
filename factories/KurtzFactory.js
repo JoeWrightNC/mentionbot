@@ -50,10 +50,10 @@ module.exports = function KurtzDaily() {
             domainCleanedCom = domainCleanedSub.split('.com')[0];
             domainCleaned = domainCleanedCom.split('.org')[0];
 
-            var dateCheckServer = currentDate.toString().split("2019")[0];
-            var dateCheckFeedItem = pubdate.toString().split("2019")[0];
+            var dateCheckServer = currentDate.toString().split("2020")[0];
+            var dateCheckFeedItem = pubdate.toString().split("2020")[0];
 
-            /* if (dateCheckServer === dateCheckFeedItem) { */
+            if (dateCheckServer === dateCheckFeedItem) { 
                 web.chat.postMessage({
                     channel: 'mentionbot',
                     "response_type": "in_channel",
@@ -246,6 +246,6 @@ module.exports = function KurtzDaily() {
                     ]
                 }) 
             }  
-        /* } */
+        } 
     });
 }
