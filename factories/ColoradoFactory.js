@@ -52,7 +52,9 @@ module.exports = function CODaily() {
 
             var dateCheckServer = currentDate.toString().split("2019")[0];
             var dateCheckFeedItem = pubdate.toString().split("2019")[0];
-
+            console.log(dateCheckServer);
+            console.log(dateCheckFeedItem);
+            
             if (dateCheckServer === dateCheckFeedItem) {
                 web.chat.postMessage({
                     channel: 'mentionbot',
