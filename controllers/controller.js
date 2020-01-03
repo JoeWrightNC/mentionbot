@@ -148,7 +148,7 @@ router.get("/northcarolina", function(req,res) {
 })
 
 router.get("/ohio", function(req,res) {
-    var selectStatement =`SELECT * FROM mentions WHERE outlet IN ('Ohio Capital Star','David Dewitt');`
+    var selectStatement =`SELECT * FROM mentions WHERE outlet IN ('Ohio Capital Journal','David Dewitt');`
 
     pool.query(selectStatement, function(err, rows, fields) {
         var hbsObject = {
