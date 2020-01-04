@@ -49,7 +49,7 @@ module.exports = function CODaily() {
             domainCleanedSub = link.split('&url=')[1];
             domainCleanedCom = domainCleanedSub.split('.com')[0];
             domainCleaned = domainCleanedCom.split('.org')[0];
-
+            console.log(currentDate);
             var dateCheckServer = currentDate.toString().split("2020")[0];
             var dateCheckFeedItem = pubdate.toString().split("2020")[0];
             console.log(dateCheckServer);
