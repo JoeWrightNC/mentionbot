@@ -1,7 +1,7 @@
 //gather the modules
 const Express = require('express')
 const bodyParser = require('body-parser')
-const FeedParser = require('feedparser')
+const FeedParser = require('feedparser') 
 const request = require('request')
 const { WebClient } = require('@slack/web-api');
 const web = new WebClient(process.env.SLACK_TOKEN);
