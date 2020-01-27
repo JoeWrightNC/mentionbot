@@ -6,6 +6,12 @@ const currentDate = new Date();
 currentDate.setDate(currentDate.getDate() - 1);
 
 module.exports = function CODaily() {
+
+    web.chat.postMessage({
+        channel: 'mentionbot',
+        text: "Cron check!"
+    })  
+    
     //Daily Serve of Content to Slack
     var reqCO = request('https://www.google.com/alerts/feeds/13227863141014072795/599724323387518631')
     var feedparser = new FeedParser([]);

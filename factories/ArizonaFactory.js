@@ -7,6 +7,11 @@ currentDate.setDate(currentDate.getDate() - 1);
 
 module.exports = function AZDaily() {
     //Daily Serve of Content to Slack
+    web.chat.postMessage({
+        channel: 'mentionbot',
+        text: "Cron check!"
+    })  
+
     var reqAZ = request('https://www.google.com/alerts/feeds/13227863141014072795/17929518766589856112')
     var feedparser = new FeedParser([]);
 

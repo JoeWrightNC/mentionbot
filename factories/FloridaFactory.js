@@ -6,6 +6,10 @@ const currentDate = new Date();
 currentDate.setDate(currentDate.getDate() - 1);
 
 module.exports = function FLDaily() {
+    web.chat.postMessage({
+        channel: 'mentionbot',
+        text: "Cron check!"
+    })  
     //Daily Serve of Content to Slack
     var reqFL = request('https://www.google.com/alerts/feeds/13227863141014072795/5506034848397168433')
     var feedparser = new FeedParser([]);

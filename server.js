@@ -117,7 +117,7 @@ web.chat.postMessage({
 })    
 };
 
- var superman = schedule.scheduleJob('27 21 00 * *', function() {
+ var superman = schedule.scheduleJob('32 21 * * *', function() {
    Arizona();
     setTimeout(() => {
         Small();
