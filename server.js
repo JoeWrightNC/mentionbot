@@ -117,11 +117,7 @@ web.chat.postMessage({
 })    
 };
 
- var chronos = schedule.scheduleJob('00 21 * * *', function() {
-    cronCheck();
- });
-
-/*  var cron = schedule.scheduleJob('00 13 * * *', function() {
+var chronosJob = schedule.scheduleJob('00 13 * * *', function() {
    Arizona();
     setTimeout(() => {
         Small();
@@ -225,4 +221,4 @@ web.chat.postMessage({
     setTimeout(() => {
         Fitzsimon();
     }, 340000);    
- });  */
+ }); 
