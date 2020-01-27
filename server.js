@@ -117,7 +117,7 @@ web.chat.postMessage({
 })    
 };
 
-var superman = schedule.scheduleJob('00 21 20 * *', function() {
+ var superman = schedule.scheduleJob('27 21 00 * *', function() {
    Arizona();
     setTimeout(() => {
         Small();
@@ -137,7 +137,7 @@ var superman = schedule.scheduleJob('00 21 20 * *', function() {
     setTimeout(() => {
         Rado();
     }, 60000);
-    setTimeout(() => {
+   /*  setTimeout(() => {
         Georgia();
     }, 70000);
     setTimeout(() => {
@@ -219,6 +219,6 @@ var superman = schedule.scheduleJob('00 21 20 * *', function() {
         Snrs();
     }, 330000);
     setTimeout(() => {
-        Fitzsimon();
-    }, 340000);    
- }); 
+        Fitzsimon(); 
+    }, 340000);    */
+ });  
