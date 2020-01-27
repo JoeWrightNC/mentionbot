@@ -110,13 +110,19 @@ app.listen(port, () => {
     console.log(`Server started at localhost:${port}`)
 })
 
-/*  web.chat.postMessage({
-    channel: 'mentionbot',
-    text: "HI!  It's me, Mennie, just letting you know Joe just pushed up code and I accepted it into my skill sets.  Have a great day and thanks for the fresh code!"
-})    */
+function cronCheck() {
+web.chat.postMessage({
+    channel: 'devchannel',
+    text: "Cron check!"
+})    
+};
+
+ var chronos = schedule.scheduleJob('00 21 * * *', function() {
+    cronCheck();
+ });
 
 /*  var cron = schedule.scheduleJob('00 13 * * *', function() {
- */  Arizona();
+   Arizona();
     setTimeout(() => {
         Small();
     }, 10000);
@@ -219,4 +225,4 @@ app.listen(port, () => {
     setTimeout(() => {
         Fitzsimon();
     }, 340000);    
-/*  });  */
+ });  */
