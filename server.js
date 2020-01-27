@@ -117,7 +117,7 @@ web.chat.postMessage({
 })    
 };
 
- var superman = schedule.scheduleJob('32 21 * * *', function() {
+ var chroniferlopez = schedule.scheduleJob('00 13 * * *', function() {
    Arizona();
     setTimeout(() => {
         Small();
@@ -137,7 +137,7 @@ web.chat.postMessage({
     setTimeout(() => {
         Rado();
     }, 60000);
-   /*  setTimeout(() => {
+   setTimeout(() => {
         Georgia();
     }, 70000);
     setTimeout(() => {
@@ -220,5 +220,5 @@ web.chat.postMessage({
     }, 330000);
     setTimeout(() => {
         Fitzsimon(); 
-    }, 340000);    */
+    }, 340000);   
  });  

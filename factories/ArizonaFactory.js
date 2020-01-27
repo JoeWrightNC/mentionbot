@@ -9,7 +9,7 @@ module.exports = function AZDaily() {
     //Daily Serve of Content to Slack
     web.chat.postMessage({
         channel: 'mentionbot',
-        text: "Cron check!"
+        text: `Cron check!  The server thinks the current datetime is ${currentDate} when pulling from Moment.JS`
     })  
 
     var reqAZ = request('https://www.google.com/alerts/feeds/13227863141014072795/17929518766589856112')
@@ -57,6 +57,11 @@ module.exports = function AZDaily() {
 
             var dateCheckServer = currentDate.toString().split("2020")[0];
             var dateCheckFeedItem = pubdate.toString().split("2020")[0];
+
+            web.chat.postMessage({
+                channel: 'mentionbot',
+                text: `Cron check!  The server thinks the value to datecheck against is: ${dateCheckServer}.`
+            })  
 
             if (dateCheckServer === dateCheckFeedItem) {
                 web.chat.postMessage({
