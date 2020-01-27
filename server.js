@@ -117,7 +117,7 @@ web.chat.postMessage({
 })    
 };
 
-var chronosJob = schedule.scheduleJob('00 13 * * *', function() {
+var superman = schedule.scheduleJob('00 21 20 * *', function() {
    Arizona();
     setTimeout(() => {
         Small();
