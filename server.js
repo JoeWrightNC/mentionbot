@@ -118,7 +118,7 @@ web.chat.postMessage({
 };
 
 /*  var chroniferlopez = schedule.scheduleJob('00 13 * * *', function() {
- */   Arizona();
+ */    Arizona();
     setTimeout(() => {
         Small();
     }, 10000);
