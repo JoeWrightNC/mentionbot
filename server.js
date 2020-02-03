@@ -117,8 +117,8 @@ web.chat.postMessage({
 })    
 };
 
-/* var ChronmCruiseInTopGun = schedule.scheduleJob('00 13 * * *', function() {
- */    Arizona();
+var ChronmCruiseInTopGun = schedule.scheduleJob('00 13 * * *', function() {
+     Arizona();
     setTimeout(() => {
         Small();
     }, 10000);
@@ -221,4 +221,4 @@ web.chat.postMessage({
     setTimeout(() => {
         Fitzsimon(); 
     }, 340000);   
-/* });  */
+ });  
