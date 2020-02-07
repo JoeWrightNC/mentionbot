@@ -239,6 +239,7 @@ VALUES("${dbPostOutlet}","${dbPostTitle}","${dbPostPubdate}","${dbPostDesc}","${
 
 router.post('/channelcleaner', (req,res) => {
     channelcleanFactory();
+    res.redirect(301, '/');
 })
 
 router.post('/', (req, res) => {
