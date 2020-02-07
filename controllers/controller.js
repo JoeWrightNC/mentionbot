@@ -6,11 +6,13 @@ const pool = mysql.createPool(process.env.JAWSDB_MARIA_URL);
 const MenniehelpFactory = require('../factories/slashFactories/MenniehelpFactory');
 const MenniecountFactory = require('../factories/slashFactories/MenniecountFactory');
 const MenniejokeFactory = require('../factories/slashFactories/MenniejokeFactory');
+const channelcleanFactory = require('../factories/utilityFactories/channelcleanFactory')
 
 //Slash Command Factory Constants
 const Menniehelp = MenniehelpFactory();
 const Menniecount = MenniecountFactory();
 const Menniejoke = MenniejokeFactory();
+const cleanChannel = channelcleanFactory();
 
 //Routes!
 router.get("/", function(req,res) {
@@ -234,6 +236,10 @@ VALUES("${dbPostOutlet}","${dbPostTitle}","${dbPostPubdate}","${dbPostDesc}","${
     pool.query(insertStatement, function(err, rows, fields) {
         if (err) throw err;
     })
+})
+
+router.post('/channelcleaner', (req,rex) => {
+    cleanChannel();
 })
 
 router.post('/', (req, res) => {

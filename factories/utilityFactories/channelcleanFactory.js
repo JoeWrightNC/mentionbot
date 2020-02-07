@@ -80,7 +80,7 @@ function deleteMessage() {
 
 // ---------------------------------------------------------------------------------------------------------------------
 
-function processHistory() {
+module.exports = function processHistory() {
 
     https.get(historyApiUrl + nextCursor, function(res) {
 
@@ -116,8 +116,3 @@ function processHistory() {
 
 // ---------------------------------------------------------------------------------------------------------------------
 
-if (token === 'SLACK TOKEN') {
-    console.error('Token seems incorrect. Please open the file with an editor and modify the token variable.');
-} else {
-    processHistory();
-}
