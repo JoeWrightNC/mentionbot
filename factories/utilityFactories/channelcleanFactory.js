@@ -11,7 +11,7 @@ const token = 'xoxp-533633915670-560865734437-903822435971-e670b8df0723822955d8e
 
 let channel = 'GQV5RNKNW';
 
-if (process.argv[0].indexOf('node') !== -1 && process.argv.length > 2) {
+/* if (process.argv[0].indexOf('node') !== -1 && process.argv.length > 2) {
     channel = process.argv[2];
 } else if (process.argv[0].indexOf('delete') !== -1 && process.argv.length > 1) {
     channel = process.argv[1];
@@ -19,7 +19,7 @@ if (process.argv[0].indexOf('node') !== -1 && process.argv.length > 2) {
     console.log('Usage: node ./delete-slack-messages.js CHANNEL_ID');
     process.exit(1);
 }
-
+ */
 const https         = require('https');
 const baseApiUrl    = 'https://slack.com/api/';
 const messages      = [];
