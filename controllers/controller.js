@@ -12,7 +12,6 @@ const channelcleanFactory = require('../factories/utilityFactories/channelcleanF
 const Menniehelp = MenniehelpFactory();
 const Menniecount = MenniecountFactory();
 const Menniejoke = MenniejokeFactory();
-const cleanChannel = channelcleanFactory();
 
 //Routes!
 router.get("/", function(req,res) {
@@ -238,8 +237,8 @@ VALUES("${dbPostOutlet}","${dbPostTitle}","${dbPostPubdate}","${dbPostDesc}","${
     })
 })
 
-router.post('/channelcleaner', (req,rex) => {
-    cleanChannel();
+router.post('/channelcleaner', (req,res) => {
+    channelcleanFactory();
 })
 
 router.post('/', (req, res) => {
