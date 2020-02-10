@@ -242,6 +242,11 @@ router.post('/channelcleaner', (req,res) => {
     res.redirect(301, '/');
 })
 
+router.post('/deletemention/:id', (req,res) => {
+    console.log(req);
+    res.redirect(301, '/');
+   //var deleteStatement = `DELETE FROM mentions WHERE id = `
+})
 router.post('/', (req, res) => {
     res.sendStatus(200);
     var parsedPayload = JSON.parse(req.body.payload);

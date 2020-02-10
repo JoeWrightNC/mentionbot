@@ -10,6 +10,11 @@
             <p class="card-text" style="font-size:.8rem">Domain: {{domClean link}}</p>
             <hr>
             <a href="{{link}}" class="btn btn-primary">Read Mention</a>
+            <p>
+                <form method="POST" action="/deletemention/{{id}}">
+                    <button type="submit">Delete</button>
+                </form>
+            </p>
         </div>
     </div>
 </div>
