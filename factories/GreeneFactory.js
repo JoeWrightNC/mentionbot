@@ -176,14 +176,6 @@ module.exports = function GreeneDaily() {
                                     {
                                         "text": {
                                             "type": "plain_text",
-                                            "text": "Internal Reprint",
-                                            "emoji": true
-                                        },
-                                        "value": "Internal_Reprint"
-                                    },
-                                    {
-                                        "text": {
-                                            "type": "plain_text",
                                             "text": "Appearance",
                                             "emoji": true
                                         },
