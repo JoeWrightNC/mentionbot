@@ -112,13 +112,14 @@ app.listen(port, () => {
 
 function cronCheck() {
 web.chat.postMessage({
-    channel: 'devchannel',
-    text: "Cron check!"
+    channel: 'mentionbot',
+    text: "fresh code yo"
 })    
 };
 
+cronCheck();
 /* var ChronmCruiseInTopGun = schedule.scheduleJob('00 13 * * *', function() {
- */   Arizona();
+ */   /* Arizona();
     setTimeout(() => {
         Small();
     }, 10000);
@@ -220,5 +221,5 @@ web.chat.postMessage({
     }, 330000);
     setTimeout(() => {
         Fitzsimon(); 
-    }, 340000);    
+    }, 340000);     */
 /*  });   */ 
