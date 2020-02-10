@@ -118,7 +118,7 @@ web.chat.postMessage({
 };
 
 /* var ChronmCruiseInTopGun = schedule.scheduleJob('00 13 * * *', function() {
- */     Arizona();/* 
+ */     Arizona();
     setTimeout(() => {
         Small();
     }, 10000);
@@ -132,7 +132,7 @@ web.chat.postMessage({
         Griego();
     }, 40000);
     setTimeout(() => {
-       */  Florida(); /*
+        Florida(); 
     }, 50000);
     setTimeout(() => {
         Rado();
