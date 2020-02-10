@@ -243,9 +243,12 @@ router.post('/channelcleaner', (req,res) => {
 })
 
 router.post('/deletemention/:id', (req,res) => {
-    console.log(req.params);
+    console.log(req.params.id);
+    var deleteStatement = `DELETE FROM mentions WHERE id = ${req.params.id};`;
+    pool.query(deleteStatement, function(err, rows, fields) {
+        if (err) throw err;
+    })
     res.redirect(301, '/');
-   //var deleteStatement = `DELETE FROM mentions WHERE id = `
 })
 router.post('/', (req, res) => {
     res.sendStatus(200);
