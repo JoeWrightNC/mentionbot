@@ -58,7 +58,7 @@ module.exports = function CODaily() {
             console.log(dateCheckServer);
             console.log(dateCheckFeedItem);
 
-            if (dateCheckServer === dateCheckFeedItem) {
+            if (dateCheckServer === dateCheckFeedItem && domainCleaned !== 'https://www.coloradoindependent') {
                 web.chat.postMessage({
                     channel: 'mentionbot',
                     "response_type": "in_channel",

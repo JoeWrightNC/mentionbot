@@ -53,7 +53,7 @@ module.exports = function IowaDaily() {
             var dateCheckServer = currentDate.toString().split("2020")[0];
             var dateCheckFeedItem = pubdate.toString().split("2020")[0];
 
-            if (dateCheckServer === dateCheckFeedItem) {
+            if (dateCheckServer === dateCheckFeedItem && domainCleaned !== 'https://iowacapitaldispatch') {
                 web.chat.postMessage({
                     channel: 'mentionbot',
                     "response_type": "in_channel",
