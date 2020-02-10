@@ -9,5 +9,9 @@ module.exports = {
       cleanerTwo = dom.split('.com')[0];
       cleanerThree = cleanerTwo.split('.org')[0];
       return cleanerThree;
+    },
+    dateClean: function(date) {
+      cleanDate = date.split("2020")[0];
+      return cleanDate;
     }
 }
