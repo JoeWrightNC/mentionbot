@@ -243,7 +243,7 @@ router.post('/channelcleaner', (req,res) => {
 })
 
 router.post('/deletemention/:id', (req,res) => {
-    console.log(req);
+    console.log(req.params);
     res.redirect(301, '/');
    //var deleteStatement = `DELETE FROM mentions WHERE id = `
 })
