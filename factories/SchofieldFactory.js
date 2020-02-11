@@ -53,7 +53,7 @@ module.exports = function SchofieldDaily() {
             var dateCheckServer = currentDate.toString().split("2020")[0];
             var dateCheckFeedItem = pubdate.toString().split("2020")[0];
 
-            if (dateCheckServer === dateCheckFeedItem && domainCleaned !== 'https://ncpolicywatch' && domainCleaned !== 'https://pulse.ncpolicywatch') {
+            if (dateCheckServer === dateCheckFeedItem && domainCleaned !== 'http://ncpolicywatch' && domainCleaned !== 'http://pulse.ncpolicywatch') {
                 web.chat.postMessage({
                     channel: 'mentionbot',
                     "response_type": "in_channel",
