@@ -11,7 +11,6 @@ const pool = mysql.createPool(process.env.JAWSDB_MARIA_URL);
 const exphbs = require("express-handlebars");
 const currentDate = new Date();
 const schedule = require('node-schedule');
-const datepicker = require('js-datepicker')
 const ArizonaFactory = require('./factories/ArizonaFactory');
 const SmallFactory = require('./factories/SmallFactory');
 const ColoradoFactory = require('./factories/ColoradoFactory');
