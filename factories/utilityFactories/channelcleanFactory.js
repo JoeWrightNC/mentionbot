@@ -5,7 +5,7 @@
 
 // CONFIGURATION #######################################################################################################
 
-const token = 'xoxp-533633915670-560865734437-903822435971-e670b8df0723822955d8eddfb5a38aec'; // You can learn it from: https://api.slack.com/custom-integrations/legacy-tokens 
+const token = 'xoxp-533633915670-560865734437-934082314514-6ffa82a5d44135a3019dd5075badb141'; // You can learn it from: https://api.slack.com/custom-integrations/legacy-tokens 
 
 // GLOBALS #############################################################################################################
 

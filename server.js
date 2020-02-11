@@ -117,7 +117,6 @@ web.chat.postMessage({
 })    
 };
 
-cronCheck();
 /* var ChronmCruiseInTopGun = schedule.scheduleJob('00 13 * * *', function() {
  */   /* Arizona();
     setTimeout(() => {
