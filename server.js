@@ -119,7 +119,7 @@ web.chat.postMessage({
 
 cronCheck();
 /* var ChronmCruiseInTopGun = schedule.scheduleJob('00 13 * * *', function() {
- */   Arizona();
+ */   /* Arizona();
     setTimeout(() => {
         Small();
     }, 10000);
@@ -221,5 +221,5 @@ cronCheck();
     }, 330000);
     setTimeout(() => {
         Fitzsimon(); 
-    }, 340000);   
+    }, 340000);   */ 
 /*  });   */ 
