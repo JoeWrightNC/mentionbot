@@ -5,11 +5,11 @@
 
 // CONFIGURATION #######################################################################################################
 
-const token = 'xoxp-533633915670-560865734437-934082314514-6ffa82a5d44135a3019dd5075badb141'; // You can learn it from: https://api.slack.com/custom-integrations/legacy-tokens 
+const token = ''; // You can learn it from: https://api.slack.com/custom-integrations/legacy-tokens 
 
 // GLOBALS #############################################################################################################
 
-let channel = 'GQV5RNKNW';
+let channel = '';
 
 /* if (process.argv[0].indexOf('node') !== -1 && process.argv.length > 2) {
     channel = process.argv[2];
